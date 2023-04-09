@@ -65,7 +65,7 @@ public class enterSongInfo {
 
         sql = String.format(sql, songID, title, duration, playcount, releaseDate, releaseCountry, slanguage, royaltyRate, royaltyPaid, artistID, albumID, trackNumber);
 
-        return DBManager.executeUpdate(sql);
+        return WolfPubDB.executeUpdate(sql);
     }
 
     public static void main(String[] args) {
