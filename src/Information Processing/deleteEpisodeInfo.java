@@ -24,10 +24,7 @@ public class deleteEpisodeInfo {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for deleteEpisodeInfo");
-		System.out.println("===============================");
-		//execute(101,401);
+		
 	}
 
 
