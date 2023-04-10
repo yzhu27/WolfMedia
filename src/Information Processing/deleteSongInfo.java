@@ -25,7 +25,7 @@ public class deleteSongInfo {
 
 	public static void main(String[] args) {
 		System.out.println("\n");
-		System.out.println("Unit Test for DeleteBookEdition");
+		System.out.println("Unit Test for deleteSongInfo");
 		System.out.println("===============================");
 		execute(1);
 	}
@@ -35,7 +35,7 @@ public class deleteSongInfo {
     public static ExecResult run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
-		System.out.println("|         Book Details               |");
+		System.out.println("|         Song Details               |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
