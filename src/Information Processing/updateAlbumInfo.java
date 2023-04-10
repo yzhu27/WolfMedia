@@ -3,16 +3,16 @@ import java.sql.*;
 
 public class updateAlbumInfo {
 
-    public static ExecResult execute(String sql) {
-        return WolfPubDB.executeUpdate(sql);
+    public static Result execute(String sql) {
+        return Connect.executeUpdate(sql);
     }
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        WolfPubDB.executeQuery(sql);
+        Connect.executeQuery(sql);
     }
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|          Album Details            |");
         System.out.println("+------------------------------------+");
