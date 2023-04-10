@@ -237,6 +237,78 @@ public class Interface {
                 case 15:
                     result = updateTotalSubscribers.run(this.sc);
                     break;
+                case 16:
+                    result = enterSongInfo.run(this.sc);
+                    break;
+                case 17:
+                    result = enterArtistInfo.run(this.sc);
+                    break;
+                case 18:
+                    result = enterAlbumInfo.run(this.sc);
+                    break;
+                case 19:
+                    result = enterPodcastInfo.run(this.sc);
+                    break;
+                case 20:
+                    result = enterHostInfo.run(this.sc);
+                    break;
+                case 21:
+                    result = enterEpisodeInfo.run(this.sc);
+                    break;
+                case 22:
+                    result = updateSongInfo.run(this.sc);
+                    break;
+                case 23:
+                    result = updateArtistInfo.run(this.sc);
+                    break;
+                case 24:
+                    result = updateAlbumInfo.run(this.sc);
+                    break;
+                case 25:
+                    result = updatePodcastInfo.run(this.sc);
+                    break;
+                case 26:
+                    result = updateHostInfo.run(this.sc);
+                    break;
+                case 27:
+                    result = updateEpisodeInfo.run(this.sc);
+                    break;
+                case 28:
+                    result = deleteSongInfo.run(this.sc);
+                    break;
+                case 29:
+                    result = deleteArtistInfo.run(this.sc);
+                    break;
+                case 30:
+                    result = deleteAlbumInfo.run(this.sc);
+                    break;
+                case 31:
+                    result = deletePodcastInfo.run(this.sc);
+                    break;
+                case 32:
+                    result = deleteHostInfo.run(this.sc);
+                    break;
+                case 33:
+                    result = deleteEpisodeInfo.run(this.sc);
+                    break;
+                case 34:
+                    result = assignSongToArtist.run(this.sc);
+                    break;
+                case 35:
+                    result = assignSongToAlbum.run(this.sc);
+                    break;
+                case 36:
+                    result = assignArtistToAlbum.run(this.sc);
+                    break;
+                case 37:
+                    result = assignArtistToLabel.run(this.sc);
+                    break;
+                case 38:
+                    result = assignEpisodeToPodcast.run(this.sc);
+                    break;
+                case 39:
+                    result = assignHostToPodcast.run(this.sc);
+                    break;
                 default:
                     return;
             }
