@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class enterPlayCount {    
     public static Result run(Scanner reader) {
-        System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
+        System.out.println("+-------------------------------------+");
+        System.out.println("| Reset the play count of a song to 0 |");
+        System.out.println("+-------------------------------------+");
         System.out.println("");
 
         System.out.println("SongID: ");
@@ -33,10 +33,10 @@ public class enterPlayCount {
             return new Result(false, "Invalid input");
         }
 
-        System.out.println("New Value: ");
-        int newValue = reader.nextInt();
+        // System.out.println("New Value: ");
+        // int newValue = reader.nextInt();
 
-        return execute(SongID, attribute, newValue);
+        return execute(SongID, attribute, 0);
     }
 
     public static Result execute(int SongID, String attribute, int newValue) {

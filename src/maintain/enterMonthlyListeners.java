@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class enterMonthlyListeners {
     public static Result run(Scanner reader) {
-        System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
+        System.out.println("+------------------------------------------------------+");
+        System.out.println("| Reset the monthly listener numbers of an artist to 0 |");
+        System.out.println("+------------------------------------------------------+");
         System.out.println("");
 
         System.out.println("ArtistID: ");
@@ -28,10 +28,10 @@ public class enterMonthlyListeners {
             return new Result(false, "Invalid input");
         }
 
-        System.out.println("New Value: ");
-        int newValue = reader.nextInt();
+        // System.out.println("New Value: ");
+        // int newValue = reader.nextInt();
 
-        return execute(AID, attribute, newValue);
+        return execute(AID, attribute, 0);
     }
 
     public static Result execute(int ID, String attribute, int newValue) {

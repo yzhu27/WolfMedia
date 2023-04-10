@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class enterTotalSubscribers {
     public static Result run(Scanner reader) {
-        System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("| Reset the number of total subscribers of a Podcast to 0 |");
+        System.out.println("+---------------------------------------------------------+");
         System.out.println("");
 
         System.out.println("PodcastID: ");
@@ -28,10 +28,10 @@ public class enterTotalSubscribers {
             return new Result(false, "Invalid input");
         }
 
-        System.out.println("New Value: ");
-        int newValue = reader.nextInt();
+        // System.out.println("New Value: ");
+        // int newValue = reader.nextInt();
 
-        return execute(PID, attribute, newValue);
+        return execute(PID, attribute, 0);
     }
 
     public static Result execute(int ID, String attribute, int newValue) {

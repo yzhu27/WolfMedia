@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class enterRating {
     public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
+        System.out.println("| Reset the rating of a podcast to 0 |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
@@ -28,10 +28,10 @@ public class enterRating {
             return new Result(false, "Invalid input");
         }
 
-        System.out.println("New Value: ");
-        int newValue = reader.nextInt();
+        // System.out.println("New Value: ");
+        // int newValue = reader.nextInt();
 
-        return execute(PID, attribute, newValue);
+        return execute(PID, attribute, 0);
     }
 
     public static Result execute(int ID, String attribute, int newValue) {

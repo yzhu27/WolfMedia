@@ -29,12 +29,12 @@ public class updateRating {
         }
 
         System.out.println("New Value: ");
-        int newValue = reader.nextInt();
+        double newValue = reader.nextDouble();
 
         return execute(PID, attribute, newValue);
     }
 
-    public static Result execute(int ID, String attribute, int newValue) {
+    public static Result execute(int ID, String attribute, Double newValue) {
 
         String sql =
                 "UPDATE Podcasts" +
