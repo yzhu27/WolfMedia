@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class enterPodcastInfo {
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -40,7 +40,7 @@ public class enterPodcastInfo {
         return execute(podcastID, name, language, country, rating, subscribers, episodeCount, phID);   
     }
 
-    public static ExecResult execute(int podcastID, String name, String language, String country, double rating, int subscribers, int episodeCount, int phID) {
+    public static Result execute(int podcastID, String name, String language, String country, double rating, int subscribers, int episodeCount, int phID) {
         
         String sql = 
             "INSERT INTO Podcasts VALUES "  + "\n" + "\t" +
@@ -50,14 +50,11 @@ public class enterPodcastInfo {
         
         sql = String.format(sql, podcastID, name, language, country, rating, subscribers, episodeCount, phID);
         
-        return WolfPubDB.executeUpdate(sql);
+        return Connect.executeUpdate(sql);
     }
 
     public static void main(String[] args) {
-        System.out.println("\n");
-        System.out.println("Unit Test for AddPodcast");
-        System.out.println("===============================");
-        execute(1, "The Joe Rogan Experience", "English", "USA", 4.5, 10000000, 200, 1);
+        
     }
 
 }

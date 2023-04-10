@@ -5,12 +5,12 @@ public class deleteAlbumInfo {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
         System.out.println("sql::" + sql);
-		WolfPubDB.executeQuery(sql);
+		Connect.executeQuery(sql);
     }
 
-    public static ExecResult execute(int albumID) {
+    public static Result execute(int albumID) {
 
-        ExecResult result = null;
+        Result result = null;
 
         String sql = 
 			"DELETE FROM Albums WHERE AlbumID = %d"  + "\n" + "\t" +
@@ -20,19 +20,16 @@ public class deleteAlbumInfo {
         
 		sql = String.format(sql, albumID);
 
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for deleteAlbumInfo");
-		System.out.println("===============================");
-		execute(1);
+		
 	}
 
 
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Album Details               |");
