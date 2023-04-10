@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class enterArtistInfo {
 
-	public static ExecResult run(Scanner reader) {
+	public static Result run(Scanner reader) {
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
@@ -38,7 +38,7 @@ public class enterArtistInfo {
 		return execute(artistID, name, status, type, artCountry, monthlyListeners, primaryGenre, rlID);	
 	}
 
-	public static ExecResult execute(int artistID, String name, String status, String type, String artCountry, int monthlyListeners, String primaryGenre, int rlID) {
+	public static Result execute(int artistID, String name, String status, String type, String artCountry, int monthlyListeners, String primaryGenre, int rlID) {
 		
 		String sql = 
 			"INSERT INTO Artists VALUES "  + "\n" + "\t" +
@@ -48,14 +48,11 @@ public class enterArtistInfo {
 		
 		sql = String.format(sql, artistID, name, status, type, artCountry, monthlyListeners, primaryGenre, rlID);
 		
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for AddArtist");
-		System.out.println("===============================");
-		execute(1, "Ed Sheeran", "Active", "Solo", "United Kingdom", 150000000, "Pop", 1);
+		
 	}
 
 }
