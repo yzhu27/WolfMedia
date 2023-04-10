@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+
 public class enterAlbumInfo {
 
     public static Result run(Scanner reader) {

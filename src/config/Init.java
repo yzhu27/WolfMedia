@@ -13,7 +13,7 @@ import java.sql.*;
 
 public class Init {
 
-    /* All the table/schema names included in our WolfPubDB implementation */
+    /* All the table/schema names included in our Connect implementation */
     private static String[] tables = {
             "Users",
             "RecordLabels",
@@ -83,7 +83,7 @@ public class Init {
 
     /**
      * Function that runs the sequence of SQL statements that define the shemas
-     * for all the tables in our WolfPubDB implementation. This includes all
+     * for all the tables in our Connect implementation. This includes all
      * the key assignments and constraint checks associated with these tables
      * and their fields.
      */

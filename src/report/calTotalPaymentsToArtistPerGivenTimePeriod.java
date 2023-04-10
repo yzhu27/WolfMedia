@@ -1,10 +1,14 @@
 package report;
 import java.util.Scanner;
 
-public class calTotalPaymentsToArtistPerGivenTimePeriod {
-    public static ExecResult execute(String startDate, String endDate) {
+import config.Connect;
+import config.Result;
+import config.Transaction;
 
-        ExecResult result = null;
+public class calTotalPaymentsToArtistPerGivenTimePeriod {
+    public static Result execute(String startDate, String endDate) {
+
+        Result result = null;
 
 		String sql = 
             "SELECT SUM(PayAmount) FROM ArtistPaymentRecords" + "\n" +
@@ -13,12 +17,12 @@ public class calTotalPaymentsToArtistPerGivenTimePeriod {
         
 		sql = String.format(sql, startDate, endDate);
     
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
 
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

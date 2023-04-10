@@ -1,7 +1,10 @@
 import java.util.Scanner;
 import java.sql.*;
 
-public class assignHostToPodcast {
+import config.Connect;
+import config.Result;
+
+public class assignSongToAlbum {
 
     public static Result execute(String sql) {
         return Connect.executeUpdate(sql);
@@ -12,31 +15,30 @@ public class assignHostToPodcast {
         Connect.executeQuery(sql);
     }
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
-        System.out.println("|           Podcast Details   |");
+        System.out.println("|           Song Details            |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("Podcasts");
+        showDetails("Songs");
 
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        System.out.println("Podcast ID: ");
-        int pID = reader.nextInt();
+        System.out.println("Song ID: ");
+        int songID = reader.nextInt();
         reader.nextLine();
 
-         System.out.println("Host ID: ");
-        int phID = reader.nextInt();
+         System.out.println("Album ID: ");
+        int albumID = reader.nextInt();
         reader.nextLine();
 
         String sql = "";
-        sql = "UPDATE Podcasts SET PHID=%d WHERE PID=(%d);" + "\n" + "\n";
-        sql = String.format(sql, phID, pID);
-        }
+        sql = "UPDATE Songs SET AlbumID=%d WHERE SongID = (%d);" + "\n" + "\n";
+        sql = String.format(sql, albumID, songID);
 
         return execute(sql);
     }

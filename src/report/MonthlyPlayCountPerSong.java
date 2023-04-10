@@ -1,13 +1,17 @@
 package report;
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+import config.Transaction;
+
 public class MonthlyPlayCountPerSong {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-		WolfPubDB.executeQuery(sql);
+		Connect.executeQuery(sql);
     }
 
-    public static ExecResult execute(int SongID) {
+    public static Result execute(int SongID) {
 
 		String sql = 
 			"SELECT Playcount FROM Songs WHERE SongID=%d;"
@@ -15,10 +19,10 @@ public class MonthlyPlayCountPerSong {
         
 		sql = String.format(sql, SongID);
         
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
 		System.out.println("|             Song Details           |");
 		System.out.println("+------------------------------------+");

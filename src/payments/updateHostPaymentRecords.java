@@ -5,7 +5,7 @@ import config.Result;
 
 import java.util.Scanner;
 
-public class updateaddHostPaymentRecords {
+public class updateHostPaymentRecords {
 
     public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");

@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
-public class deleteAlbumInfo {
+import config.Connect;
+import config.Result;
+
+public class deletePodcastInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
@@ -8,17 +11,17 @@ public class deleteAlbumInfo {
 		Connect.executeQuery(sql);
     }
 
-    public static Result execute(int albumID) {
+    public static Result execute(int podcastID) {
 
         Result result = null;
 
         String sql = 
-			"DELETE FROM Albums WHERE AlbumID = %d"  + "\n" + "\t" +
+			"DELETE FROM Podcasts WHERE PID = %d"  + "\n" + "\t" +
 				 "\n" +
 			";" + "\n" + "\n"
 		;
         
-		sql = String.format(sql, albumID);
+		sql = String.format(sql, podcastID);
 
 		return Connect.executeUpdate(sql);
 	}
@@ -32,22 +35,22 @@ public class deleteAlbumInfo {
     public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
-		System.out.println("|         Album Details               |");
+		System.out.println("|         Podcast Details               |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-        showDetails("Albums");
+        showDetails("Podcasts");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		System.out.println("Album ID: ");
-		int albumID = reader.nextInt();
+		System.out.println("Podcast ID: ");
+		int podcastID = reader.nextInt();
 		reader.nextLine();
 
-		return execute(albumID);	
+		return execute(podcastID);	
 	}
 
 }

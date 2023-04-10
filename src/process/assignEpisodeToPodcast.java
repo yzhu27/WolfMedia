@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.sql.*;
 
+import config.Connect;
+import config.Result;
+
 public class assignEpisodeToPodcast {
 
     public static Result execute(String sql) {
@@ -12,7 +15,7 @@ public class assignEpisodeToPodcast {
         Connect.executeQuery(sql);
     }
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|           PodcastEpisode Details   |");
         System.out.println("+------------------------------------+");
@@ -36,7 +39,6 @@ public class assignEpisodeToPodcast {
         String sql = "";
         sql = "UPDATE Artists SET PID=%d WHERE PEID=(%d);" + "\n" + "\n";
         sql = String.format(sql, pID, peID);
-        }
 
         return execute(sql);
     }

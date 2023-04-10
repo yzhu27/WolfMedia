@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.sql.*;
 
+import config.Connect;
+import config.Result;
+
 public class updateEpisodeInfo {
 
         public static Result execute(String sql) {
@@ -60,4 +63,5 @@ public class updateEpisodeInfo {
             }
 
             return execute(sql);
- }
+    }
+}

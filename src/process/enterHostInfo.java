@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+
 public class enterHostInfo {
     
     public static Result run(Scanner reader) {

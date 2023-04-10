@@ -1,5 +1,9 @@
 import java.util.Scanner;
 import java.sql.*;
+
+import config.Connect;
+import config.Result;
+
 /**
  * Class used for executing the assignArtistToAlbum API operation.
  */

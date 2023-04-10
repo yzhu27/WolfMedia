@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.sql.*;
 
+import config.Connect;
+import config.Result;
+
 public class updateArtistInfo {
 
     public static Result execute(String sql) {

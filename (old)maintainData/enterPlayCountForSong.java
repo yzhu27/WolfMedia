@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class enterPlayCountForSong {
     
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
@@ -26,7 +26,7 @@ public class enterPlayCountForSong {
 		if (choice == 1){
 			attribute = "Playcount";
 		} else {
-			return new ExecResult(false, "Invalid input");
+			return new Result(false, "Invalid input");
 		}
 
 		System.out.println("New Value: ");
@@ -35,7 +35,7 @@ public class enterPlayCountForSong {
 		return execute(songID, attribute, newValue);
 	}
 
-	public static ExecResult execute(int songID, String attribute, int newValue) {
+	public static Result execute(int songID, String attribute, int newValue) {
 
 		String sql = 
 			"UPDATE Songs"  + "\n" +
@@ -46,7 +46,7 @@ public class enterPlayCountForSong {
         
 		sql = String.format(sql, attribute, newValue, songID);
         
-        return WolfPubDB.executeUpdate(sql);
+        return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {

@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
-public class deleteHostInfo {
+import config.Connect;
+import config.Result;
+
+public class deleteAlbumInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
@@ -8,26 +11,23 @@ public class deleteHostInfo {
 		Connect.executeQuery(sql);
     }
 
-    public static Result execute(int hostID) {
+    public static Result execute(int albumID) {
 
         Result result = null;
 
         String sql = 
-			"DELETE FROM PodcastHosts WHERE PHID = %d"  + "\n" + "\t" +
+			"DELETE FROM Albums WHERE AlbumID = %d"  + "\n" + "\t" +
 				 "\n" +
 			";" + "\n" + "\n"
 		;
         
-		sql = String.format(sql, hostID);
+		sql = String.format(sql, albumID);
 
 		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for deleteHostInfo");
-		System.out.println("===============================");
-		execute(100);
+		
 	}
 
 
@@ -35,22 +35,22 @@ public class deleteHostInfo {
     public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
-		System.out.println("|         Podcast Host Details       |");
+		System.out.println("|         Album Details               |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-        showDetails("PodcastHosts");
+        showDetails("Albums");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		System.out.println("Host ID: ");
-		int hostID = reader.nextInt();
+		System.out.println("Album ID: ");
+		int albumID = reader.nextInt();
 		reader.nextLine();
 
-		return execute(hostID);	
+		return execute(albumID);	
 	}
 
 }

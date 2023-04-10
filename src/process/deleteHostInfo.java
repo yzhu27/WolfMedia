@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
-public class deleteEpisodeInfo {
+import config.Connect;
+import config.Result;
+
+public class deleteHostInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
@@ -8,23 +11,26 @@ public class deleteEpisodeInfo {
 		Connect.executeQuery(sql);
     }
 
-    public static Result execute(int episodeID,int podcastID) {
+    public static Result execute(int hostID) {
 
         Result result = null;
 
         String sql = 
-			"DELETE FROM PodcastEpisodes WHERE PEID = %d AND PID = %d"  + "\n" + "\t" +
+			"DELETE FROM PodcastHosts WHERE PHID = %d"  + "\n" + "\t" +
 				 "\n" +
 			";" + "\n" + "\n"
 		;
         
-		sql = String.format(sql, episodeID, podcastID);
+		sql = String.format(sql, hostID);
 
 		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
-		
+		System.out.println("\n");
+		System.out.println("Unit Test for deleteHostInfo");
+		System.out.println("===============================");
+		execute(100);
 	}
 
 
@@ -32,25 +38,22 @@ public class deleteEpisodeInfo {
     public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
-		System.out.println("|         Episode Details            |");
+		System.out.println("|         Podcast Host Details       |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-        showDetails("PodcastEpisodes");
+        showDetails("PodcastHosts");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
-      
-    System.out.println("Podcast ID: ");
-    int podcastID = reader.nextInt();
-		reader.nextLine();
-		System.out.println("Episode ID: ");
-		int episodeID = reader.nextInt();
+
+		System.out.println("Host ID: ");
+		int hostID = reader.nextInt();
 		reader.nextLine();
 
-		return execute(episodeID, podcastID);	
+		return execute(hostID);	
 	}
 
 }

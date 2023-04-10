@@ -5,9 +5,9 @@ package config;
  */
 public class Result {
     // if SQL operation executed successfully or not
-    boolean success;
+    public boolean success;
     // why operation failed
-    String errorMessage;
+    public String errorMessage;
 
     public Result(boolean success, String errorMessage) {
         this.success = success;

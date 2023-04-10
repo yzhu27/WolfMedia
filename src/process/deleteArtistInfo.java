@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+
 public class deleteArtistInfo {
 
     public static void showDetails(String tableName){
@@ -8,7 +11,7 @@ public class deleteArtistInfo {
 		    Connect.executeQuery(sql);
     }
 
-    public static Result execute(int songID) {
+    public static Result execute(int artistID) {
 
         Result result = null;
 

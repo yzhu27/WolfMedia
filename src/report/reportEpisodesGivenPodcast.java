@@ -1,13 +1,17 @@
 package report;
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+import config.Transaction;
+
 public class reportEpisodesGivenPodcast {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-		WolfPubDB.executeQuery(sql);
+		Connect.executeQuery(sql);
     }
 
-    public static ExecResult execute(int PID) {
+    public static Result execute(int PID) {
 
 		String sql = 
 			"SELECT * FROM PodcastEpisodes WHERE PID=%d;"
@@ -15,10 +19,10 @@ public class reportEpisodesGivenPodcast {
         
 		sql = String.format(sql, PID);
         
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
 		System.out.println("|           Podcasts Details         |");
 		System.out.println("+------------------------------------+");
@@ -36,4 +40,5 @@ public class reportEpisodesGivenPodcast {
 		reader.nextLine();
 
 		return execute(PID);
+	}
 }

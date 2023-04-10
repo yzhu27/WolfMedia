@@ -1,6 +1,9 @@
 import java.sql.*;
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+
 public class enterEpisodeInfo {
     
     public static Result run(Scanner reader) {

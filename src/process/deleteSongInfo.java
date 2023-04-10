@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+
 public class deleteSongInfo {
 
     public static void showDetails(String tableName){
@@ -29,7 +32,7 @@ public class deleteSongInfo {
 
 
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Song Details               |");

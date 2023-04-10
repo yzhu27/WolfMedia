@@ -1,13 +1,17 @@
 package report;
 import java.util.Scanner;
 
+import config.Connect;
+import config.Result;
+import config.Transaction;
+
 public class reportSongsGivenAlbum {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-		WolfPubDB.executeQuery(sql);
+		Connect.executeQuery(sql);
     }
 
-    public static ExecResult execute(int AlbumID) {
+    public static Result execute(int AlbumID) {
 
 		String sql = 
 			"SELECT * FROM Songs WHERE AlbumID=%d;"
@@ -15,10 +19,10 @@ public class reportSongsGivenAlbum {
         
 		sql = String.format(sql, AlbumID);
         
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
 		System.out.println("|            Album Details           |");
 		System.out.println("+------------------------------------+");
