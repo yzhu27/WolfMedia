@@ -25,7 +25,7 @@ public class assignSongToArtist {
 	public static ExecResult execute(int songID, int artistID) {
 		
 		String sql = 
-			"INSERT INTO Edits VALUES "  + "\n" + "\t" +
+			"INSERT INTO Collaborate VALUES "  + "\n" + "\t" +
 				"(%s,%s)"  + "\n" +
 			";" + "\n" + "\n"
 		;
