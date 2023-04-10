@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class enterSongInfo {
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -56,7 +56,7 @@ public class enterSongInfo {
         return execute(songID, title, duration, playcount, releaseDate, releaseCountry, slanguage, royaltyRate, royaltyPaid, artistID, albumID, trackNumber);
     }
 
-    public static ExecResult execute(int songID, String title, float duration, int playcount, String releaseDate, String releaseCountry, String slanguage, float royaltyRate, float royaltyPaid, int artistID, int albumID, int trackNumber) {
+    public static Result execute(int songID, String title, float duration, int playcount, String releaseDate, String releaseCountry, String slanguage, float royaltyRate, float royaltyPaid, int artistID, int albumID, int trackNumber) {
         String sql =
                 "INSERT INTO Songs VALUES "  + "\n" + "\t" +
                         "(%d, '%s', %f, %d, '%s', '%s', '%s', %f, %f, %d, %d, %d)"  + "\n" +
@@ -65,7 +65,7 @@ public class enterSongInfo {
 
         sql = String.format(sql, songID, title, duration, playcount, releaseDate, releaseCountry, slanguage, royaltyRate, royaltyPaid, artistID, albumID, trackNumber);
 
-        return WolfPubDB.executeUpdate(sql);
+        return Connect.executeUpdate(sql);
     }
 
     public static void main(String[] args) {
