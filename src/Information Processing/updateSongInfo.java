@@ -36,7 +36,7 @@ public class updateSongInfo {
 
         String sql = "";
 
-        if(attributeName.equals("Title") || attributeName.equals("ReleaseCountry") || attributeName.equals("Slanguage")){
+        if(attributeName.equals("Title") || attributeName.equals("ReleaseCountry") || attributeName.equals("Slanguage") || attributeName.equals("ReleaseDate")){
             String updatedAttributeValue = reader.nextLine();
 
             sql = "UPDATE Songs SET %s='%s' WHERE SongID = (%d);" + "\n" + "\n";
