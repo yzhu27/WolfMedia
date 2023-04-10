@@ -5,12 +5,12 @@ public class deletePodcastInfo {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
         System.out.println("sql::" + sql);
-		WolfPubDB.executeQuery(sql);
+		Connect.executeQuery(sql);
     }
 
-    public static ExecResult execute(int podcastID) {
+    public static Result execute(int podcastID) {
 
-        ExecResult result = null;
+        Result result = null;
 
         String sql = 
 			"DELETE FROM Podcasts WHERE PID = %d"  + "\n" + "\t" +
@@ -20,19 +20,16 @@ public class deletePodcastInfo {
         
 		sql = String.format(sql, podcastID);
 
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for deletePodcastInfo");
-		System.out.println("===============================");
-		///execute(200);
+		
 	}
 
 
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Podcast Details               |");
