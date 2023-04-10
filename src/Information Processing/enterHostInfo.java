@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class enterHostInfo {
     
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -27,7 +27,7 @@ public class enterHostInfo {
         return execute(phID, phFName, phLName, phEmail, phCity);    
     }
 
-    public static ExecResult execute(int phID, String phFName, String phLName, String phEmail, String phCity) {
+    public static Result execute(int phID, String phFName, String phLName, String phEmail, String phCity) {
         
         String sql = 
             "INSERT INTO PodcastHosts VALUES "  + "\n" + "\t" +
@@ -37,15 +37,11 @@ public class enterHostInfo {
         
         sql = String.format(sql, phID, phFName, phLName, phEmail, phCity);
         
-        return WolfPubDB.executeUpdate(sql);
+        return Connect.executeUpdate(sql);
     }
 
     public static void main(String[] args) {
 
-        System.out.println("\n");
-        System.out.println("Unit Test for AddPodcastHost");
-        System.out.println("===============================");
         
-        execute(6001, "Hideo", "Kojima", "hkjima@gameludens.com", "Tokyo"))
     }
 }
