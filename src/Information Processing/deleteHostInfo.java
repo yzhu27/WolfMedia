@@ -5,12 +5,12 @@ public class deleteHostInfo {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
         System.out.println("sql::" + sql);
-		WolfPubDB.executeQuery(sql);
+		Connect.executeQuery(sql);
     }
 
-    public static ExecResult execute(int hostID) {
+    public static Result execute(int hostID) {
 
-        ExecResult result = null;
+        Result result = null;
 
         String sql = 
 			"DELETE FROM PodcastHosts WHERE PHID = %d"  + "\n" + "\t" +
@@ -20,7 +20,7 @@ public class deleteHostInfo {
         
 		sql = String.format(sql, hostID);
 
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class deleteHostInfo {
 
 
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Podcast Host Details       |");
