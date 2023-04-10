@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class enterAlbumInfo {
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -25,7 +25,7 @@ public class enterAlbumInfo {
         return execute(albumID, albumName, releaseYear, edition);	
     }
 
-    public static ExecResult execute(int albumID, String albumName, int releaseYear, String edition) {
+    public static Result execute(int albumID, String albumName, int releaseYear, String edition) {
 
         String sql = 
             "INSERT INTO Albums VALUES "  + "\n" + "\t" +
@@ -35,14 +35,11 @@ public class enterAlbumInfo {
         
         sql = String.format(sql, albumID, albumName, releaseYear, edition);
         
-        return WolfPubDB.executeUpdate(sql);
+        return Connect.executeUpdate(sql);
     }
 
     public static void main(String[] args) {
-        System.out.println("\n");
-        System.out.println("Unit Test for AddAlbum");
-        System.out.println("===============================");
-        execute(1, "Thriller", 1982, "Special Edition");
+       
     }
 
 }
