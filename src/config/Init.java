@@ -543,8 +543,8 @@ public class Init {
         /* ------------------------------------------------------------------ */
         SQL =
                 "INSERT INTO PodcastEpisodes VALUES " +
-                        "(7001, 5001, 'The Science of Mindfulness', '00:30:12', '2005-12-25', 100, 50)," +
-                        "(7002, 5001, 'Unlocking Your Potential', '00:15:32', '2006-12-25', 200, 30)" +
+                        "(7001, 5001, 'The Science of Mindfulness', '00:30:12', '2023-03-01', 100, 0)," +
+                        "(7002, 5001, 'Unlocking Your Potential', '00:15:32', '2023-03-25', 200, 0)" +
                         ";"
         ;
         Connect.executeUpdate(SQL);
