@@ -4,22 +4,9 @@ import java.text.ParseException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import maintain.enterListeningCount;
-import maintain.enterMonthlyListeners;
-import maintain.enterPlayCount;
-import maintain.enterRating;
-import maintain.enterTotalSubscribers;
-import maintain.findEpisodesGivenPodcast;
-import maintain.findSongsGivenAlbum;
-import maintain.findSongsGivenArtist;
-import maintain.recordPlayCount;
-import maintain.recordPodcast;
-import maintain.updateListeningCount;
-import maintain.updateMonthlyListeners;
-import maintain.updatePlayCount;
-import maintain.updateRating;
-import maintain.updateTotalSubscribers;
-import  payments.*;
+import maintain.*;
+import payments.*;
+import Information Processing.*; 
 
 public class Interface {
 
@@ -42,6 +29,31 @@ public class Interface {
             "13. Update the number of play count for a Song",
             "14. Update the number of rating for a Podcast",
             "15. Update the number of total subscribers for a Podcast",
+            "16. Enter the details of the song to be added",
+            "17. Enter the details of the artist to be added",
+            "18. Enter the details of the album to be added",
+            "19. Enter the details of the podcast to be added",
+            "20. Enter the details of the host to be added",
+            "21. Enter the details of the episode to be added",
+            "22. Update the details of the song",
+            "23. Update the details of the artist",
+            "24. Update the details of the album",
+            "25. Update the details of the podcast",
+            "26. Update the details of the podcast host",
+            "27. Update the details of the podcast episode",
+            "28. delete a song",
+            "29. delete an artist",
+            "30. delete an album",
+            "31. delete a podcast",
+            "32. delete a host",
+            "33. delete an episode",
+            "34. assign a song to an artist",
+            "35. assign a song to an album",
+            "36. assign an artist to an album",
+            "37. assign an artist to label",
+            "38. assign an episode to podcast",
+            "39. assign a host to podcast",
+        
     };
     // Maintaining payments
     private static final String[] AccountantOps = {
