@@ -5,12 +5,12 @@ public class deleteEpisodeInfo {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
         System.out.println("sql::" + sql);
-		WolfPubDB.executeQuery(sql);
+		Connect.executeQuery(sql);
     }
 
-    public static ExecResult execute(int episodeID,int podcastID) {
+    public static Result execute(int episodeID,int podcastID) {
 
-        ExecResult result = null;
+        Result result = null;
 
         String sql = 
 			"DELETE FROM PodcastEpisodes WHERE PEID = %d AND PID = %d"  + "\n" + "\t" +
@@ -20,7 +20,7 @@ public class deleteEpisodeInfo {
         
 		sql = String.format(sql, episodeID, podcastID);
 
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class deleteEpisodeInfo {
 
 
 
-    public static ExecResult run(Scanner reader) {
+    public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Episode Details            |");
