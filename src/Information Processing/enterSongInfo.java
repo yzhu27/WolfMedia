@@ -72,7 +72,7 @@ public class enterSongInfo {
         System.out.println("\n");
         System.out.println("Unit Test for AddSong");
         System.out.println("===============================");
-        execute(1, "Bohemian Rhapsody", 6.07f, 1000000, "1975-10-31", "United Kingdom", "English", 0.1f, 1000f, 1, 1, 1);
+        //execute(1, "Bohemian Rhapsody", 6.07f, 1000000, "1975-10-31", "United Kingdom", "English", 0.1f, 1000f, 1, 1, 1);
     }
 }
 
