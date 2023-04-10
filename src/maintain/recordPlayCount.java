@@ -28,10 +28,10 @@ public class recordPlayCount {
     public static Result execute(String PayDate, int SID, int Playcount) {
 
         String sql =
-                "INSERT INTO SongRecords VALUES " +
-                        "(%s, '%d', '%d')" +
-                        ";"
-                ;
+            "INSERT INTO SongRecords VALUES " +
+            "(%s, '%d', '%d') " +
+            ";"
+        ;
         sql = String.format(sql, PayDate, SID, Playcount);
 
         return Connect.executeQuery(sql);

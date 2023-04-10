@@ -37,11 +37,11 @@ public class updatePlayCount {
     public static Result execute(int SongID, String attribute, int newValue) {
 
         String sql =
-                "UPDATE Songs" +
-                        "SET %s = %d"  +
-                        "WHERE SongID = %d" +
-                        ";"
-                ;
+            "UPDATE Songs " +
+            "SET %s = %d "  +
+            "WHERE SongID = %d " +
+            ";"
+        ;
 
         sql = String.format(sql, attribute, newValue, SongID);
         return Connect.executeUpdate(sql);

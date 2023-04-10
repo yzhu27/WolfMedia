@@ -37,11 +37,11 @@ public class updateRating {
     public static Result execute(int ID, String attribute, Double newValue) {
 
         String sql =
-                "UPDATE Podcasts" +
-                        "SET %s = %d"  +
-                        "WHERE PID = %d" +
-                        ";"
-                ;
+            "UPDATE Podcasts " +
+            "SET %s = %d "  +
+            "WHERE PID = %d " +
+            ";"
+        ;
 
         sql = String.format(sql, attribute, newValue, ID);
         return Connect.executeUpdate(sql);

@@ -32,10 +32,10 @@ public class recordPodcast {
     public static Result execute(String Date, int ID, int subs, int rating) {
 
         String sql =
-                "INSERT INTO PodcastRecords VALUES " +
-                        "(%s, '%d', '%d', '%d')" +
-                        ";"
-                ;
+            "INSERT INTO PodcastRecords VALUES " +
+            "(%s, '%d', '%d', '%d') " +
+            ";"
+        ;
         sql = String.format(sql, Date, ID, subs, rating);
 
         return Connect.executeQuery(sql);

@@ -41,12 +41,12 @@ public class updateListeningCount {
     public static Result execute(int ID, int ID2, String attribute, int newValue) {
 
         String sql =
-                "UPDATE PodcastEpisodes" +
-                        "SET %s = %d"  +
-                        "WHERE PEID = %d" +
-                        "AND PID = %d" +
-                        ";"
-                ;
+            "UPDATE PodcastEpisodes " +
+            "SET %s = %d "  +
+            "WHERE PEID = %d " +
+            "AND PID = %d " +
+            ";"
+        ;
 
         sql = String.format(sql, attribute, newValue, ID2, ID);
         return Connect.executeUpdate(sql);

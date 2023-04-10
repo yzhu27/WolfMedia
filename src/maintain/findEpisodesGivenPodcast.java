@@ -23,11 +23,11 @@ public class findEpisodesGivenPodcast {
     public static Result execute(int ID, String attribute) {
 
         String sql =
-                "SELECT *" +
-                "FROM PodcastEpisodes"  +
-                "WHERE %s = %d" +
-                ";"
-                ;
+            "SELECT * " +
+            "FROM PodcastEpisodes "  +
+            "WHERE %s = %d " +
+            ";"
+        ;
 
         sql = String.format(sql, attribute, ID);
         return Connect.executeQuery(sql);

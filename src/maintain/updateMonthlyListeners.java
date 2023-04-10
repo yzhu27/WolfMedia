@@ -37,11 +37,11 @@ public class updateMonthlyListeners {
     public static Result execute(int ID, String attribute, int newValue) {
 
         String sql =
-                "UPDATE Artists" +
-                        "SET %s = %d"  +
-                        "WHERE ArtistID = %d" +
-                        ";"
-                ;
+            "UPDATE Artists " +
+            "SET %s = %d "  +
+            "WHERE ArtistID = %d " +
+            ";"
+        ;
 
         sql = String.format(sql, attribute, newValue, ID);
         return Connect.executeUpdate(sql);

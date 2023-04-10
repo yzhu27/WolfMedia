@@ -23,11 +23,11 @@ public class findSongsGivenAlbum {
     public static Result execute(int ID, String attribute) {
 
         String sql =
-                "SELECT *" +
-                "FROM Albums"  +
-                "WHERE %s = %d" +
-                ";"
-                ;
+            "SELECT * " +
+            "FROM Albums "  +
+            "WHERE %s = %d " +
+            ";"
+        ;
 
         sql = String.format(sql, attribute, ID);
         return Connect.executeQuery(sql);
