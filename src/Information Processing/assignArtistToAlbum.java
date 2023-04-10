@@ -5,7 +5,7 @@ import java.sql.*;
  */
 public class assignArtistToAlbum {
 
-	public static ExecResult run(Scanner reader) {
+	public static Result run(Scanner reader) {
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
@@ -22,7 +22,7 @@ public class assignArtistToAlbum {
 		return execute(artistID, albumID);	
 	}
 
-	public static ExecResult execute(int artistID, int albumID) {
+	public static Result execute(int artistID, int albumID) {
 		
 		String sql = 
 			"INSERT INTO Make VALUES "  + "\n" + "\t" +
@@ -32,14 +32,11 @@ public class assignArtistToAlbum {
         
 		sql = String.format(sql, artistID, albumID);
         
-		return WolfPubDB.executeUpdate(sql);
+		return Connect.executeUpdate(sql);
 	}
 
 	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for assignArtistToAlbum");
-		System.out.println("===============================");
-		//execute(4, 8);
+		
 	}
 
 }
