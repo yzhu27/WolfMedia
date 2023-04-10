@@ -24,7 +24,7 @@ public class findSongsGivenArtist {
 
         String sql =
             "SELECT * " +
-            "FROM Artists "  +
+            "FROM Songs "  +
             "WHERE %s = %d " +
             ";"
         ;

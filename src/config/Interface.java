@@ -3,6 +3,22 @@ package config;
 import java.text.ParseException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import maintain.enterListeningCount;
+import maintain.enterMonthlyListeners;
+import maintain.enterPlayCount;
+import maintain.enterRating;
+import maintain.enterTotalSubscribers;
+import maintain.findEpisodesGivenPodcast;
+import maintain.findSongsGivenAlbum;
+import maintain.findSongsGivenArtist;
+import maintain.recordPlayCount;
+import maintain.recordPodcast;
+import maintain.updateListeningCount;
+import maintain.updateMonthlyListeners;
+import maintain.updatePlayCount;
+import maintain.updateRating;
+import maintain.updateTotalSubscribers;
 import  payments.*;
 
 public class Interface {
@@ -11,10 +27,21 @@ public class Interface {
     // Information Processing + Maintaining metadata and records
     private static final String[] DataAdminOps = {
             "0. Logout",
-            "1. Create Publication",
-            "2. Update Publication",
-            "3. Assign Editor",
-            "4. View Publication",
+            "1. Reset the number of listen count for a Podcast Episode to 0",
+            "2. Reset the number of monthly listener for an Artist to 0",
+            "3. Reset the number of play count for a song to 0",
+            "4. Reset the number of rating for a Podcast to 0",
+            "5. Reset the number of total subscribers for a Podcast to 0",
+            "6. Get the records of all Episodes of a Podcast",
+            "7. Get the records of all Songs of a Album",
+            "8. Get the records of all Songs of an Artist, as the primary publisher",
+            "9. Record a Play Count for a Song",
+            "10. Record a Play Count for a Podcast",
+            "11. Update the number of listen count for a Podcast Episode",
+            "12. Update the number of monthly listener for an Artist",
+            "13. Update the number of play count for a Song",
+            "14. Update the number of rating for a Podcast",
+            "15. Update the number of total subscribers for a Podcast",
     };
     // Maintaining payments
     private static final String[] AccountantOps = {
@@ -153,7 +180,51 @@ public class Interface {
 
         if(this.position == 1){
             switch(this.operation){
-
+                case 1:
+                    result = enterListeningCount.run(this.sc);
+                    break;
+                case 2:
+                    result = enterMonthlyListeners.run(this.sc);
+                    break;
+                case 3:
+                    result = enterPlayCount.run(this.sc);
+                    break;
+                case 4:
+                    result = enterRating.run(this.sc);
+                    break;
+                case 5:
+                    result = enterTotalSubscribers.run(this.sc);
+                    break;
+                case 6:
+                    result = findEpisodesGivenPodcast.run(this.sc);
+                    break;
+                case 7:
+                    result = findSongsGivenAlbum.run(this.sc);
+                    break;
+                case 8:
+                    result = findSongsGivenArtist.run(this.sc);
+                    break;
+                case 9:
+                    result = recordPlayCount.run(this.sc);
+                    break;
+                case 10:
+                    result = recordPodcast.run(this.sc);
+                    break;
+                case 11:
+                    result = updateListeningCount.run(this.sc);
+                    break;
+                case 12:
+                    result = updateMonthlyListeners.run(this.sc);
+                    break;
+                case 13:
+                    result = updatePlayCount.run(this.sc);
+                    break;
+                case 14:
+                    result = updateRating.run(this.sc);
+                    break;
+                case 15:
+                    result = updateTotalSubscribers.run(this.sc);
+                    break;
                 default:
                     return;
             }
