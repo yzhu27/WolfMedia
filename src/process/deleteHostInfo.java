@@ -5,11 +5,14 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform deleteHostInfo API operation by updating the PodcastHosts table.
+ */
+
 public class deleteHostInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql::" + sql);
 		Connect.executeQuery(sql);
     }
 
@@ -28,10 +31,7 @@ public class deleteHostInfo {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for deleteHostInfo");
-		System.out.println("===============================");
-		execute(100);
+
 	}
 
 
@@ -45,10 +45,8 @@ public class deleteHostInfo {
 
         showDetails("PodcastHosts");
 
-		System.out.println("+------------------------------------+");
-		System.out.println("| Please Submit the Following Inputs |");
-		System.out.println("+------------------------------------+");
-		System.out.println("");
+		System.out.println("| Please Submit the following details: |");
+
 
 		System.out.println("Host ID: ");
 		int hostID = reader.nextInt();
