@@ -5,6 +5,10 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform assignArtistToAlbum API operation by updating the Collaborate table.
+ */
+
 public class updateEpisodeInfo {
 
         public static Result execute(String sql) {
@@ -18,16 +22,13 @@ public class updateEpisodeInfo {
 
         public static Result run(Scanner reader) {
             System.out.println("+------------------------------------+");
-            System.out.println("|      Podcast Episode Details       |");
+            System.out.println("|  Podcast Episode Details before    |");
             System.out.println("+------------------------------------+");
             System.out.println("");
 
             showDetails("PodcastEpisodes");
 
-            System.out.println("+------------------------------------+");
-            System.out.println("| Please Submit the Following Inputs |");
-            System.out.println("+------------------------------------+");
-            System.out.println("");
+            System.out.println("| Please Submit the following details: |");
 
             System.out.println("Podcast Episode ID: ");
             int peID = reader.nextInt();
@@ -64,5 +65,14 @@ public class updateEpisodeInfo {
             }
 
             return execute(sql);
+                
+            System.out.println("+------------------------------------+");
+            System.out.println("|  Podcast Episode Details after     |");
+            System.out.println("+------------------------------------+");
+            System.out.println("");
+
+            showDetails("PodcastEpisodes");
+                         
     }
+        
 }
