@@ -35,7 +35,7 @@ public class updateAlbumInfo {
         int albumID = reader.nextInt();
         reader.nextLine();
 
-        System.out.println("Attribute you want to update: ");
+        System.out.println("Attribute to be updated: ");
         String attributeName = reader.nextLine();
 
         System.out.println("New attribute value: ");
