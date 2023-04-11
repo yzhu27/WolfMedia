@@ -5,13 +5,15 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform enterPodcastInfo API operation by updating the Podcasts table.
+ */
+
 public class enterPodcastInfo {
 
     public static Result run(Scanner reader) {
-        System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
-        System.out.println("");
+
+        System.out.println("| Please Submit the following details: |");
 
         System.out.println("Podcast ID: ");
         int podcastID = reader.nextInt();
