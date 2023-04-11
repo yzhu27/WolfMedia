@@ -73,6 +73,10 @@ public class Interface {
             "13. Update Host Payment Records",
             "14. Update Record Label Payment Records",
             "15. Update Revenue Records",
+            "16. Delete Artist Payment Records",
+            "17. Delete Host Payment Records",
+            "18. Delete Record Label Payment Records",
+            "19. Delete Revenue Records",
     };
     // Reports
     private static final String[] ManagerOps = {
@@ -359,6 +363,18 @@ public class Interface {
                     break;
                 case 15:
                     result = updateRevenueRecords.run(this.sc);
+                    break;
+                case 16:
+                    result = delArtistPaymentRecord.run(this.sc);
+                    break;
+                case 17:
+                    result = delHostPaymentRecord.run(this.sc);
+                    break;
+                case 18:
+                    result = delLabelPaymentRecord.run(this.sc);
+                    break;
+                case 19:
+                    result = delRevenueRecord.run(this.sc);
                     break;
                 default:
                     return;

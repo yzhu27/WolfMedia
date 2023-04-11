@@ -13,7 +13,7 @@ import java.sql.*;
 
 public class Init {
 
-    /* All the table/schema names included in our Connect implementation */
+    /* All the table/schema names included in our WolfPubDB implementation */
     private static String[] tables = {
             "Users",
             "RecordLabels",
@@ -46,8 +46,8 @@ public class Init {
      * and populates them with the demo data.
      */
     public static void main(String[] args) {
-        //dropTables();
-        //createTables();
+        dropTables();
+        createTables();
         populateTables();
     }
 
@@ -83,7 +83,7 @@ public class Init {
 
     /**
      * Function that runs the sequence of SQL statements that define the shemas
-     * for all the tables in our Connect implementation. This includes all
+     * for all the tables in our WolfPubDB implementation. This includes all
      * the key assignments and constraint checks associated with these tables
      * and their fields.
      */
@@ -454,8 +454,8 @@ public class Init {
         /* ------------------------------------------------------------------ */
         SQL =
                 "INSERT INTO Albums VALUES " +
-                        "(4001, 'Electric Oasis', 2005)," +
-                        "(4002, 'Lost in the Echoes', 2006)" +
+                        "(4001, 'Electric Oasis', 2005, '1st')," +
+                        "(4002, 'Lost in the Echoes', 2006, '1st')" +
                         ";"
         ;
         Connect.executeUpdate(SQL);
@@ -465,7 +465,7 @@ public class Init {
         /* ------------------------------------------------------------------ */
         SQL =
                 "INSERT INTO Genres VALUES " +
-                        "(300, 'Rock')" +
+                        "(300, 'Rock')," +
                         "(301, 'POP')" +
                         ";"
         ;
@@ -523,7 +523,7 @@ public class Init {
         /* ------------------------------------------------------------------ */
         SQL =
                 "INSERT INTO PodcastHosts VALUES " +
-                        "(6001, 'Matthew', 'Wilson', 'Matthew@example.com')" +
+                        "(6001, 'Matthew', 'Wilson', 'Matthew@example.com', 'Raleigh')" +
                         ";"
         ;
         Connect.executeUpdate(SQL);
