@@ -5,13 +5,16 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform enterSongInfo API operation by updating the Songs table.
+ */
+
 public class enterSongInfo {
 
     public static Result run(Scanner reader) {
-        System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
-        System.out.println("");
+
+        System.out.println("| Please Submit the following details: |");
+
 
         System.out.println("Song ID: ");
         int songID = reader.nextInt();
@@ -73,10 +76,7 @@ public class enterSongInfo {
     }
 
     public static void main(String[] args) {
-        System.out.println("\n");
-        System.out.println("Unit Test for AddSong");
-        System.out.println("===============================");
-        //execute(1, "Bohemian Rhapsody", 6.07f, 1000000, "1975-10-31", "United Kingdom", "English", 0.1f, 1000f, 1, 1, 1);
+    
     }
 }
 
