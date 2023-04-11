@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import config.Connect;
 import config.Result;
-import config.Transaction;
 
 public class reportSongsGivenAlbum {
     public static void showDetails(String tableName){
@@ -14,12 +13,11 @@ public class reportSongsGivenAlbum {
     public static Result execute(int AlbumID) {
 
 		String sql = 
-			"SELECT * FROM Songs WHERE AlbumID=%d;"
-		;
+			"SELECT * FROM Songs WHERE AlbumID = %d;";
         
 		sql = String.format(sql, AlbumID);
         
-		return Connect.executeUpdate(sql);
+		return Connect.executeQuery(sql);
 	}
 
     public static Result run(Scanner reader) {

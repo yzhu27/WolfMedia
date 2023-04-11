@@ -3,32 +3,42 @@ import java.util.Scanner;
 
 import config.Connect;
 import config.Result;
-import config.Transaction;
 
 public class MonthlyPlayCountPerArtist {
-    public static Result run(Scanner reader) {
-		return execute();
-	}
+	public static void showDetails(String tableName){
+        String sql = String.format("SELECT * FROM " + tableName + ";");
+		Connect.executeQuery(sql);
+    }
 
-	public static Result execute() {
+	public static Result execute(int ArtistID) {
 		String sql = 
-            "SELECT s.Playcount, ar.*" + "\n" +
-            "FROM Artists AS ar" + "\n" +
-            "JOIN Songs AS s ON ar.ArtistID=s.ArtistID;";
+		"SELECT summ.ArtistID, summ.Name, summ.sum FROM " +
+		"(SELECT SUM(s.Playcount) as sum, ar.* " +
+		"FROM Artists AS ar " +
+		"JOIN Songs AS s ON ar.ArtistID=s.ArtistID GROUP BY ArtistID) as summ " +
+		"WHERE ArtistID=%d;";
+
+		sql = String.format(sql, ArtistID);
 		return Connect.executeQuery(sql);
 	}
 
-	public static void main(String[] args) {
-		System.out.println("\n");
-		System.out.println("Unit Test for public class MonthlyPlayCountPerArtist");
-		System.out.println("===============================");
-		Result Results = execute();
-		if (Results.success) {
-			System.out.println("MonthlyPlayCountPerArtist: Success");
-		} else {
-			System.out.println("MonthlyPlayCountPerArtist: Failure");
-			System.out.println("\tError: " + Results.errorMessage);
-		}
-		System.out.println("\n");
+	public static Result run(Scanner reader) {
+		System.out.println("+------------------------------------+");
+		System.out.println("|            Artist Details          |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		showDetails("Artists");
+
+		System.out.println("+------------------------------------+");
+		System.out.println("| Please Submit the Following Inputs |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		System.out.println("Artist ID: ");
+		int ArtistID = reader.nextInt();
+		reader.nextLine();
+
+		return execute(ArtistID);	
 	}
 }

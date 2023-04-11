@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import config.Connect;
 import config.Result;
-import config.Transaction;
 
 public class reportSongsGivenArtist {
     public static void showDetails(String tableName){
@@ -19,7 +18,7 @@ public class reportSongsGivenArtist {
         
 		sql = String.format(sql, ArtistID);
         
-		return Connect.executeUpdate(sql);
+		return Connect.executeQuery(sql);
 	}
 
     public static Result run(Scanner reader) {

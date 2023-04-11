@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import config.Connect;
 import config.Result;
-import config.Transaction;
 
 public class reportSubscribersAndRatingPerPodcastPerGivenTimePeriod {
     public static void showDetails(String tableName){
@@ -16,12 +15,12 @@ public class reportSubscribersAndRatingPerPodcastPerGivenTimePeriod {
 		String sql = 
             "SELECT PRSubscribers,PRRating FROM PodcastRecords " + "\n" +
             "WHERE PID=%d" + "\n" +
-            "AND PRDate BETWEEN %s AND %s;"
+            "AND PRDate BETWEEN '%s' AND '%s';"
 		;
         
 		sql = String.format(sql, PID, startDate, endDate);
         
-		return Connect.executeUpdate(sql);
+		return Connect.executeQuery(sql);
 	}
 
     public static Result run(Scanner reader) {

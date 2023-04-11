@@ -3,21 +3,18 @@ import java.util.Scanner;
 
 import config.Connect;
 import config.Result;
-import config.Transaction;
 
 public class calTotalPaymentsToLabelPerGivenTimePeriod {
     public static Result execute(String startDate, String endDate) {
 
-        Result result = null;
-
 		String sql = 
-            "SELECT SUM(PayAmount) FROM LabelPaymentRecords" + "\n" +
-            "WHERE PayDate between %s and %s;"
+            "SELECT SUM(PayAmount) FROM LabelPaymentRecords " + "\n" +
+            "WHERE PayDate between '%s' and '%s';"
 		;
         
 		sql = String.format(sql, startDate, endDate);
         
-		return Connect.executeUpdate(sql);
+		return Connect.executeQuery(sql);
 	}
 
 

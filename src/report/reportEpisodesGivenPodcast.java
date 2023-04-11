@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 import config.Connect;
 import config.Result;
-import config.Transaction;
 
 public class reportEpisodesGivenPodcast {
     public static void showDetails(String tableName){
@@ -19,7 +18,7 @@ public class reportEpisodesGivenPodcast {
         
 		sql = String.format(sql, PID);
         
-		return Connect.executeUpdate(sql);
+		return Connect.executeQuery(sql);
 	}
 
     public static Result run(Scanner reader) {
