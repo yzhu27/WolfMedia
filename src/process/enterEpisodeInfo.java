@@ -1,6 +1,6 @@
 package process;
 
-import java.sql.*;
+
 import java.util.Scanner;
 
 import config.Connect;

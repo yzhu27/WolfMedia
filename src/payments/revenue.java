@@ -2,16 +2,9 @@ package payments;
 
 import config.Connect;
 import config.Result;
-import config.Transaction;
 
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Scanner;
-import java.util.Date;
 import java.sql.*;
-import java.lang.StringBuilder;
 
 public class revenue {
 
@@ -48,7 +41,8 @@ public class revenue {
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
-            return 0.0f;
+            System.err.println(errorMsg);
+            return 0;
 
         }
 

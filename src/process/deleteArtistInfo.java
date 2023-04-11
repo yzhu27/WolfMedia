@@ -15,7 +15,6 @@ public class deleteArtistInfo {
 
     public static Result execute(int artistID) {
 
-        Result result = null;
 
         String sql = 
 			"DELETE FROM Artists WHERE artistID = %d"  + "\n" + "\t" +

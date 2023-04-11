@@ -19,7 +19,6 @@ public class deleteAlbumInfo {
 
     public static Result execute(int albumID) {
 
-        Result result = null;
 
         String sql = 
 			"DELETE FROM Albums WHERE AlbumID = %d"  + "\n" + "\t" +

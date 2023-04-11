@@ -4,10 +4,10 @@ import config.Connect;
 import config.Result;
 import config.Transaction;
 
-import java.text.DecimalFormat;
+
 import java.util.Scanner;
 import java.sql.*;
-import java.lang.StringBuilder;
+
 
 
 public class paymentForSong {
@@ -49,7 +49,8 @@ public class paymentForSong {
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
-            return 0.0f;
+            System.err.println(errorMsg);
+            return 0;
 
         }
 
@@ -84,6 +85,7 @@ public class paymentForSong {
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
+            System.err.println(errorMsg);
             return 0;
 
         }
@@ -119,6 +121,7 @@ public class paymentForSong {
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
+            System.err.println(errorMsg);
             return 0;
 
         }
@@ -156,6 +159,7 @@ public class paymentForSong {
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
+            System.err.println(errorMsg);
             return 0;
 
         }

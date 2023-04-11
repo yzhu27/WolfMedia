@@ -15,7 +15,6 @@ public class deletePodcastInfo {
 
     public static Result execute(int podcastID) {
 
-        Result result = null;
 
         String sql = 
 			"DELETE FROM Podcasts WHERE PID = %d"  + "\n" + "\t" +

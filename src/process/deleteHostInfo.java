@@ -15,7 +15,6 @@ public class deleteHostInfo {
 
     public static Result execute(int hostID) {
 
-        Result result = null;
 
         String sql = 
 			"DELETE FROM PodcastHosts WHERE PHID = %d"  + "\n" + "\t" +

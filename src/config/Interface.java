@@ -11,7 +11,7 @@ import report.*;
 
 public class Interface {
 
-    private static Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     // Information Processing + Maintaining metadata and records
     private static final String[] DataAdminOps = {
             "0. Logout",

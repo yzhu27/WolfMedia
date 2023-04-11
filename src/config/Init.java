@@ -9,7 +9,6 @@ package config;
  *	3) Insert example data into tables (including DEMO data)
  */
 
-import java.sql.*;
 
 public class Init {
 
