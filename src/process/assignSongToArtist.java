@@ -6,15 +6,13 @@ import java.sql.*;
 import config.Connect;
 import config.Result;
 /**
- * Class used for executing the assignSongToArtist API operation.
+ * Class used for executing the assignSongToArtist API operation by updating the Collaborate table.
  */
 public class assignSongToArtist {
 
 	public static Result run(Scanner reader) {
-		System.out.println("+------------------------------------+");
-		System.out.println("| Please Submit the Following Inputs |");
-		System.out.println("+------------------------------------+");
-		System.out.println("");
+
+		System.out.println("| Please Submit the following details: |");
 
 		System.out.println("Song ID: ");
 		int songID = reader.nextInt();
