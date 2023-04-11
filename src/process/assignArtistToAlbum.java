@@ -7,7 +7,7 @@ import config.Connect;
 import config.Result;
 
 /**
- * This program is used to perform assignArtistToAlbum API operation.
+ * This program is used to perform assignArtistToAlbum API operation by updating the Collaborate table.
  */
 
 public class assignArtistToAlbum {
