@@ -22,7 +22,8 @@ public class delRevenueRecord {
         System.out.println("");
 
         System.out.println("RevDate: YYYY-MM-DD");
-        String RevDate = reader.nextLine();
+        String RevDate = reader.next();
+        reader.next();
 
         return execute(RevDate);
     }

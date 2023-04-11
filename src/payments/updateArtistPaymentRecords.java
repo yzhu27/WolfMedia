@@ -13,6 +13,10 @@ public class updateArtistPaymentRecords {
         System.out.println("+------------------------------------+");
         System.out.println("");
 
+        System.out.println("PayDate: ");
+        String PayDate = reader.next();
+        reader.nextLine();
+
         System.out.println("ArtistID: ");
         int ArtistID = reader.nextInt();
         reader.nextLine();
@@ -36,32 +40,33 @@ public class updateArtistPaymentRecords {
         System.out.println("New Value: ");
         String newValue = reader.nextLine();
 
-        return execute(ArtistID, attribute, newValue);
+        return execute(ArtistID, attribute, PayDate, newValue);
     }
 
-    public static Result execute(int publicationID, String attribute, String newValue) {
+    public static Result execute(int publicationID, String attribute, String PayDate, String newValue) {
 
         if (attribute == "PayDate"){
+
             String sql =
-                    "UPDATE ArtistPaymentRecords" +
-                            "SET %s = '%s'"  +
-                            "WHERE ArtistID = %d" +
+                    "UPDATE ArtistPaymentRecords " +
+                            "SET %s = '%s' "  +
+                            "WHERE PayDate = '%s' AND ArtistID = %d" +
                             ";"
                     ;
 
-            sql = String.format(sql, attribute, newValue, publicationID);
+            sql = String.format(sql, attribute, newValue, PayDate, publicationID);
             return Connect.executeUpdate(sql);
         }
         else {
             float tmp = Float.parseFloat(newValue);
             String sql =
-                    "UPDATE ArtistPaymentRecords" +
-                            "SET %s = %.2f"  +
-                            "WHERE ArtistID = %d" +
+                    "UPDATE ArtistPaymentRecords " +
+                            "SET %s = %.2f "  +
+                            "WHERE PayDate = '%s' AND ArtistID = %d " +
                             ";"
                     ;
 
-            sql = String.format(sql, attribute, newValue, publicationID);
+            sql = String.format(sql, attribute, tmp, PayDate, publicationID);
             return Connect.executeUpdate(sql);
         }
     }

@@ -10,7 +10,7 @@ public class addHostPaymentRecord {
     public static Result execute(String PayDate, int PHID, float payAmount) {
 
         String sql =
-                "INSERT INTO LabelPaymentRecords VALUES " +
+                "INSERT INTO HostPaymentRecords VALUES " +
                         "('%s', %d, %.2f)" +
                         ";"
                 ;
@@ -30,7 +30,7 @@ public class addHostPaymentRecord {
         reader.nextLine();
 
         System.out.println("PayDate: YYYY-MM-DD");
-        String PayDate = reader.nextLine();
+        String PayDate = reader.next();
         reader.nextLine();
 
         System.out.println("PayAmount: ");

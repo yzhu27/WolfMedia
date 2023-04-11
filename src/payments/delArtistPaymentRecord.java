@@ -28,8 +28,8 @@ public class delArtistPaymentRecord {
         reader.nextLine();
 
         System.out.println("PayDate: YYYY-MM-DD");
-        String PayDate = reader.nextLine();
-
+        String PayDate = reader.next();
+        reader.nextLine();
 
         return execute(PayDate, ArtistID);
     }

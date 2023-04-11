@@ -10,7 +10,7 @@ public class delLabelPaymentRecord {
     public static Result execute(String PayDate, int LabelID) {
 
         String sql =
-                "DELETE FROM ArtistPaymentRecords WHERE PayDate = '%s' AND LabelID = %d;";
+                "DELETE FROM LabelPaymentRecords WHERE PayDate = '%s' AND LabelID = %d;";
 
         sql = String.format(sql, PayDate, LabelID);
 

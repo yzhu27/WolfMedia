@@ -26,8 +26,8 @@ public class paymentForSong {
         ResultSet resultSet = null;
         float MonthlyRoyalties = 0.0f;
 
-        String sql = "SELECT RoyaltyRate * Playcount AS MonthlyRoyalties" +
-                "FROM Songs" +
+        String sql = "SELECT RoyaltyRate * Playcount AS MonthlyRoyalties " +
+                "FROM Songs " +
                 "WHERE SongID = %d;" ;
 
         sql = String.format(sql,SongID);
@@ -61,8 +61,8 @@ public class paymentForSong {
         ResultSet resultSet = null;
         int RLID = 0;
 
-        String sql = "SELECT rl.RLID FROM RecordLabels AS rl" +
-                "JOIN Artists AS ar ON rl.RLID=ar.RLID" +
+        String sql = "SELECT rl.RLID FROM RecordLabels AS rl " +
+                "JOIN Artists AS ar ON rl.RLID=ar.RLID " +
                 "WHERE ar.ArtistID = (SELECT ArtistID FROM Songs WHERE SongID = %d);";
 
         sql = String.format(sql,SongID);
@@ -96,8 +96,8 @@ public class paymentForSong {
         ResultSet resultSet = null;
         int ArtistID = 0;
 
-        String sql = "SELECT ar.ArtistID FROM Artists AS ar" +
-                "JOIN Songs AS s ON ar.ArtistID=s.ArtistID" +
+        String sql = "SELECT ar.ArtistID FROM Artists AS ar " +
+                "JOIN Songs AS s ON ar.ArtistID=s.ArtistID " +
                 "WHERE s.SongID = %d;";
 
         sql = String.format(sql,SongID);
@@ -132,7 +132,7 @@ public class paymentForSong {
         int CollaboratorID = 0;
 
 
-        String sql = "SELECT ArtistID FROM Collaborate" +
+        String sql = "SELECT ArtistID FROM Collaborate " +
                 "WHERE SongID = %d;";
 
         sql = String.format(sql,SongID);
@@ -171,9 +171,13 @@ public class paymentForSong {
 
     public static Result execute(int SongID, float MonthlyRoyalties, int RLID, int ArtistID, int CollaboratorID, String PayDate) {
         float paymentToRL = (float) (MonthlyRoyalties * 0.3);
-        //paymentToRL = (float) (Math.round(paymentToRL * 100)) / 100;
-        float paymentToArtists = (float) (MonthlyRoyalties * 0.7 / 2);
-        //paymentToArtists = (float) (Math.round(paymentToArtists * 100)) / 100;
+        float paymentToArtists = 0;
+        if (CollaboratorID == 0) {
+            paymentToArtists = (float) (MonthlyRoyalties * 0.7);
+        }
+        else {
+            paymentToArtists = (float) (MonthlyRoyalties * 0.7 / 2);
+        }
 
         Transaction transaction = new Transaction();
 
@@ -181,7 +185,7 @@ public class paymentForSong {
         /* ------------------------------------------------------------------ */
         String sql =
                 "INSERT INTO LabelPaymentRecords VALUES " +
-                        "(%s, '%d', '%.2f')" +
+                        "('%s', %d, %.2f)" +
                         ";"
                 ;
         sql = String.format(sql, PayDate, RLID, paymentToRL);
@@ -190,13 +194,23 @@ public class paymentForSong {
 
         /* Statement 2 in Transaction (add payment record to ArtistPaymentRecords Table) */
         /* ------------------------------------------------------------------ */
-        sql =
-                "INSERT INTO ArtistPaymentRecords VALUES " +
-                        "(%s, '%d', '%.2f')" +
-                        "(%s, '%d', '%.2f')" +
-                        ";"
-                ;
-        sql = String.format(sql, PayDate, ArtistID, paymentToArtists, PayDate, CollaboratorID, paymentToArtists);
+        if (CollaboratorID == 0) {
+            sql =
+                    "INSERT INTO ArtistPaymentRecords VALUES " +
+                            "('%s', %d, %.2f);"
+            ;
+            sql = String.format(sql, PayDate, ArtistID, paymentToArtists, PayDate, CollaboratorID, paymentToArtists);
+        }
+        else {
+            sql =
+                    "INSERT INTO ArtistPaymentRecords VALUES " +
+                            "('%s', %d, %.2f), " +
+                            "('%s', %d, %.2f)" +
+                            ";"
+            ;
+            sql = String.format(sql, PayDate, ArtistID, paymentToArtists, PayDate, CollaboratorID, paymentToArtists);
+        }
+
         transaction.addStatement(sql, Transaction.StatementType.UPDATE);
         /* ------------------------------------------------------------------ */
 

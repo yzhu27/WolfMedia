@@ -27,9 +27,9 @@ public class updateRevenueRecords {
     public static Result execute(String RevDate, float RevAmount) {
 
         String sql =
-                "UPDATE RevenueRecords" +
-                        "SET RevAmount = %.2f" +
-                        "WHERE RevDate = '%s'" +
+                "UPDATE RevenueRecords " +
+                        "SET RevAmount = %.2f " +
+                        "WHERE RevDate = '%s' " +
                         ";";
 
         sql = String.format(sql, RevAmount, RevDate);
