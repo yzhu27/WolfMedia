@@ -6,6 +6,10 @@ import java.sql.*;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform assignArtistToLabel API operation, by updating the artists table.
+ */
+
 public class assignArtistToLabel {
 
     public static Result execute(String sql) {
@@ -25,10 +29,7 @@ public class assignArtistToLabel {
 
         showDetails("Artists");
 
-        System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
-        System.out.println("");
+        System.out.println("| Please Submit the Following details: |");
 
         System.out.println("Artist ID: ");
         int artistID = reader.nextInt();
