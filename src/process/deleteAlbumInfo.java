@@ -5,11 +5,15 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform deleteAlbumInfo API operation to delete the Album row in the table.
+ */
+
 public class deleteAlbumInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql::" + sql);
+        System.out.println("sql>" + sql);
 		Connect.executeQuery(sql);
     }
 
@@ -36,17 +40,14 @@ public class deleteAlbumInfo {
 
     public static Result run(Scanner reader) {
 
-		System.out.println("+------------------------------------+");
-		System.out.println("|         Album Details               |");
-		System.out.println("+------------------------------------+");
+		System.out.println("+-------------------------------------+");
+		System.out.println("|         Album Table Details         |");
+		System.out.println("+-------------------------------------+");
 		System.out.println("");
 
-        showDetails("Albums");
+        	showDetails("Albums");
 
-		System.out.println("+------------------------------------+");
-		System.out.println("| Please Submit the Following Inputs |");
-		System.out.println("+------------------------------------+");
-		System.out.println("");
+		System.out.println("| Please Submit the following details: |");
 
 		System.out.println("Album ID: ");
 		int albumID = reader.nextInt();
