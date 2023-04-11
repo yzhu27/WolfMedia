@@ -5,6 +5,10 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform updatePodcastInfo API operation by updating the Podcasts table.
+ */
+
 public class updatePodcastInfo {
 
       public static Result execute(String sql) {
@@ -18,22 +22,20 @@ public class updatePodcastInfo {
 
       public static Result run(Scanner reader) {
           System.out.println("+------------------------------------+");
-          System.out.println("|         Podcast Details            |");
+          System.out.println("|         Podcast Details before     |");
           System.out.println("+------------------------------------+");
           System.out.println("");
 
           showDetails("Podcasts");
 
-          System.out.println("+------------------------------------+");
-          System.out.println("| Please Submit the Following Inputs |");
-          System.out.println("+------------------------------------+");
-          System.out.println("");
+          System.out.println("| Please Submit the following details: |");
+
 
           System.out.println("Podcast ID: ");
           int podcastID = reader.nextInt();
           reader.nextLine();
 
-          System.out.println("Attribute you want to update: ");
+          System.out.println("Attribute to be updated: ");
           String attributeName = reader.nextLine();
 
           System.out.println("New attribute value: ");
@@ -62,5 +64,14 @@ public class updatePodcastInfo {
           }
 
           return execute(sql);
+            
+          System.out.println("+------------------------------------+");
+          System.out.println("|         Podcast Details after      |");
+          System.out.println("+------------------------------------+");
+          System.out.println("");
+
+          showDetails("Podcasts");
+
+            
       }
 }
