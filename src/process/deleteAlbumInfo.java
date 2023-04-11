@@ -6,14 +6,13 @@ import config.Connect;
 import config.Result;
 
 /**
- * This program is used to perform deleteAlbumInfo API operation to delete the Album row in the table.
+ * This program is used to perform deleteAlbumInfo API operation to delete the Album row from the table.
  */
 
 public class deleteAlbumInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql>" + sql);
 		Connect.executeQuery(sql);
     }
 
