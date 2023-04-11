@@ -6,6 +6,10 @@ import java.sql.*;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform assignSongToAlbum API operation by updating the Songs table.
+ */
+
 public class assignSongToAlbum {
 
     public static Result execute(String sql) {
@@ -19,16 +23,13 @@ public class assignSongToAlbum {
 
     public static Result run(Scanner reader) {
         System.out.println("+------------------------------------+");
-        System.out.println("|           Song Details            |");
+        System.out.println("|           Songs Table Details            |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
         showDetails("Songs");
 
-        System.out.println("+------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
-        System.out.println("");
+        System.out.println("| Please Submit the following details: |");
 
         System.out.println("Song ID: ");
         int songID = reader.nextInt();
