@@ -5,6 +5,10 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform updateHostInfo API operation by updating the PodcastHosts table.
+ */
+
 public class updateHostInfo {
 
     public static Result execute(String sql) {
@@ -18,16 +22,14 @@ public class updateHostInfo {
 
     public static Result run(Scanner reader) {
         System.out.println("+----------------------------------------+");
-        System.out.println("|           Podcast Host Details         |");
+        System.out.println("|     Podcast Host Details before        |");
         System.out.println("+----------------------------------------+");
         System.out.println("");
 
         showDetails("PodcastHosts");
 
-        System.out.println("+----------------------------------------+");
-        System.out.println("| Please Submit the Following Inputs     |");
-        System.out.println("+----------------------------------------+");
-        System.out.println("");
+        System.out.println("| Please Submit the following details:  |");
+
 
         System.out.println("Podcast Host ID: ");
         int phID = reader.nextInt();
@@ -49,5 +51,14 @@ public class updateHostInfo {
         }
 
         return execute(sql);
+        
+        System.out.println("+----------------------------------------+");
+        System.out.println("|     Podcast Host Details after         |");
+        System.out.println("+----------------------------------------+");
+        System.out.println("");
+
+        showDetails("PodcastHosts");
+        
+
     }
 }
