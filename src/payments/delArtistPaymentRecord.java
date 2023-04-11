@@ -5,16 +5,14 @@ import config.Result;
 
 import java.util.Scanner;
 
-public class addArtistPaymentRecord {
+public class delArtistPaymentRecord {
 
-    public static Result execute(String PayDate, int ArtistID, float paymentToArtists) {
+    public static Result execute(String PayDate, int ArtistID) {
 
         String sql =
-                "INSERT INTO ArtistPaymentRecords VALUES " +
-                        "('%s', %d, %.2f)" +
-                        ";"
-        ;
-        sql = String.format(sql, PayDate, ArtistID, paymentToArtists);
+                "DELETE FROM ArtistPaymentRecords WHERE PayDate = '%s' AND ArtistID = %d;";
+
+        sql = String.format(sql, PayDate, ArtistID);
 
         return Connect.executeQuery(sql);
     }
@@ -30,13 +28,9 @@ public class addArtistPaymentRecord {
         reader.nextLine();
 
         System.out.println("PayDate: YYYY-MM-DD");
-        String PayDate = reader.next();
-        reader.nextLine();
+        String PayDate = reader.nextLine();
 
-        System.out.println("PayAmount: ");
-        float PayAmount = reader.nextFloat();
-        reader.nextLine();
 
-        return execute(PayDate, ArtistID, PayAmount);
+        return execute(PayDate, ArtistID);
     }
 }

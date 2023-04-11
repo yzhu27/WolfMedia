@@ -29,12 +29,12 @@ public class paymentForHost {
         ResultSet resultSet = null;
         int releasedEpisodeCount = 0;
 
-        String sql = "SELECT COUNT(*) AS releasedEpisodeCount" +
-                "FROM Podcasts AS p" +
-                "JOIN PodcastEpisodes AS pe" +
-                "ON p.PID=pe.PID" +
-                "WHERE p.PHID=%d AND" +
-                "pe.PEReleaseDate BETWEEN %s AND %s;" ;
+        String sql = "SELECT COUNT(*) AS releasedEpisodeCount " +
+                "FROM Podcasts AS p " +
+                "JOIN PodcastEpisodes AS pe " +
+                "ON p.PID=pe.PID " +
+                "WHERE p.PHID=%d AND " +
+                "pe.PEReleaseDate BETWEEN '%s' AND '%s';" ;
 
         sql = String.format(sql,PHID, startDate, endDate);
 
@@ -67,12 +67,12 @@ public class paymentForHost {
         ResultSet resultSet = null;
         int adCount = 0;
 
-        String sql = "SELECT SUM(adCount) AS adCount" +
-                "FROM Podcasts AS p" +
-                "JOIN PodcastEpisodes AS pe" +
-                "ON p.PID=pe.PID" +
-                "WHERE p.PHID=%d AND" +
-                "pe.PEReleaseDate BETWEEN %s AND %s;" ;
+        String sql = "SELECT SUM(adCount) AS adCount " +
+                "FROM Podcasts AS p " +
+                "JOIN PodcastEpisodes AS pe " +
+                "ON p.PID=pe.PID " +
+                "WHERE p.PHID=%d AND " +
+                "pe.PEReleaseDate BETWEEN '%s' AND '%s';" ;
 
         sql = String.format(sql,PHID, startDate, endDate);
 
@@ -107,20 +107,22 @@ public class paymentForHost {
     }
 
     public static void showPEhosted(int PHID){
-        String sql = "SELECT p.PName, p.PHID, pe.PETitle, pe.PEReleaseDate" +
-                "FROM Podcasts AS p" +
-                "JOIN PodcastEpisodes AS pe" +
-                "ON p.PID=pe.PID" +
-                "WHERE p.PHID=%d;";
+        String sql = "SELECT p.PName, p.PHID, pe.PETitle, pe.PEReleaseDate " +
+                "FROM Podcasts AS p " +
+                "JOIN PodcastEpisodes AS pe " +
+                "ON p.PID=pe.PID " +
+                "WHERE p.PHID = %d;";
 
         sql = String.format(sql,PHID);
         Connect.executeQuery(sql);
     }
+
+
     public static Result execute(int PHID, float PayAmount, String PayDate) {
 
         String sql =
                 "INSERT INTO HostPaymentRecords VALUES " +
-                        "(%s, '%d', '%.2f')" +
+                        "('%s', %d, %.2f)" +
                         ";"
                 ;
         sql = String.format(sql, PayDate, PHID, PayAmount);
@@ -148,7 +150,6 @@ public class paymentForHost {
 
         System.out.println("PayDate: YYYY-MM-DD");
         String PayDate = reader.nextLine();
-        reader.nextLine();
 
         System.out.println("+------------------------------------+");
         System.out.println("|PodcastEpisodes Hosted By Given Host|");
@@ -156,7 +157,6 @@ public class paymentForHost {
         System.out.println("");
 
         showPEhosted(PHID);
-
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
@@ -175,6 +175,7 @@ public class paymentForHost {
         cal.add(Calendar.DATE, -1);
         String endDate = df.format(cal.getTime());
 
+
         float flatFee = 10;
         int releasedEpisodeCount = PEsHostedCurMonthCount(PHID, startDate, endDate);
         int adCount = adCountCurMonth(PHID, startDate, endDate);
@@ -183,4 +184,5 @@ public class paymentForHost {
 
         return execute(PHID, PayAmount, PayDate);
     }
+
 }

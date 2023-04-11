@@ -5,16 +5,14 @@ import config.Result;
 
 import java.util.Scanner;
 
-public class addHostPaymentRecord {
+public class delHostPaymentRecord {
 
-    public static Result execute(String PayDate, int PHID, float payAmount) {
+    public static Result execute(String PayDate, int PHID) {
 
         String sql =
-                "INSERT INTO LabelPaymentRecords VALUES " +
-                        "('%s', %d, %.2f)" +
-                        ";"
-                ;
-        sql = String.format(sql, PayDate, PHID, payAmount);
+                "DELETE FROM HostPaymentRecords WHERE PayDate = '%s' AND HostID = %d;";
+
+        sql = String.format(sql, PayDate, PHID);
 
         return Connect.executeQuery(sql);
     }
@@ -31,12 +29,8 @@ public class addHostPaymentRecord {
 
         System.out.println("PayDate: YYYY-MM-DD");
         String PayDate = reader.nextLine();
-        reader.nextLine();
 
-        System.out.println("PayAmount: ");
-        float PayAmount = reader.nextFloat();
-        reader.nextLine();
 
-        return execute(PayDate, PHID, PayAmount);
+        return execute(PayDate, PHID);
     }
 }

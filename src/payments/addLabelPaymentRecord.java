@@ -11,7 +11,7 @@ public class addLabelPaymentRecord {
 
         String sql =
                 "INSERT INTO LabelPaymentRecords VALUES " +
-                        "(%s, '%d', '%.2f')" +
+                        "('%s', %d, %.2f)" +
                         ";"
                 ;
         sql = String.format(sql, PayDate, RLID, payAmount);
