@@ -1,18 +1,20 @@
 package process;
 
-
 import java.util.Scanner;
 
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform enterEpisodeInfo API operation by updating the PodcastEpisodes table.
+ */
+
 public class enterEpisodeInfo {
     
     public static Result run(Scanner reader) {
-        System.out.println("+------------------------------------+");
+
         System.out.println("| Please Submit the Following Inputs |");
-        System.out.println("+------------------------------------+");
-        System.out.println("");
+
         
         System.out.println("Podcast Episode ID: ");
         int peID = reader.nextInt();
