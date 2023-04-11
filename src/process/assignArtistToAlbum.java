@@ -7,14 +7,14 @@ import config.Connect;
 import config.Result;
 
 /**
- * Class used for executing the assignArtistToAlbum API operation.
+ * This program is used to perform assignArtistToAlbum API operation.
  */
+
 public class assignArtistToAlbum {
 
 	public static Result run(Scanner reader) {
-		System.out.println("+------------------------------------+");
-		System.out.println("| Please Submit the Following Inputs |");
-		System.out.println("+------------------------------------+");
+
+		System.out.println("| Please Submit the Following details: |");
 		System.out.println("");
 
 		System.out.println("Artist ID: ");
