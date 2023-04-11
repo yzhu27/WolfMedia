@@ -5,11 +5,14 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
+/**
+ * This program is used to perform deleteSongInfo API operation by updating the Songs table.
+ */
+
 public class deleteSongInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql::" + sql);
 		Connect.executeQuery(sql);
     }
 
@@ -36,16 +39,13 @@ public class deleteSongInfo {
     public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
-		System.out.println("|         Song Details               |");
+		System.out.println("|         Songs Table Details        |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
         showDetails("Songs");
 
-		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
-		System.out.println("+------------------------------------+");
-		System.out.println("");
 
 		System.out.println("Song ID: ");
 		int songID = reader.nextInt();
