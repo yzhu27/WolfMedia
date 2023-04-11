@@ -12,11 +12,12 @@ public class MonthlyPlayCountPerAlbum {
 
 	public static Result execute(int AlbumID) {
 		String sql = 
-		"SELECT summ.AlbumID, summ.AlName, summ.sum FROM " +
-		"(SELECT SUM(s.Playcount) as sum, ar.* " +
-		"FROM Albums AS ar " +
-		"JOIN Songs AS s ON ar.AlbumID=s.AlbumID GROUP BY AlbumID) as summ " +
-		"WHERE AlbumID=%d;";
+		"SELECT * FROM " +
+		"(SELECT SUM(SRPlaycount) AS sum, Title, AlbumID, SRDate FROM  " +
+		"(SELECT s.* FROM Albums as al  " +
+		"JOIN Songs as s ON al.AlbumID=s.AlbumID) AS songalbum " +
+		"JOIN SongRecords as sr on sr.SongID=songalbum.SongID GROUP BY SRDate, AlbumID ) as summ " +
+		"WHERE AlbumID=%d; ";
 
 		sql = String.format(sql, AlbumID);
 		return Connect.executeQuery(sql);
