@@ -34,6 +34,7 @@ public class updateListeningCount {
 
         System.out.println("New Value: ");
         int newValue = reader.nextInt();
+        reader.nextLine();
 
         return execute(PID, PEID, attribute, newValue);
     }

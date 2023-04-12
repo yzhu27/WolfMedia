@@ -29,7 +29,7 @@ public class recordPlayCount {
 
         String sql =
             "INSERT INTO SongRecords VALUES " +
-            "(%s, '%d', '%d') " +
+            "('%s', %d, %d) " +
             ";"
         ;
         sql = String.format(sql, PayDate, SID, Playcount);

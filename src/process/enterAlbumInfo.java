@@ -5,16 +5,13 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
-/**
- * This program is used to perform enterAlbumInfo API operation by updating the Albums table.
- */
-
 public class enterAlbumInfo {
 
     public static Result run(Scanner reader) {
-        
-        System.out.println("| Please Submit the following details: |");
-
+        System.out.println("+------------------------------------+");
+        System.out.println("| Please Submit the Following Inputs |");
+        System.out.println("+------------------------------------+");
+        System.out.println("");
 
         System.out.println("Album ID: ");
         int albumID = reader.nextInt();
@@ -22,6 +19,7 @@ public class enterAlbumInfo {
 
         System.out.println("Album Name: ");
         String albumName = reader.nextLine();
+        reader.nextLine();
 
         System.out.println("Release Year: ");
         int releaseYear = reader.nextInt();
@@ -29,6 +27,7 @@ public class enterAlbumInfo {
 
         System.out.println("Edition: ");
         String edition = reader.nextLine();
+        reader.nextLine();
 
         return execute(albumID, albumName, releaseYear, edition);	
     }
@@ -46,8 +45,5 @@ public class enterAlbumInfo {
         return Connect.executeUpdate(sql);
     }
 
-    public static void main(String[] args) {
-       
-    }
 
 }

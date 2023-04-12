@@ -1,19 +1,20 @@
 package process;
 
 import java.util.Scanner;
+import java.sql.*;
 
 import config.Connect;
 import config.Result;
 
 /**
- * This program is used to perform assignArtistToAlbum API operation by updating the Collaborate table.
+ * Class used for executing the assignArtistToAlbum API operation.
  */
-
 public class assignArtistToAlbum {
 
 	public static Result run(Scanner reader) {
-
-		System.out.println("| Please Submit the Following details: |");
+		System.out.println("+------------------------------------+");
+		System.out.println("| Please Submit the Following Inputs |");
+		System.out.println("+------------------------------------+");
 		System.out.println("");
 
 		System.out.println("Artist ID: ");

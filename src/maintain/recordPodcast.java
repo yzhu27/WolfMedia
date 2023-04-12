@@ -24,16 +24,16 @@ public class recordPodcast {
         reader.nextLine();
 
         System.out.println("PodcastRating: ");
-        int PRating = reader.nextInt();
+        float PRating = reader.nextFloat();
         reader.nextLine();
 
         return execute(PRDate, PID, PRSubscribers, PRating);
     }
-    public static Result execute(String Date, int ID, int subs, int rating) {
+    public static Result execute(String Date, int ID, int subs, float rating) {
 
         String sql =
             "INSERT INTO PodcastRecords VALUES " +
-            "(%s, '%d', '%d', '%d') " +
+            "('%s', %d, %d, %.2f) " +
             ";"
         ;
         sql = String.format(sql, Date, ID, subs, rating);
