@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import config.Transaction;
 
@@ -170,7 +170,7 @@ public class paymentForSong {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        Connect.executeQuery(sql);
+        queryExecuter.execute(sql);
     }
 
     public static Result execute(int SongID, float MonthlyRoyalties, int RLID, int ArtistID, int CollaboratorID, String PayDate) {

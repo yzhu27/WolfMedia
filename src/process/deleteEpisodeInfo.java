@@ -2,7 +2,7 @@ package process;
 
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class deleteEpisodeInfo {
@@ -10,7 +10,7 @@ public class deleteEpisodeInfo {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
         System.out.println("sql::" + sql);
-		Connect.executeQuery(sql);
+		queryExecuter.execute(sql);
     }
 
     public static Result execute(int episodeID,int podcastID) {
@@ -22,7 +22,7 @@ public class deleteEpisodeInfo {
         
 		sql = String.format(sql, episodeID, podcastID);
 
-		return Connect.executeUpdate(sql);
+		return queryExecuter.execute(sql);
 	}
 
 	public static void main(String[] args) {

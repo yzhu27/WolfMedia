@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 import java.util.Scanner;
@@ -55,7 +55,7 @@ public class updateArtistPaymentRecords {
                     ;
 
             sql = String.format(sql, attribute, newValue, PayDate, publicationID);
-            return Connect.executeUpdate(sql);
+            return queryExecuter.execute(sql);
         }
         else {
             float tmp = Float.parseFloat(newValue);
@@ -67,7 +67,7 @@ public class updateArtistPaymentRecords {
                     ;
 
             sql = String.format(sql, attribute, tmp, PayDate, publicationID);
-            return Connect.executeUpdate(sql);
+            return queryExecuter.execute(sql);
         }
     }
 }

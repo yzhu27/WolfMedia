@@ -8,7 +8,7 @@ package config;
  *	2) Create tables using schema definitions (with types, constrains, keys, etc.)
  *	3) Insert example data into tables (including DEMO data)
  */
-
+import util.queryExecuter;
 
 public class Init {
 
@@ -67,7 +67,7 @@ public class Init {
         {
             String sql = "DROP TABLE IF EXISTS " + table + ";";
             // System.out.println(sql);
-            Connect.executeUpdate(sql);
+            queryExecuter.execute(sql);
         }
     }
 
@@ -103,7 +103,7 @@ public class Init {
                         "UMonthlyFee INT NOT NULL"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* RecordLabels */
@@ -113,7 +113,7 @@ public class Init {
                         "RLName VARCHAR(255) NOT NULL"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Artists */
@@ -130,7 +130,7 @@ public class Init {
                         "FOREIGN KEY (RLID) REFERENCES RecordLabels(RLID) ON UPDATE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Albums */
@@ -142,7 +142,7 @@ public class Init {
                         "Edition VARCHAR(128)"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Genres */
@@ -152,7 +152,7 @@ public class Init {
                         "GenreName VARCHAR(128) NOT NULL"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Songs */
@@ -174,7 +174,7 @@ public class Init {
                         "FOREIGN KEY (AlbumID) REFERENCES Albums (AlbumID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Make */
@@ -187,7 +187,7 @@ public class Init {
                         "FOREIGN KEY (AlbumID) REFERENCES Albums (AlbumID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Collaborate */
@@ -200,7 +200,7 @@ public class Init {
                         "FOREIGN KEY (ArtistID) REFERENCES Artists (ArtistID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* SongGenre */
@@ -213,7 +213,7 @@ public class Init {
                         "FOREIGN KEY (GenreID) REFERENCES Genres(GID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* PodcastHosts */
@@ -226,7 +226,7 @@ public class Init {
                         "PHCity  VARCHAR(128)"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Podcasts */
@@ -243,7 +243,7 @@ public class Init {
                         "FOREIGN KEY (PHID) REFERENCES PodcastHosts(PHID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* PodcastEpisodes */
@@ -260,7 +260,7 @@ public class Init {
                         "FOREIGN KEY (PID) REFERENCES Podcasts(PID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Sponsors */
@@ -270,7 +270,7 @@ public class Init {
                         "SName 		VARCHAR(128) NOT NULL"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Guests */
@@ -280,7 +280,7 @@ public class Init {
                         "GName 	VARCHAR(128) NOT NULL"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Fund */
@@ -293,7 +293,7 @@ public class Init {
                         "FOREIGN KEY (SID) REFERENCES Sponsors(SID) ON DELETE CASCADE ON UPDATE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* AppearIn */
@@ -306,7 +306,7 @@ public class Init {
                         "FOREIGN KEY (GID) REFERENCES Guests(GID) ON DELETE CASCADE ON UPDATE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* PodcastGenre */
@@ -319,7 +319,7 @@ public class Init {
                         "FOREIGN KEY (GenreID) REFERENCES Genres(GID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* ArtistPaymentRecords */
@@ -332,7 +332,7 @@ public class Init {
                         "FOREIGN KEY (ArtistID) REFERENCES Artists(ArtistID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* LabelPaymentRecords */
@@ -345,7 +345,7 @@ public class Init {
                         "FOREIGN KEY (LabelID) REFERENCES RecordLabels(RLID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* HostPaymentRecords */
@@ -358,7 +358,7 @@ public class Init {
                         "FOREIGN KEY (HostID) REFERENCES PodcastHosts(PHID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* RevenueRecords */
@@ -368,7 +368,7 @@ public class Init {
                         "RevAmount DECIMAL(10,2) 	NOT NULL"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* SongRecords */
@@ -381,7 +381,7 @@ public class Init {
                         "FOREIGN KEY (SongID) REFERENCES Songs(SongID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* PodcastRecords */
@@ -395,7 +395,7 @@ public class Init {
                         "FOREIGN KEY (PID) REFERENCES Podcasts(PID) ON UPDATE CASCADE ON DELETE CASCADE"  + "\n" +
                         ");"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
     }
 
@@ -424,7 +424,7 @@ public class Init {
                         "(8002, 'John@example.com', 'John', 'J', '222-222-2222', '2001-05-19', 'active', 10)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* RecordLabels */
@@ -435,7 +435,7 @@ public class Init {
                         "(3002, 'Melodic Avenue Music')" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Artists */
@@ -446,7 +446,7 @@ public class Init {
                         "(2002, 'Rain', 'active', 'musician', 'America', 55, 'POP', 3002)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Albums */
@@ -457,7 +457,7 @@ public class Init {
                         "(4002, 'Lost in the Echoes', 2006, '1st')" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Genres */
@@ -468,7 +468,7 @@ public class Init {
                         "(301, 'POP')" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Songs */
@@ -481,7 +481,7 @@ public class Init {
                         "(1004, 'Lost in the Echoes', 3.32, 200, '2010-01-01', 'America', 'English', 0.1, 'no', 2002, 4002, 2)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Make */
@@ -492,7 +492,7 @@ public class Init {
                         "(2002, 4002)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Collaborate */
@@ -502,7 +502,7 @@ public class Init {
                         "(1002, 2002)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* SongGenre */
@@ -515,7 +515,7 @@ public class Init {
                         "(1004, 301)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* PodcastHosts */
@@ -525,7 +525,7 @@ public class Init {
                         "(6001, 'Matthew', 'Wilson', 'Matthew@example.com', 'Raleigh')" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* Podcasts */
@@ -535,7 +535,7 @@ public class Init {
                         "(5001, 'Mind Over Matter: Exploring the Power of the Human Mind', 'English', 'America', 4.5, 10, 5, 6001)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* PodcastEpisodes */
@@ -546,7 +546,7 @@ public class Init {
                         "(7002, 5001, 'Unlocking Your Potential', '00:15:32', '2023-03-25', 200, 0)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* ArtistPaymentRecords */
@@ -561,7 +561,7 @@ public class Init {
                         "('2023-03-01', 2002, 2320.5)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* LabelPaymentRecords */
@@ -576,7 +576,7 @@ public class Init {
                         "('2023-03-01', 3002, 990)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* HostPaymentRecords */
@@ -588,7 +588,7 @@ public class Init {
                         "('2023-03-01', 6001, 40)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* RevenueRecords */
@@ -601,7 +601,7 @@ public class Init {
                         "('2023-04-01', 123000)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
 
         /* SongRecords */
@@ -622,7 +622,7 @@ public class Init {
                         "('2023-03-01', 1004, 30000)" +
                         ";"
         ;
-        Connect.executeUpdate(SQL);
+        queryExecuter.execute(SQL);
         /* ------------------------------------------------------------------ */
     }
 }

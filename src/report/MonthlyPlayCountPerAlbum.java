@@ -1,13 +1,13 @@
 package report;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class MonthlyPlayCountPerAlbum {
 	public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-		Connect.executeQuery(sql);
+		queryExecuter.execute(sql);
     }
 
 	public static Result execute(int AlbumID) {
@@ -20,7 +20,7 @@ public class MonthlyPlayCountPerAlbum {
 		"WHERE AlbumID=%d; ";
 
 		sql = String.format(sql, AlbumID);
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
 	public static Result run(Scanner reader) {

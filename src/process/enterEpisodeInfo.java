@@ -3,7 +3,7 @@ package process;
 import java.sql.*;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class enterEpisodeInfo {
@@ -47,7 +47,7 @@ public class enterEpisodeInfo {
 
         sql = String.format(sql, peID, pID, peTitle, peDuration, peReleaseDate, listenerCount, adCount);
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
 }

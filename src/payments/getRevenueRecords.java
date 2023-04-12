@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 import java.util.Scanner;
@@ -11,7 +11,7 @@ public class getRevenueRecords {
         String sql =
                 "SELECT * FROM RevenueRecords;";
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static Result run(Scanner reader) {

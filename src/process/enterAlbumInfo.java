@@ -2,7 +2,7 @@ package process;
 
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class enterAlbumInfo {
@@ -42,7 +42,7 @@ public class enterAlbumInfo {
         
         sql = String.format(sql, albumID, albumName, releaseYear, edition);
         
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
 

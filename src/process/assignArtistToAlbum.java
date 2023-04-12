@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 /**
@@ -38,7 +38,7 @@ public class assignArtistToAlbum {
         
 		sql = String.format(sql, artistID, albumID);
         
-		return Connect.executeUpdate(sql);
+		return queryExecuter.execute(sql);
 	}
 
 	public static void main(String[] args) {

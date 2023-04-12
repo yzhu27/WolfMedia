@@ -1,6 +1,6 @@
 package maintain;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import java.util.Scanner;
 
@@ -38,6 +38,6 @@ public class recordPodcast {
         ;
         sql = String.format(sql, Date, ID, subs, rating);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 }

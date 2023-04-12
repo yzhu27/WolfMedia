@@ -1,7 +1,7 @@
 package report;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 public class calTotalPaymentsToHostPerGivenTimePeriod {
     public static Result execute(String startDate, String endDate) {
@@ -13,7 +13,7 @@ public class calTotalPaymentsToHostPerGivenTimePeriod {
         
 		sql = String.format(sql, startDate, endDate);
         
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
 

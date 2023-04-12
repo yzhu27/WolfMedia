@@ -3,19 +3,19 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import maintain.getTables;
 
 public class updateSongInfo {
 
     public static Result execute(String sql) {
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        Connect.executeQuery(sql);
+        queryExecuter.execute(sql);
     }
 
     public static Result run(Scanner reader) {
@@ -146,6 +146,6 @@ public class updateSongInfo {
 //                        ";"
 //                ;
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

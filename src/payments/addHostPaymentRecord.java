@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 import java.util.Scanner;
@@ -16,7 +16,7 @@ public class addHostPaymentRecord {
                 ;
         sql = String.format(sql, PayDate, PHID, payAmount);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static Result run(Scanner reader) {

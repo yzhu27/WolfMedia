@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 import java.util.Scanner;
@@ -58,12 +58,12 @@ public class revenue {
                 ;
         sql = String.format(sql, RevDate, MonthlyRevenue);
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-        Connect.executeQuery(sql);
+        queryExecuter.execute(sql);
     }
 
     public static Result run(Scanner reader) {

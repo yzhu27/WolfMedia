@@ -3,7 +3,7 @@ package process;
 import java.sql.*;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class enterSongInfo {
@@ -74,7 +74,7 @@ public class enterSongInfo {
 
         sql = String.format(sql, songID, title, duration, playcount, releaseDate, releaseCountry, slanguage, royaltyRate, royaltyPaid, artistID, albumID, trackNumber);
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static void main(String[] args) {

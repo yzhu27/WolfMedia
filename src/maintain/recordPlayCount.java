@@ -1,6 +1,6 @@
 package maintain;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import java.util.Scanner;
 
@@ -34,6 +34,6 @@ public class recordPlayCount {
         ;
         sql = String.format(sql, PayDate, SID, Playcount);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 }

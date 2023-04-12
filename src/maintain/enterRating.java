@@ -1,6 +1,6 @@
 package maintain;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import java.util.Scanner;
 
@@ -44,6 +44,6 @@ public class enterRating {
         ;
 
         sql = String.format(sql, attribute, newValue, ID);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

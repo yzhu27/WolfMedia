@@ -1,9 +1,9 @@
 package report;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
-
+import util.*;
 public class calTotalPaymentsToArtistPerGivenTimePeriod {
     public static Result execute(String startDate, String endDate) {
 
@@ -14,7 +14,7 @@ public class calTotalPaymentsToArtistPerGivenTimePeriod {
         
 		sql = String.format(sql, startDate, endDate);
     
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
 

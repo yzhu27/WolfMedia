@@ -1,13 +1,13 @@
 package report;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class reportSongsGivenArtist {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-		Connect.executeQuery(sql);
+		queryExecuter.execute(sql);
     }
 
     public static Result execute(int ArtistID) {
@@ -18,7 +18,7 @@ public class reportSongsGivenArtist {
         
 		sql = String.format(sql, ArtistID);
         
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
     public static Result run(Scanner reader) {

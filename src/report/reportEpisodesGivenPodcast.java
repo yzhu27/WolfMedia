@@ -1,13 +1,14 @@
 package report;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
+import util.queryExecuter;
 
 public class reportEpisodesGivenPodcast {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
-		Connect.executeQuery(sql);
+		queryExecuter.execute(sql);
     }
 
     public static Result execute(int PID) {
@@ -18,7 +19,7 @@ public class reportEpisodesGivenPodcast {
         
 		sql = String.format(sql, PID);
         
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
     public static Result run(Scanner reader) {

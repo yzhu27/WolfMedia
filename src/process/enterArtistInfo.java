@@ -2,7 +2,7 @@ package process;
 
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class enterArtistInfo {
@@ -53,7 +53,7 @@ public class enterArtistInfo {
 		
 		sql = String.format(sql, artistID, name, status, type, artCountry, monthlyListeners, primaryGenre, rlID);
 		
-		return Connect.executeUpdate(sql);
+		return queryExecuter.execute(sql);
 	}
 
 

@@ -1,6 +1,6 @@
 package maintain;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import java.util.Scanner;
 
@@ -50,6 +50,6 @@ public class updateListeningCount {
         ;
 
         sql = String.format(sql, attribute, newValue, ID2, ID);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

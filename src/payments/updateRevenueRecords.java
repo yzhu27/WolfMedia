@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 import java.util.Scanner;
@@ -33,6 +33,6 @@ public class updateRevenueRecords {
                         ";";
 
         sql = String.format(sql, RevAmount, RevDate);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

@@ -1,6 +1,6 @@
 package maintain;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import java.util.Scanner;
 
@@ -44,6 +44,6 @@ public class updatePlayCount {
         ;
 
         sql = String.format(sql, attribute, newValue, SongID);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

@@ -2,7 +2,7 @@ package process;
 
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 public class enterHostInfo {
@@ -42,7 +42,7 @@ public class enterHostInfo {
         
         sql = String.format(sql, phID, phFName, phLName, phEmail, phCity);
         
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static void main(String[] args) {

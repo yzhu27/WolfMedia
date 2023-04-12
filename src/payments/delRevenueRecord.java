@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 import java.util.Scanner;
@@ -12,7 +12,7 @@ public class delRevenueRecord {
                 "DELETE FROM RevenueRecords WHERE RevDate = '%s';";
         sql = String.format(sql, RevDate);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static Result run(Scanner reader) {

@@ -1,6 +1,6 @@
 package maintain;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 import java.util.Scanner;
 
@@ -30,6 +30,6 @@ public class findSongsGivenArtist {
         ;
 
         sql = String.format(sql, attribute, ID);
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 }

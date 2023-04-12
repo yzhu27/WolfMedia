@@ -1,7 +1,7 @@
 package report;
 import java.util.Scanner;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 public class calTotalRevenue {
     public static Result execute(String startDate, String endDate) {
@@ -14,7 +14,7 @@ public class calTotalRevenue {
         
 		sql = String.format(sql, startDate, endDate);
         
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
 

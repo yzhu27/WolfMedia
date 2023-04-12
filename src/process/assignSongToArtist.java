@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 /**
  * Class used for executing the assignSongToArtist API operation.
@@ -35,7 +35,7 @@ public class assignSongToArtist {
         
 		sql = String.format(sql, songID, artistID);
         
-		return Connect.executeUpdate(sql);
+		return queryExecuter.execute(sql);
 	}
 
 	public static void main(String[] args) {

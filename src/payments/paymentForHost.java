@@ -1,6 +1,6 @@
 package payments;
 
-import config.Connect;
+import util.queryExecuter;
 import config.Result;
 
 import java.text.ParseException;
@@ -103,7 +103,7 @@ public class paymentForHost {
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
         System.out.println("sql::" + sql);
-        Connect.executeQuery(sql);
+        queryExecuter.execute(sql);
     }
 
     public static void showPEhosted(int PHID){
@@ -114,7 +114,7 @@ public class paymentForHost {
                 "WHERE p.PHID = %d;";
 
         sql = String.format(sql,PHID);
-        Connect.executeQuery(sql);
+        queryExecuter.execute(sql);
     }
 
 
@@ -127,7 +127,7 @@ public class paymentForHost {
                 ;
         sql = String.format(sql, PayDate, PHID, PayAmount);
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static Result run(Scanner reader) throws ParseException {
