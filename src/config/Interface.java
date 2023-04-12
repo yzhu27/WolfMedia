@@ -90,30 +90,29 @@ public class Interface {
             "10. Report Songs By Given Artist",
             "11. Report Subscribers And Ratings",
     };
-    private static final String[][] WolfCityOpsMapping = {
+    private static final String[][] userOps = {
             DataAdminOps,
             AccountantOps,
             ManagerOps,
     };
 
-    private int position;
+    private int user;
     private int operation;
     private String[] validOperations;
 
     public Interface(){
-        this.position = -1;
+        this.user = -1;
         this.operation = -1;
         this.validOperations = null;
     }
 
     public static void main(String[] args) throws ParseException {
         Interface Interface = new Interface();
-        Interface.select_position();
+        Interface.select_user();
     }
 
-    public void select_position() throws ParseException {
+    public void select_user() throws ParseException {
         while (true){
-            System.out.print("\033\143");
 
             System.out.println("+--------------------------------------+");
             System.out.println("|       Welcome to WolfMedia DBMS      |");
@@ -132,15 +131,14 @@ public class Interface {
             boolean positionInvalid = true;
             while (positionInvalid) {
                 try {
-                    this.position = Integer.parseInt(this.sc.nextLine());
-                    if (this.position == 0) {
+                    this.user = Integer.parseInt(this.sc.nextLine());
+                    if (this.user == 0) {
                         this.sc.close();
-                        System.out.print("\033[H\033[2J");
                         System.out.flush();
                         System.exit(1);
                     }
-                    else if (1 <= this.position && this.position <= WolfCityOpsMapping.length) {
-                        this.validOperations = WolfCityOpsMapping[this.position-1];
+                    else if (1 <= this.user && this.user <= userOps.length) {
+                        this.validOperations = userOps[this.user-1];
                         positionInvalid = false;
                     } else {
                         System.out.print("Invalid Option; Please try again: ");
@@ -156,7 +154,6 @@ public class Interface {
 
     public void select_operation() throws ParseException {
         while (true) {
-            System.out.print("\033\143");
 
             System.out.println("+--------------------------------+");
             System.out.println("| Select an Operation to Execute |");
@@ -193,7 +190,6 @@ public class Interface {
     }
 
     public void execute_operation() throws ParseException {
-        System.out.print("\033\143");
 
         Result result = null;
 
