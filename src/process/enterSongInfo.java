@@ -1,5 +1,6 @@
 package process;
 
+import java.sql.*;
 import java.util.Scanner;
 
 import config.Connect;
@@ -18,7 +19,8 @@ public class enterSongInfo {
         reader.nextLine();
 
         System.out.println("Title: ");
-        String title = reader.nextLine();
+        String title = reader.next();
+        reader.nextLine();
 
         System.out.println("Duration: ");
         float duration = reader.nextFloat();
@@ -29,20 +31,23 @@ public class enterSongInfo {
         reader.nextLine();
 
         System.out.println("Release Date (YYYY-MM-DD): ");
-        String releaseDate = reader.nextLine();
+        String releaseDate = reader.next();
+        reader.nextLine();
 
         System.out.println("Release Country: ");
-        String releaseCountry = reader.nextLine();
+        String releaseCountry = reader.next();
+        reader.nextLine();
 
         System.out.println("Slanguage: ");
-        String slanguage = reader.nextLine();
+        String slanguage = reader.next();
+        reader.nextLine();
 
         System.out.println("Royalty Rate: ");
         float royaltyRate = reader.nextFloat();
         reader.nextLine();
 
         System.out.println("Royalty Paid: ");
-        float royaltyPaid = reader.nextFloat();
+        String royaltyPaid = reader.next();
         reader.nextLine();
 
         System.out.println("Artist ID: ");
@@ -60,10 +65,10 @@ public class enterSongInfo {
         return execute(songID, title, duration, playcount, releaseDate, releaseCountry, slanguage, royaltyRate, royaltyPaid, artistID, albumID, trackNumber);
     }
 
-    public static Result execute(int songID, String title, float duration, int playcount, String releaseDate, String releaseCountry, String slanguage, float royaltyRate, float royaltyPaid, int artistID, int albumID, int trackNumber) {
+    public static Result execute(int songID, String title, float duration, int playcount, String releaseDate, String releaseCountry, String slanguage, float royaltyRate, String royaltyPaid, int artistID, int albumID, int trackNumber) {
         String sql =
                 "INSERT INTO Songs VALUES "  + "\n" + "\t" +
-                        "(%d, '%s', %f, %d, '%s', '%s', '%s', %f, %f, %d, %d, %d)"  + "\n" +
+                        "(%d, '%s', %.2f, %d, '%s', '%s', '%s', %.2f, '%s', %d, %d, %d)"  + "\n" +
                         ";"
                 ;
 

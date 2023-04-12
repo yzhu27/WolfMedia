@@ -27,7 +27,7 @@ public class enterPodcastInfo {
         String country = reader.nextLine();
 
         System.out.println("Rating: ");
-        double rating = reader.nextDouble();
+        float rating = reader.nextFloat();
         reader.nextLine();
 
         System.out.println("Subscribers: ");
@@ -45,11 +45,11 @@ public class enterPodcastInfo {
         return execute(podcastID, name, language, country, rating, subscribers, episodeCount, phID);   
     }
 
-    public static Result execute(int podcastID, String name, String language, String country, double rating, int subscribers, int episodeCount, int phID) {
+    public static Result execute(int podcastID, String name, String language, String country, float rating, int subscribers, int episodeCount, int phID) {
         
         String sql = 
             "INSERT INTO Podcasts VALUES "  + "\n" + "\t" +
-                "(%d, '%s', '%s', '%s', %.2f, %d, %d, %d)"  + "\n" +
+                "(%d, '%s', '%s', '%s', %.1f, %d, %d, %d)"  + "\n" +
             ";"+ "\n" + "\n"
         ;
         

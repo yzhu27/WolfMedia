@@ -1,6 +1,7 @@
 package process;
 
 import java.util.Scanner;
+import java.sql.*;
 
 import config.Connect;
 import config.Result;
@@ -33,34 +34,73 @@ public class updatePodcastInfo {
           int podcastID = reader.nextInt();
           reader.nextLine();
 
-          System.out.println("Attribute you want to update: ");
-          String attributeName = reader.nextLine();
+//          System.out.println("Attribute you want to update: ");
+//          String attributeName = reader.nextLine();
 
-          System.out.println("New attribute value: ");
+          System.out.println("Select attribute to update:" + "\n" +
+                  "1. Podcast name" + "\n" +
+                  "2. Podcast language" + "\n" +
+                  "3. Podcast country"
+          );
+          int choice = reader.nextInt();
+          reader.nextLine();
 
-          String sql = "";
-
-          if(attributeName.equals("PName") || attributeName.equals("PLanguage") || attributeName.equals("PCountry")){
-              String updatedAttributeValue = reader.nextLine();
-
-              sql = "UPDATE Podcasts SET %s='%s' WHERE PID = (%d);" + "\n" + "\n";
-              sql = String.format(sql, attributeName, updatedAttributeValue, podcastID);
-
-          } else if(attributeName.equals("PRating")){
-              float updatedAttributeValue = reader.nextFloat();
-              reader.nextLine();
-
-              sql = "UPDATE Podcasts SET %s=%f WHERE PID = (%d);" + "\n" + "\n";
-              sql = String.format(sql, attributeName, updatedAttributeValue, podcastID);
-
-          } else if(attributeName.equals("PSubscribers") || attributeName.equals("EpisodeCount") || attributeName.equals("PHID")){
-              int updatedAttributeValue = reader.nextInt();
-              reader.nextLine();
-
-              sql = "UPDATE Podcasts SET %s=%d WHERE PID = (%d);" + "\n" + "\n";
-              sql = String.format(sql, attributeName, updatedAttributeValue, podcastID);
+          String attribute;
+          if (choice == 1){
+              attribute = "PName";
+          }else if(choice == 2){
+              attribute = "PLanguage";
+          }else if(choice == 3){
+              attribute = "PCountry";
+          }else {
+              return new Result(false, "Invalid input");
           }
 
-          return execute(sql);
+          System.out.println("New Value: ");
+          String newValue = reader.nextLine();
+
+          return execute(podcastID, attribute, newValue);
+
+//          System.out.println("Attribute you want to update: ");
+//          String attributeName = reader.nextLine();
+//
+//          System.out.println("New attribute value: ");
+//
+//          String sql = "";
+//
+//          if(attributeName.equals("PName") || attributeName.equals("PLanguage") || attributeName.equals("PCountry")){
+//              String updatedAttributeValue = reader.nextLine();
+//
+//              sql = "UPDATE Podcasts SET %s='%s' WHERE PID = (%d);" + "\n" + "\n";
+//              sql = String.format(sql, attributeName, updatedAttributeValue, podcastID);
+//
+//          } else if(attributeName.equals("PRating")){
+//              float updatedAttributeValue = reader.nextFloat();
+//              reader.nextLine();
+//
+//              sql = "UPDATE Podcasts SET %s=%f WHERE PID = (%d);" + "\n" + "\n";
+//              sql = String.format(sql, attributeName, updatedAttributeValue, podcastID);
+//
+//          } else if(attributeName.equals("PSubscribers") || attributeName.equals("EpisodeCount") || attributeName.equals("PHID")){
+//              int updatedAttributeValue = reader.nextInt();
+//              reader.nextLine();
+//
+//              sql = "UPDATE Podcasts SET %s=%d WHERE PID = (%d);" + "\n" + "\n";
+//              sql = String.format(sql, attributeName, updatedAttributeValue, podcastID);
+//          }
+//
+//          return execute(sql);
       }
+    public static Result execute(int ID, String attribute, String newValue) {
+
+        String sql =
+                "UPDATE Podcasts " +
+                        "SET %s = '%s' "  +
+                        "WHERE PID = %d " +
+                        ";"
+                ;
+
+        sql = String.format(sql, attribute, newValue, ID);
+        return Connect.executeUpdate(sql);
+    }
 }

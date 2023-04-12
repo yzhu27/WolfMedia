@@ -1,6 +1,6 @@
 package process;
 
-
+import java.sql.*;
 import java.util.Scanner;
 
 import config.Connect;
@@ -50,7 +50,4 @@ public class enterEpisodeInfo {
         return Connect.executeUpdate(sql);
     }
 
-    public static void main(String[] args) {
-        
-    }
 }

@@ -29,16 +29,16 @@ public class updateRating {
         }
 
         System.out.println("New Value: ");
-        double newValue = reader.nextDouble();
+        float newValue = reader.nextFloat();
 
         return execute(PID, attribute, newValue);
     }
 
-    public static Result execute(int ID, String attribute, Double newValue) {
+    public static Result execute(int ID, String attribute, float newValue) {
 
         String sql =
             "UPDATE Podcasts " +
-            "SET %s = %d "  +
+            "SET %s = %.2f "  +
             "WHERE PID = %d " +
             ";"
         ;

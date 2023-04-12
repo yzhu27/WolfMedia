@@ -5,25 +5,20 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
-/**
- * This program is used to perform deleteEpisodeInfo API operation by updating the PodcastEpisodes table.
- */
-
 public class deleteEpisodeInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
+        System.out.println("sql::" + sql);
 		Connect.executeQuery(sql);
     }
 
     public static Result execute(int episodeID,int podcastID) {
 
+        Result result = null;
 
         String sql = 
-			"DELETE FROM PodcastEpisodes WHERE PEID = %d AND PID = %d"  + "\n" + "\t" +
-				 "\n" +
-			";" + "\n" + "\n"
-		;
+			"DELETE FROM PodcastEpisodes WHERE PEID = %d AND PID = %d;";
         
 		sql = String.format(sql, episodeID, podcastID);
 
@@ -45,13 +40,15 @@ public class deleteEpisodeInfo {
 
         showDetails("PodcastEpisodes");
 
-		System.out.println("| Please Submit the following details: |");
-
+		System.out.println("+------------------------------------+");
+		System.out.println("| Please Submit the Following Inputs |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
       
-		    System.out.println("Podcast ID: ");
-		    int podcastID = reader.nextInt();
-		    reader.nextLine();
-	    
+    	System.out.println("Podcast ID: ");
+    	int podcastID = reader.nextInt();
+		reader.nextLine();
+
 		System.out.println("Episode ID: ");
 		int episodeID = reader.nextInt();
 		reader.nextLine();

@@ -1,12 +1,10 @@
 package process;
 
 import java.util.Scanner;
+import java.sql.*;
+
 import config.Connect;
 import config.Result;
-
-/**
- * This program is used to perform assignArtistToLabel API operation, by updating the artists table.
- */
 
 public class assignArtistToLabel {
 
@@ -27,7 +25,10 @@ public class assignArtistToLabel {
 
         showDetails("Artists");
 
-        System.out.println("| Please Submit the Following details: |");
+        System.out.println("+------------------------------------+");
+        System.out.println("| Please Submit the Following Inputs |");
+        System.out.println("+------------------------------------+");
+        System.out.println("");
 
         System.out.println("Artist ID: ");
         int artistID = reader.nextInt();

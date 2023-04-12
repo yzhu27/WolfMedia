@@ -5,24 +5,20 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
-/**
- * This program is used to perform deleteArtistInfo API operation by updating the Artists table.
- */
-
 public class deleteArtistInfo {
 
     public static void showDetails(String tableName){
-        	String sql = String.format("SELECT * FROM " + tableName + ";");
-		 Connect.executeQuery(sql);
+        String sql = String.format("SELECT * FROM " + tableName + ";");
+        System.out.println("sql::" + sql);
+		    Connect.executeQuery(sql);
     }
 
     public static Result execute(int artistID) {
 
+        Result result = null;
 
         String sql = 
-			"DELETE FROM Artists WHERE ArtistID = %d"  + "\n" + "\t" +
-				 "\n" +
-			";" + "\n" + "\n";
+			"DELETE FROM Artists WHERE artistID = %d;";
         
 		sql = String.format(sql, artistID);
 
@@ -38,13 +34,16 @@ public class deleteArtistInfo {
     public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
-		System.out.println("|         Artist Table Details       |");
+		System.out.println("|         Artist Details               |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
         showDetails("Artists");
 
-		System.out.println("| Please Submit the following details: |");
+		System.out.println("+------------------------------------+");
+		System.out.println("| Please Submit the Following Inputs |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
 
 		System.out.println("Artist ID: ");
 		int artistID = reader.nextInt();

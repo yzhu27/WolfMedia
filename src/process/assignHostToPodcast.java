@@ -1,13 +1,10 @@
 package process;
 
 import java.util.Scanner;
+import java.sql.*;
 
 import config.Connect;
 import config.Result;
-
-/**
- * This program is used to perform assignHostToPodcast API operation by updating the Podcasts table.
- */
 
 public class assignHostToPodcast {
 
@@ -28,7 +25,10 @@ public class assignHostToPodcast {
 
         showDetails("Podcasts");
 
-        System.out.println("| Please Submit the following details: |");
+        System.out.println("+------------------------------------+");
+        System.out.println("| Please Submit the Following Inputs |");
+        System.out.println("+------------------------------------+");
+        System.out.println("");
 
         System.out.println("Podcast ID: ");
         int pID = reader.nextInt();
@@ -39,7 +39,7 @@ public class assignHostToPodcast {
         reader.nextLine();
 
         String sql = "";
-        sql = "UPDATE Podcasts SET PHID=%d WHERE PID=(%d);" + "\n" + "\n";
+        sql = "UPDATE Podcasts SET PHID = %d WHERE PID=(%d);" + "\n" + "\n";
         sql = String.format(sql, phID, pID);
 
         return execute(sql);

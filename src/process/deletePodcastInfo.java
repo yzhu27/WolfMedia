@@ -5,19 +5,17 @@ import java.util.Scanner;
 import config.Connect;
 import config.Result;
 
-/**
- * This program is used to perform deletePodcastInfo API operation by updating the Podcasts table.
- */
-
 public class deletePodcastInfo {
 
     public static void showDetails(String tableName){
         String sql = String.format("SELECT * FROM " + tableName + ";");
+        System.out.println("sql::" + sql);
 		Connect.executeQuery(sql);
     }
 
     public static Result execute(int podcastID) {
 
+        Result result = null;
 
         String sql = 
 			"DELETE FROM Podcasts WHERE PID = %d"  + "\n" + "\t" +
@@ -39,14 +37,16 @@ public class deletePodcastInfo {
     public static Result run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
-		System.out.println("|         Podcast Table Details      |");
+		System.out.println("|         Podcast Details               |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
         showDetails("Podcasts");
 
-		System.out.println("| Please Submit the following details: |");
-
+		System.out.println("+------------------------------------+");
+		System.out.println("| Please Submit the Following Inputs |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
 
 		System.out.println("Podcast ID: ");
 		int podcastID = reader.nextInt();

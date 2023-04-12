@@ -1,17 +1,20 @@
 package process;
 
 import java.util.Scanner;
+import java.sql.*;
 
 import config.Connect;
 import config.Result;
 /**
- * Class used for executing the assignSongToArtist API operation by updating the Collaborate table.
+ * Class used for executing the assignSongToArtist API operation.
  */
 public class assignSongToArtist {
 
 	public static Result run(Scanner reader) {
-
-		System.out.println("| Please Submit the following details: |");
+		System.out.println("+------------------------------------+");
+		System.out.println("| Please Submit the Following Inputs |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
 
 		System.out.println("Song ID: ");
 		int songID = reader.nextInt();
@@ -27,10 +30,8 @@ public class assignSongToArtist {
 	public static Result execute(int songID, int artistID) {
 		
 		String sql = 
-			"INSERT INTO Collaborate VALUES "  + "\n" + "\t" +
-				"(%s,%s)"  + "\n" +
-			";" + "\n" + "\n"
-		;
+			"INSERT INTO Collaborate VALUES " +
+				"(%s,%s);";
         
 		sql = String.format(sql, songID, artistID);
         
