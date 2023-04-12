@@ -54,6 +54,7 @@ public class Interface {
             "37. assign an artist to label",
             "38. assign an episode to podcast",
             "39. assign a host to podcast",
+            "40. Display tables",
         
     };
     // Maintaining payments
@@ -315,6 +316,9 @@ public class Interface {
                     break;
                 case 39:
                     result = assignHostToPodcast.run(this.sc);
+                    break;
+                case 40:
+                    result = getTables.run(this.sc);
                     break;
                 default:
                     return;
