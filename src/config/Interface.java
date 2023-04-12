@@ -193,7 +193,7 @@ public class Interface {
 
         Result result = null;
 
-        if(this.position == 1){
+        if(this.user == 1){
             switch(this.operation){
                 case 1:
                     result = enterListeningCount.run(this.sc);
@@ -316,7 +316,7 @@ public class Interface {
                     return;
             }
         }
-        else if (this.position == 2) {
+        else if (this.user == 2) {
             switch (this.operation) {
                 case 1:
                     result = paymentForSong.run(this.sc);
@@ -367,7 +367,7 @@ public class Interface {
                     return;
             }
         }
-        else if (this.position == 3) {
+        else if (this.user == 3) {
             switch (this.operation) {
                 case 1:
                     result = calTotalPaymentsToArtistPerGivenTimePeriod.run(this.sc);
