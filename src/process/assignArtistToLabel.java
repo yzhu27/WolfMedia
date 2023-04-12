@@ -1,7 +1,6 @@
 package process;
 
 import java.util.Scanner;
-
 import config.Connect;
 import config.Result;
 
