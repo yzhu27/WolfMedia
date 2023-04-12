@@ -3,11 +3,9 @@ package config;
 import java.text.ParseException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
-import maintain.*;
-import payments.*;
 import process.*;
-import report.*;
+import maintain.*;
+import  payments.*;
 
 public class Interface {
 
@@ -42,19 +40,20 @@ public class Interface {
             "25. Update the details of the podcast",
             "26. Update the details of the podcast host",
             "27. Update the details of the podcast episode",
-            "28. delete a song",
-            "29. delete an artist",
-            "30. delete an album",
-            "31. delete a podcast",
-            "32. delete a host",
-            "33. delete an episode",
-            "34. assign a song to an artist",
-            "35. assign a song to an album",
-            "36. assign an artist to an album",
-            "37. assign an artist to label",
-            "38. assign an episode to podcast",
-            "39. assign a host to podcast",
-        
+            "28. Delete a song",
+            "29. Delete an artist",
+            "30. Delete an album",
+            "31. Delete a podcast",
+            "32. Delete a host",
+            "33. Delete a podcast episode",
+            "34. Assign a song to an artist",
+            "35. Assign a song to an album",
+            "36. Assign an artist to an album",
+            "37. Assign an artist to label",
+            "38. Assign an episode to podcast",
+            "39. Assign a host to podcast",
+            "40. Display tables",
+
     };
     // Maintaining payments
     private static final String[] AccountantOps = {
@@ -74,21 +73,19 @@ public class Interface {
             "13. Update Host Payment Records",
             "14. Update Record Label Payment Records",
             "15. Update Revenue Records",
+            "16. Delete Artist Payment Records",
+            "17. Delete Host Payment Records",
+            "18. Delete Record Label Payment Records",
+            "19. Delete Revenue Records",
     };
     // Reports
     private static final String[] ManagerOps = {
             "0. Logout",
-            "1. Calculate Total Payment To Artist",
-            "2. Calculate Total Payment To Host",
-            "3. Calculate Total Payment To Label",
-            "4. Calculate Total Revenue",
-            "5. Report Monthly Play Count By Album",
-            "6. Report Monthly Play Count By Artist",
-            "7. Report Monthly Play Count By Song",
-            "8. Report Episodes By Given Podcast",
-            "9. Report Songs By Given Album",
-            "10. Report Songs By Given Artist",
-            "11. Report Subscribers And Ratings",
+            "1. View Publication",
+            "2. Add Book Chapter",
+            "3. Delete Book Chapter",
+            "4. Add Article",
+            "5. Delete Article",
     };
     private static final String[][] WolfCityOpsMapping = {
             DataAdminOps,
@@ -316,6 +313,9 @@ public class Interface {
                 case 39:
                     result = assignHostToPodcast.run(this.sc);
                     break;
+                case 40:
+                    result = getTables.run(this.sc);
+                    break;
                 default:
                     return;
             }
@@ -367,45 +367,24 @@ public class Interface {
                 case 15:
                     result = updateRevenueRecords.run(this.sc);
                     break;
+                case 16:
+                    result = delArtistPaymentRecord.run(this.sc);
+                    break;
+                case 17:
+                    result = delHostPaymentRecord.run(this.sc);
+                    break;
+                case 18:
+                    result = delLabelPaymentRecord.run(this.sc);
+                    break;
+                case 19:
+                    result = delRevenueRecord.run(this.sc);
+                    break;
                 default:
                     return;
             }
         }
         else if (this.position == 3) {
             switch (this.operation) {
-                case 1:
-                    result = calTotalPaymentsToArtistPerGivenTimePeriod.run(this.sc);
-                    break;
-                case 2:
-                    result = calTotalPaymentsToHostPerGivenTimePeriod.run(this.sc);
-                    break;
-                case 3:
-                    result = calTotalPaymentsToLabelPerGivenTimePeriod.run(this.sc);
-                    break;
-                case 4:
-                    result = calTotalRevenue.run(this.sc);
-                    break;
-                case 5:
-                    result = MonthlyPlayCountPerAlbum.run(this.sc);
-                    break;
-                case 6:
-                    result = MonthlyPlayCountPerArtist.run(this.sc);
-                    break;
-                case 7:
-                    result = MonthlyPlayCountPerSong.run(this.sc);
-                    break;
-                case 8:
-                    result = reportEpisodesGivenPodcast.run(this.sc);
-                    break;
-                case 9:
-                    result = reportSongsGivenAlbum.run(this.sc);
-                    break;
-                case 10:
-                    result = reportSongsGivenArtist.run(this.sc);
-                    break;
-                case 11:
-                    result = reportSubscribersAndRatingPerPodcastPerGivenTimePeriod.run(this.sc);
-                    break;
                 default:
                     return;
             }
@@ -421,6 +400,7 @@ public class Interface {
         System.out.println("");
 
         System.out.print("Press Enter to Continue...");
+
         try {
             this.sc.nextLine();
         } catch (NoSuchElementException error) {
