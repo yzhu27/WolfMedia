@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used for adding a new payment record in LabelPaymentRecords table.
+ */
+
 public class addLabelPaymentRecord {
 
     public static String execute(String PayDate, int RLID, float payAmount) {
