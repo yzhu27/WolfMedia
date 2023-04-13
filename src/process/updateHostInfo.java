@@ -5,6 +5,10 @@ import java.sql.*;
 
 import util.*;
 
+/**
+ *  This Class used for executing the updateHostInfo API operation by updating the PodcastHosts Table.
+ */
+
 
 public class updateHostInfo {
 
@@ -31,8 +35,6 @@ public class updateHostInfo {
         int phID = reader.nextInt();
         reader.nextLine();
 
-//        System.out.println("Attribute you want to update: ");
-//        String attributeName = reader.nextLine();
 
         System.out.println("Select attribute to update:" + "\n" +
                 "1. Podcast Host first name" + "\n" +
@@ -60,19 +62,7 @@ public class updateHostInfo {
         String newValue = reader.nextLine();
 
         return execute(phID, attribute, newValue);
-//        System.out.println("New attribute value: ");
-//
-//        String sql = "";
-//
-//        if(attributeName.equals("PHFName") || attributeName.equals("PHLName") || attributeName.equals("PHEmail") || attributeName.equals("PHCity")){
-//            String updatedAttributeValue = reader.nextLine();
-//
-//            sql = "UPDATE PodcastHosts SET %s='%s' WHERE PHID = (%d);" + "\n" + "\n";
-//            sql = String.format(sql, attributeName, updatedAttributeValue, phID);
-//
-//        }
-//
-//        return execute(sql);
+
     }
 
     public static String execute(int ID, String attribute, String newValue) {
