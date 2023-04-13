@@ -5,6 +5,10 @@ import java.util.Scanner;
 import util.*;
 import java.sql.*;
 
+/**
+ *  This Class used for executing the enterPodcastInfo API operation by updating the Podcasts Table.
+ */
+
 public class enterPodcastInfo {
 
     public static String run(Scanner reader) throws SQLException{
