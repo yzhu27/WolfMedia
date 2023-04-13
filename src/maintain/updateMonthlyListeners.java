@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to update the monthly listeners count in the artists table.
+ */
+
+
 public class updateMonthlyListeners {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
