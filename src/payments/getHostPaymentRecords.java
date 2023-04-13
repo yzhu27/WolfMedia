@@ -5,6 +5,12 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to display host payment records table.
+ */
+
+
 public class getHostPaymentRecords {
 
     public static String execute() {
