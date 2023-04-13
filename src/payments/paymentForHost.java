@@ -9,7 +9,9 @@ import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
 
-
+/**
+ *  This Class used to calculate and update the payment for Host in HostPaymentRecords table.
+ */
 
 
 public class paymentForHost {
