@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used to add a new payment record for artist in ArtistPaymentRecords table.
+ */
+
 public class addArtistPaymentRecord {
 
     public static String execute(String PayDate, int ArtistID, float paymentToArtists) {
