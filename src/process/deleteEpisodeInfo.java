@@ -5,6 +5,10 @@ import java.util.Scanner;
 import util.*;
 import java.sql.*;
 
+/**
+ *  This Class used for executing the deleteEpisodeInfo API operation by updating the Podcastepisodes Table.
+ */
+
 public class deleteEpisodeInfo {
 
 
