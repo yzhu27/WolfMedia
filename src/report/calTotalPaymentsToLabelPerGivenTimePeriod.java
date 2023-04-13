@@ -3,6 +3,7 @@ package report;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import util.DBTablePrinter;
 import util.queryExecuter;
 
 public class calTotalPaymentsToLabelPerGivenTimePeriod {
@@ -14,12 +15,12 @@ public class calTotalPaymentsToLabelPerGivenTimePeriod {
 	 * @param endDate the end date of the time period.
 	 * @return a string containing the result of the SQL query.
 	 */
-	public static String execute(String startDate, String endDate) {
+	public static String execute(int RLID, String startDate, String endDate) {
 
 		String sql = "SELECT SUM(PayAmount) FROM LabelPaymentRecords " + "\n" +
-				"WHERE PayDate between '%s' and '%s';";
+				"WHERE RLID=%d PayDate between '%s' and '%s';";
 
-		sql = String.format(sql, startDate, endDate);
+		sql = String.format(sql, RLID, startDate, endDate);
 
 		return queryExecuter.execute(sql);
 	}
@@ -34,9 +35,20 @@ public class calTotalPaymentsToLabelPerGivenTimePeriod {
 	public static String run(Scanner reader) throws SQLException {
 
 		System.out.println("+------------------------------------+");
+		System.out.println("|            Label  Details          |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("RecordLabels");
+
+		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
+
+		System.out.println("Label ID: ");
+		int RLID = reader.nextInt();
+		reader.nextLine();
 
 		System.out.println("Start Date (YYYY-MM-DD): ");
 		String startDate = reader.nextLine();
@@ -46,6 +58,6 @@ public class calTotalPaymentsToLabelPerGivenTimePeriod {
 		String endDate = reader.nextLine();
 		reader.nextLine();
 
-		return execute(startDate, endDate);
+		return execute(RLID, startDate, endDate);
 	}
 }

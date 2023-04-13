@@ -3,6 +3,7 @@ package report;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import util.DBTablePrinter;
 import util.queryExecuter;
 
 public class calTotalPaymentsToArtistPerGivenTimePeriod {
@@ -15,12 +16,12 @@ public class calTotalPaymentsToArtistPerGivenTimePeriod {
 	 * @param endDate a String representing the end date of the time period in the format of "YYYY-MM-DD".
 	 * @return a String representing the result of the query execution.
 	 */
-	public static String execute(String startDate, String endDate) {
+	public static String execute(int ArtistID, String startDate, String endDate) {
 
 		String sql = "SELECT SUM(PayAmount) FROM ArtistPaymentRecords " +
-				"WHERE PayDate BETWEEN '%s' AND '%s';";
+				"WHERE ArtistID = %d AND PayDate BETWEEN '%s' AND '%s';";
 
-		sql = String.format(sql, startDate, endDate);
+		sql = String.format(sql, ArtistID, startDate, endDate);
 
 		return queryExecuter.execute(sql);
 	}
@@ -34,11 +35,22 @@ public class calTotalPaymentsToArtistPerGivenTimePeriod {
 	 * @throws SQLException if a database access error occurs or this method is called on a closed connection.
 	 */
 	public static String run(Scanner reader) throws SQLException {
+		
+		System.out.println("+------------------------------------+");
+		System.out.println("|            Artist Details          |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Artists");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
+
+		System.out.println("Artist ID: ");
+		int ArtistID = reader.nextInt();
+		reader.nextLine();
 
 		System.out.println("Start Date (YYYY-MM-DD): ");
 		String startDate = reader.nextLine();
@@ -48,6 +60,6 @@ public class calTotalPaymentsToArtistPerGivenTimePeriod {
 		String endDate = reader.nextLine();
 		reader.nextLine();
 
-		return execute(startDate, endDate);
+		return execute(ArtistID, startDate, endDate);
 	}
 }

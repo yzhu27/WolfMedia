@@ -3,6 +3,7 @@ package report;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import util.DBTablePrinter;
 import util.queryExecuter;
 
 public class calTotalPaymentsToHostPerGivenTimePeriod {
@@ -14,12 +15,12 @@ public class calTotalPaymentsToHostPerGivenTimePeriod {
 	* @param endDate the end date of the time period (in the format YYYY-MM-DD).
 	* @return a string representing the result of the SQL query.
 	*/
-	public static String execute(String startDate, String endDate) {
+	public static String execute(int PHID, String startDate, String endDate) {
 
 		String sql = "SELECT SUM(PayAmount) FROM HostPaymentRecords " + "\n" +
-				"WHERE PayDate between '%s' and '%s';";
+				"WHERE PHID=%d AND PayDate between '%s' and '%s';";
 
-		sql = String.format(sql, startDate, endDate);
+		sql = String.format(sql, PHID, startDate, endDate);
 
 		return queryExecuter.execute(sql);
 	}
@@ -32,11 +33,21 @@ public class calTotalPaymentsToHostPerGivenTimePeriod {
 	 * @throws SQLException if an SQL exception occurs.
 	 */
 	public static String run(Scanner reader) throws SQLException {
+		System.out.println("+------------------------------------+");
+		System.out.println("|            Host  Details           |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("PodcastHosts");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
+
+		System.out.println("Host ID: ");
+		int PHID = reader.nextInt();
+		reader.nextLine();
 
 		System.out.println("Start Date (YYYY-MM-DD): ");
 		String startDate = reader.nextLine();
@@ -46,6 +57,6 @@ public class calTotalPaymentsToHostPerGivenTimePeriod {
 		String endDate = reader.nextLine();
 		reader.nextLine();
 
-		return execute(startDate, endDate);
+		return execute(PHID, startDate, endDate);
 	}
 }
