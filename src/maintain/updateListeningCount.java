@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to update the listening count in PodcastEpisodes table.
+ */
+
+
 public class updateListeningCount {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
