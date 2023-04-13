@@ -7,6 +7,13 @@ import java.util.Scanner;
 public class updateMonthlyListeners {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
+		System.out.println("|           Artist Details           |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Artists");
+
+        System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
         System.out.println("");

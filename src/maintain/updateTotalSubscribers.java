@@ -7,6 +7,13 @@ import java.util.Scanner;
 public class updateTotalSubscribers {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
+		System.out.println("|           Podcasts Details         |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Podcasts");
+
+        System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
         System.out.println("");
