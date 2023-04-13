@@ -22,8 +22,7 @@ public class Interface {
             "4. Reset the number of rating for a Podcast to 0",
             "5. Reset the number of total subscribers for a Podcast to 0",
             "6. Get the records of all Episodes of a Podcast",
-            "7. Get the records of all Songs of a Album",
-            "8. Get the records of all Songs of an Artist, as the primary publisher",
+            "8. Get the records of all Songs of an Artist and Album",
             "9. Record a Play Count for a Song",
             "10. Record a Play Count for a Podcast",
             "11. Update the number of listen count for a Podcast Episode",
@@ -221,11 +220,8 @@ public class Interface {
                 case 6:
                     result = findEpisodesGivenPodcast.run(this.sc);
                     break;
-                case 7:
-                    result = findSongsGivenAlbum.run(this.sc);
-                    break;
                 case 8:
-                    result = findSongsGivenArtist.run(this.sc);
+                    result = findSongsGivenArtistAndAlbum.run(this.sc);
                     break;
                 case 9:
                     result = recordPlayCount.run(this.sc);
