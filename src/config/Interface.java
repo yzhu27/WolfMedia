@@ -62,7 +62,7 @@ public class Interface {
             "0. Logout",
             "1. Payment For Song",
             "2. Payment For Host",
-            "3. Receive Revenue",
+            "3. Receive Payment From Subscribers",
             "4. Get Artist Payment Records",
             "5. Get Host Payment Records",
             "6. Get Record Label Payment Records",
@@ -94,6 +94,9 @@ public class Interface {
             "9. Report Songs By Given Album",
             "10. Report Songs By Given Artist",
             "11. Report Subscribers And Ratings",
+            "12. Calculate Total Revenue During Given Year",
+            "13. Calculate Total Revenue During Given Month",
+
     };
     private static final String[][] userOps = {
             DataAdminOps,
@@ -332,7 +335,7 @@ public class Interface {
                     result = paymentForHost.run(this.sc);
                     break;
                 case 3:
-                    result = revenue.run(this.sc);
+                    result = paymentFromSubscribers.run(this.sc);
                     break;
                 case 4:
                     result = getArtistPaymentRecords.run(this.sc);
@@ -420,6 +423,12 @@ public class Interface {
                     break;
                 case 11:
                     result = reportSubscribersAndRatingPerPodcastPerGivenTimePeriod.run(this.sc);
+                    break;
+                case 12:
+                    result = calTotalRevenuePerYear.run(this.sc);
+                    break;
+                case 13:
+                    result = calTotalRevenuePerMonth.run(this.sc);
                     break;
                 default:
                     return;
