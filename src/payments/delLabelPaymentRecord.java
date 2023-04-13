@@ -5,6 +5,11 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to delete a payment record in LabelPaymentRecords table.
+ */
+
 public class delLabelPaymentRecord {
 
     public static String execute(String PayDate, int LabelID) {
