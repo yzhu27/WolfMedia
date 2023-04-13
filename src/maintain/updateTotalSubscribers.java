@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class is used to update the total subscribers of the podcast in Podcasts table.
+ */
+
+
 public class updateTotalSubscribers {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
