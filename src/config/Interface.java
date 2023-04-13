@@ -160,6 +160,7 @@ public class Interface {
 
     public void select_operation() throws ParseException, SQLException {
         while (true) {
+            System.out.print("\033\143");
 
             System.out.println("+--------------------------------+");
             System.out.println("| Select an Operation to Execute |");
@@ -196,7 +197,8 @@ public class Interface {
     }
 
     public void execute_operation() throws ParseException, SQLException {
-
+        System.out.print("\033\143");
+        
         String result = "null";
 
         if(this.user == 1){
