@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to update the song playcount in Songs table.
+ */
+
+
 public class updatePlayCount {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
