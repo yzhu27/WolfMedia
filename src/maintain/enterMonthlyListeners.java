@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to reset monthly Listeners to zero.
+ */
+
+
 public class enterMonthlyListeners {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------------------------+");
