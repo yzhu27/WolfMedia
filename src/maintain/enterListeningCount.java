@@ -4,6 +4,10 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ *  This Class used to reset listening count to zero.
+ */
+
 public class enterListeningCount {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+--------------------------------------------------+");
