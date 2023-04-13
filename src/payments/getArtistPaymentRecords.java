@@ -5,6 +5,12 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to diplay artist payment records table.
+ */
+
+
 public class getArtistPaymentRecords {
 
     public static String execute() {
