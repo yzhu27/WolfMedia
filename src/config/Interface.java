@@ -32,39 +32,39 @@ public class Interface {
             "4. Reset the number of rating for a Podcast to 0",
             "5. Reset the number of total subscribers for a Podcast to 0",
             "6. Get the records of all Episodes of a Podcast",
-            "8. Get the records of all Songs of an Artist and Album",
-            "9. Record a Play Count for a Song",
-            "10. Record a Play Count for a Podcast",
-            "11. Update the number of listen count for a Podcast Episode",
-            "12. Update the number of monthly listener for an Artist",
-            "13. Update the number of play count for a Song",
-            "14. Update the number of rating for a Podcast",
-            "15. Update the number of total subscribers for a Podcast",
-            "16. Enter the details of the song to be added",
-            "17. Enter the details of the artist to be added",
-            "18. Enter the details of the album to be added",
-            "19. Enter the details of the podcast to be added",
-            "20. Enter the details of the host to be added",
-            "21. Enter the details of the episode to be added",
-            "22. Update the details of the song",
-            "23. Update the details of the artist",
-            "24. Update the details of the album",
-            "25. Update the details of the podcast",
-            "26. Update the details of the podcast host",
-            "27. Update the details of the podcast episode",
-            "28. delete a song",
-            "29. delete an artist",
-            "30. delete an album",
-            "31. delete a podcast",
-            "32. delete a host",
-            "33. delete an episode",
-            "34. assign a song to an artist",
-            "35. assign a song to an album",
-            "36. assign an artist to an album",
-            "37. assign an artist to label",
-            "38. assign an episode to podcast",
-            "39. assign a host to podcast",
-            "40. Display tables",
+            "7. Get the records of all Songs of an Artist and Album",
+            "8. Record a Play Count for a Song",
+            "9. Record a Play Count for a Podcast",
+            "10. Update the number of listen count for a Podcast Episode",
+            "11. Update the number of monthly listener for an Artist",
+            "12. Update the number of play count for a Song",
+            "13. Update the number of rating for a Podcast",
+            "14. Update the number of total subscribers for a Podcast",
+            "15. Enter the details of the song to be added",
+            "16. Enter the details of the artist to be added",
+            "17. Enter the details of the album to be added",
+            "18. Enter the details of the podcast to be added",
+            "19. Enter the details of the host to be added",
+            "20. Enter the details of the episode to be added",
+            "21. Update the details of the song",
+            "22. Update the details of the artist",
+            "23. Update the details of the album",
+            "24. Update the details of the podcast",
+            "25. Update the details of the podcast host",
+            "26. Update the details of the podcast episode",
+            "27. delete a song",
+            "28. delete an artist",
+            "29. delete an album",
+            "30. delete a podcast",
+            "31. delete a host",
+            "32. delete an episode",
+            "33. assign a song to an artist",
+            "34. assign a song to an album",
+            "35. assign an artist to an album",
+            "36. assign an artist to label",
+            "37. assign an episode to podcast",
+            "38. assign a host to podcast",
+            "39. Display tables"
 
     };
     // Maintaining payments
@@ -207,7 +207,7 @@ public class Interface {
                     this.operation = Integer.parseInt(this.sc.nextLine());
                     if (this.operation == 0) {
                         return;
-                    } else if (1 <= this.operation && this.operation <= this.validOperations.length - 1) {
+                    } else if (1 <= this.operation && this.operation <= this.validOperations.length-1) {
                         operationInvalid = false;
                     } else {
                         System.out.print("Invalid Option; Please try again: ");
@@ -254,103 +254,103 @@ public class Interface {
                 case 6:
                     result = findEpisodesGivenPodcast.run(this.sc);
                     break;
-                case 8:
+                case 7:
                     result = findSongsGivenArtistAndAlbum.run(this.sc);
                     break;
-                case 9:
+                case 8:
                     result = recordPlayCount.run(this.sc);
                     break;
-                case 10:
+                case 9:
                     result = recordPodcast.run(this.sc);
                     break;
-                case 11:
+                case 10:
                     result = updateListeningCount.run(this.sc);
                     break;
-                case 12:
+                case 11:
                     result = updateMonthlyListeners.run(this.sc);
                     break;
-                case 13:
+                case 12:
                     result = updatePlayCount.run(this.sc);
                     break;
-                case 14:
+                case 13:
                     result = updateRating.run(this.sc);
                     break;
-                case 15:
+                case 14:
                     result = updateTotalSubscribers.run(this.sc);
                     break;
-                case 16:
+                case 15:
                     result = enterSongInfo.run(this.sc);
                     break;
-                case 17:
+                case 16:
                     result = enterArtistInfo.run(this.sc);
                     break;
-                case 18:
+                case 17:
                     result = enterAlbumInfo.run(this.sc);
                     break;
-                case 19:
+                case 18:
                     result = enterPodcastInfo.run(this.sc);
                     break;
-                case 20:
+                case 19:
                     result = enterHostInfo.run(this.sc);
                     break;
-                case 21:
+                case 20:
                     result = enterEpisodeInfo.run(this.sc);
                     break;
-                case 22:
+                case 21:
                     result = updateSongInfo.run(this.sc);
                     break;
-                case 23:
+                case 22:
                     result = updateArtistInfo.run(this.sc);
                     break;
-                case 24:
+                case 23:
                     result = updateAlbumInfo.run(this.sc);
                     break;
-                case 25:
+                case 24:
                     result = updatePodcastInfo.run(this.sc);
                     break;
-                case 26:
+                case 25:
                     result = updateHostInfo.run(this.sc);
                     break;
-                case 27:
+                case 26:
                     result = updateEpisodeInfo.run(this.sc);
                     break;
-                case 28:
+                case 27:
                     result = deleteSongInfo.run(this.sc);
                     break;
-                case 29:
+                case 28:
                     result = deleteArtistInfo.run(this.sc);
                     break;
-                case 30:
+                case 29:
                     result = deleteAlbumInfo.run(this.sc);
                     break;
-                case 31:
+                case 30:
                     result = deletePodcastInfo.run(this.sc);
                     break;
-                case 32:
+                case 31:
                     result = deleteHostInfo.run(this.sc);
                     break;
-                case 33:
+                case 32:
                     result = deleteEpisodeInfo.run(this.sc);
                     break;
-                case 34:
+                case 33:
                     result = assignSongToArtist.run(this.sc);
                     break;
-                case 35:
+                case 34:
                     result = assignSongToAlbum.run(this.sc);
                     break;
-                case 36:
+                case 35:
                     result = assignArtistToAlbum.run(this.sc);
                     break;
-                case 37:
+                case 36:
                     result = assignArtistToLabel.run(this.sc);
                     break;
-                case 38:
+                case 37:
                     result = assignEpisodeToPodcast.run(this.sc);
                     break;
-                case 39:
+                case 38:
                     result = assignHostToPodcast.run(this.sc);
                     break;
-                case 40:
+                case 39:
                     result = getTables.run(this.sc);
                     break;
                 default:

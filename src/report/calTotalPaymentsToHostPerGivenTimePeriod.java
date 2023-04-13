@@ -18,7 +18,7 @@ public class calTotalPaymentsToHostPerGivenTimePeriod {
 	public static String execute(int PHID, String startDate, String endDate) {
 
 		String sql = "SELECT SUM(PayAmount) FROM HostPaymentRecords " + "\n" +
-				"WHERE PHID=%d AND PayDate between '%s' and '%s';";
+				"WHERE HostID=%d AND PayDate between '%s' and '%s';";
 
 		sql = String.format(sql, PHID, startDate, endDate);
 

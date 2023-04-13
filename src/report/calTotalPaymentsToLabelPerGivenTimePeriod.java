@@ -18,7 +18,7 @@ public class calTotalPaymentsToLabelPerGivenTimePeriod {
 	public static String execute(int RLID, String startDate, String endDate) {
 
 		String sql = "SELECT SUM(PayAmount) FROM LabelPaymentRecords " + "\n" +
-				"WHERE RLID=%d PayDate between '%s' and '%s';";
+				"WHERE LabelID=%d AND PayDate between '%s' and '%s';";
 
 		sql = String.format(sql, RLID, startDate, endDate);
 

@@ -4,6 +4,7 @@ import util.*;
 import java.sql.*;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -171,10 +172,11 @@ public class paymentForSong {
         return ArtistID;
     }
 
-    public static int findCollaboratorGivenSong(int SongID){
+    public static  ArrayList<Integer> findCollaboratorGivenSong(int SongID){
 
         ResultSet resultSet = null;
-        int CollaboratorID = 0;
+        //int CollaboratorID = 0;
+        ArrayList<Integer> Collaborators = new ArrayList<Integer>();
 
 
         String sql = "SELECT ArtistID FROM Collaborate " +
@@ -189,30 +191,29 @@ public class paymentForSong {
                 resultSet = statement.executeQuery(sql);
 
                 while(resultSet.next()){
-                    CollaboratorID = resultSet.getInt("ArtistID");
-                    //Array a = resultSet.getArray("ArtistID");
-                    //Int[] Collaborators = (Int[])a.getArray();
+                    //CollaboratorID = resultSet.getInt("ArtistID");
+                    Collaborators.add(resultSet.getInt("ArtistID"));
                 }
 
             } catch (SQLException error) {
-                return 0;
+                return Collaborators;
             }
 
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
             System.err.println(errorMsg);
-            return 0;
+            return Collaborators;
 
         }
 
-        return CollaboratorID;
-        //return Collaborators;
+        //return CollaboratorID;
+        return Collaborators;
     }
 
 
 
-    public static String execute(int SongID, int RLID, int ArtistID, int CollaboratorID, String PayDate, float paymentToRL, float paymentToArtists) {
+    public static String execute(int SongID, int RLID, int ArtistID, ArrayList<Integer> CollaboratorID, String PayDate, float paymentToRL, float paymentToArtists) {
 
         /* Execute Transaction via Connect and return result */
         try (Connection connection = connect()) {
@@ -269,23 +270,27 @@ public class paymentForSong {
 
                 /* Statement 3 in Transaction (add payment record of Collaborator to ArtistPaymentRecords Table) */
                 /* ------------------------------------------------------------------ */
-                if (CollaboratorID != 0) {
-                    if (checkNoDuplicate("ArtistPaymentRecords", CollaboratorID, PayDate)){
-                        String sql =
-                                "INSERT INTO ArtistPaymentRecords VALUES " +
-                                        "('%s', %d, %.2f)" +
-                                        ";"
-                                ;
-                        sql = String.format(sql, PayDate, CollaboratorID, paymentToArtists);
-                        statement.executeUpdate(sql);
-                    } else {
-                        String sql =
-                                "UPDATE ArtistPaymentRecords " +
-                                        "SET PayAmount = PayAmount + %.2f "  +
-                                        "WHERE PayDate = '%s' AND ArtistID = %d;";
+                if (CollaboratorID.size() != 0) {
+                    for (int i = 0; i < CollaboratorID.size(); i++) {
+                        int collaborator = CollaboratorID.get(i);
 
-                        sql = String.format(sql, paymentToArtists, PayDate, CollaboratorID);
-                        statement.executeUpdate(sql);
+
+                        if (checkNoDuplicate("ArtistPaymentRecords", collaborator, PayDate)) {
+                            String sql =
+                                    "INSERT INTO ArtistPaymentRecords VALUES " +
+                                            "('%s', %d, %.2f)" +
+                                            ";";
+                            sql = String.format(sql, PayDate, collaborator, paymentToArtists);
+                            statement.executeUpdate(sql);
+                        } else {
+                            String sql =
+                                    "UPDATE ArtistPaymentRecords " +
+                                            "SET PayAmount = PayAmount + %.2f " +
+                                            "WHERE PayDate = '%s' AND ArtistID = %d;";
+
+                            sql = String.format(sql, paymentToArtists, PayDate, collaborator);
+                            statement.executeUpdate(sql);
+                        }
                     }
                 }
                 /* ------------------------------------------------------------------ */
@@ -368,17 +373,17 @@ public class paymentForSong {
 
         int ArtistID = findArtistGivenSong(SongID);
 
-        int CollaboratorID = findCollaboratorGivenSong(SongID);
+        ArrayList<Integer> Collaborators = findCollaboratorGivenSong(SongID);
 
         float paymentToRL = (float) (MonthlyRoyalties * 0.3);
         float paymentToArtists = 0;
-        if (CollaboratorID == 0) {
+        if (Collaborators.size() == 0) {
             paymentToArtists = (float) (MonthlyRoyalties * 0.7);
         }
         else {
-            paymentToArtists = (float) (MonthlyRoyalties * 0.7 / 2);
+            paymentToArtists = (float) (MonthlyRoyalties * 0.7 / (Collaborators.size()+1));
         }
 
-        return execute(SongID, RLID, ArtistID, CollaboratorID, PayDate, paymentToRL, paymentToArtists);
+        return execute(SongID, RLID, ArtistID, Collaborators, PayDate, paymentToRL, paymentToArtists);
     }
 }
