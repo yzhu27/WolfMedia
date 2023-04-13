@@ -3,27 +3,23 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 public class updateEpisodeInfo {
 
-        public static Result execute(String sql) {
-            return Connect.executeUpdate(sql);
+        public static String execute(String sql) {
+            return queryExecuter.execute(sql);
         }
 
-        public static void showDetails(String tableName){
-            String sql = String.format("SELECT * FROM " + tableName + ";");
-            Connect.executeQuery(sql);
-        }
 
-        public static Result run(Scanner reader) {
+        public static String run(Scanner reader) throws SQLException{
             System.out.println("+------------------------------------+");
             System.out.println("|      Podcast Episode Details       |");
             System.out.println("+------------------------------------+");
             System.out.println("");
 
-            showDetails("PodcastEpisodes");
+            DBTablePrinter.printTable("PodcastEpisodes");
 
             System.out.println("+------------------------------------+");
             System.out.println("| Please Submit the Following Inputs |");
@@ -60,7 +56,7 @@ public class updateEpisodeInfo {
             }else if(choice == 5){
                 attribute = "AdCount";
             }else {
-                return new Result(false, "Invalid input");
+                return "Error: Invalid Input";
             }
 
             System.out.println("New Value: ");
@@ -70,7 +66,7 @@ public class updateEpisodeInfo {
 
 
     }
-    public static Result execute(int ID1, int ID2, String attribute, String newValue) {
+    public static String execute(int ID1, int ID2, String attribute, String newValue) {
 
         String sql =
                 "UPDATE PodcastEpisodes " +
@@ -81,6 +77,6 @@ public class updateEpisodeInfo {
                 ;
 
         sql = String.format(sql, attribute, newValue, ID1, ID2);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

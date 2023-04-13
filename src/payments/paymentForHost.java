@@ -1,14 +1,14 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
-import java.sql.*;
+
 
 
 
@@ -100,11 +100,6 @@ public class paymentForHost {
         return adCount;
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql::" + sql);
-        Connect.executeQuery(sql);
-    }
 
     public static void showPEhosted(int PHID){
         String sql = "SELECT p.PName, p.PHID, pe.PETitle, pe.PEReleaseDate " +
@@ -114,11 +109,11 @@ public class paymentForHost {
                 "WHERE p.PHID = %d;";
 
         sql = String.format(sql,PHID);
-        Connect.executeQuery(sql);
+        queryExecuter.execute(sql);
     }
 
 
-    public static Result execute(int PHID, float PayAmount, String PayDate) {
+    public static String execute(int PHID, float PayAmount, String PayDate) {
 
         String sql =
                 "INSERT INTO HostPaymentRecords VALUES " +
@@ -127,16 +122,16 @@ public class paymentForHost {
                 ;
         sql = String.format(sql, PayDate, PHID, PayAmount);
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) throws ParseException {
+    public static String run(Scanner reader) throws ParseException {
         System.out.println("+------------------------------------+");
         System.out.println("|     HostPaymentRecords Details     |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("HostPaymentRecords");
+        DBTablePrinter.printTable("HostPaymentRecords");
 
 
         System.out.println("+------------------------------------+");

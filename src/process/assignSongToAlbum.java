@@ -3,27 +3,24 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import config.Connect;
-import config.Result;
+import util.*;
+
 
 public class assignSongToAlbum {
 
-    public static Result execute(String sql) {
-        return Connect.executeUpdate(sql);
+    public static String execute(String sql) {
+        return queryExecuter.execute(sql);
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        Connect.executeQuery(sql);
-    }
 
-    public static Result run(Scanner reader) {
+
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("|           Song Details            |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("Songs");
+        DBTablePrinter.printTable("Songs");
 
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");

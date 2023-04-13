@@ -2,20 +2,16 @@ package process;
 
 import java.util.Scanner;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 public class deleteSongInfo {
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql::" + sql);
-		Connect.executeQuery(sql);
-    }
 
-    public static Result execute(int songID) {
 
-        Result result = null;
+    public static String execute(int songID) {
+
+        String result = null;
 
         String sql = 
 			"DELETE FROM Songs WHERE SongID = %d"  + "\n" + "\t" +
@@ -25,7 +21,7 @@ public class deleteSongInfo {
         
 		sql = String.format(sql, songID);
 
-		return Connect.executeUpdate(sql);
+		return queryExecuter.execute(sql);
 	}
 
 	public static void main(String[] args) {
@@ -34,14 +30,14 @@ public class deleteSongInfo {
 
 
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Song Details               |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-        showDetails("Songs");
+        DBTablePrinter.printTable("Songs");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

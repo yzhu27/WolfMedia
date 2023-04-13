@@ -1,21 +1,21 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
 public class getHostPaymentRecords {
 
-    public static Result execute() {
+    public static String execute() {
 
         String sql =
                 "SELECT * FROM HostPaymentRecords;";
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("|      HostPaymentRecords Details    |");
         System.out.println("+------------------------------------+");

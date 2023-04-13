@@ -1,23 +1,23 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
 public class delArtistPaymentRecord {
 
-    public static Result execute(String PayDate, int ArtistID) {
+    public static String execute(String PayDate, int ArtistID) {
 
         String sql =
                 "DELETE FROM ArtistPaymentRecords WHERE PayDate = '%s' AND ArtistID = %d;";
 
         sql = String.format(sql, PayDate, ArtistID);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");

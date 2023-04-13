@@ -1,10 +1,10 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
-import java.sql.*;
+
 
 public class revenue {
 
@@ -49,7 +49,7 @@ public class revenue {
         return MonthlyRevenue;
     }
 
-    public static Result execute(float MonthlyRevenue, String RevDate) {
+    public static String execute(float MonthlyRevenue, String RevDate) {
 
         String sql =
                 "INSERT INTO RevenueRecords VALUES " +
@@ -58,21 +58,18 @@ public class revenue {
                 ;
         sql = String.format(sql, RevDate, MonthlyRevenue);
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        Connect.executeQuery(sql);
-    }
 
-    public static Result run(Scanner reader) {
+
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("|        RevenueRecords Details      |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("RevenueRecords");
+        DBTablePrinter.printTable("RevenueRecords");
 
 
         System.out.println("+------------------------------------+");

@@ -1,11 +1,12 @@
 package report;
 import java.util.Scanner;
+import java.sql.*;
+import util.DBTablePrinter;
+import util.*;
 
-import config.Connect;
-import config.Result;
 
 public class calTotalPaymentsToLabelPerGivenTimePeriod {
-    public static Result execute(String startDate, String endDate) {
+    public static String execute(String startDate, String endDate) {
 
 		String sql = 
             "SELECT SUM(PayAmount) FROM LabelPaymentRecords " + "\n" +
@@ -14,12 +15,12 @@ public class calTotalPaymentsToLabelPerGivenTimePeriod {
         
 		sql = String.format(sql, startDate, endDate);
         
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
 
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

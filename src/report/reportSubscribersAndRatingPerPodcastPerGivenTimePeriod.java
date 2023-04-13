@@ -1,16 +1,14 @@
 package report;
+import java.sql.SQLException;
 import java.util.Scanner;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import util.DBTablePrinter;
 
 public class reportSubscribersAndRatingPerPodcastPerGivenTimePeriod {
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-		Connect.executeQuery(sql);
-    }
 
-    public static Result execute(int PID, String startDate, String endDate) {
+
+    public static String execute(int PID, String startDate, String endDate) {
 
 		String sql = 
             "SELECT PRSubscribers,PRRating FROM PodcastRecords " + "\n" +
@@ -20,16 +18,16 @@ public class reportSubscribersAndRatingPerPodcastPerGivenTimePeriod {
         
 		sql = String.format(sql, PID, startDate, endDate);
         
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException {
         System.out.println("+------------------------------------+");
 		System.out.println("|           Podcasts Details         |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		showDetails("Podcasts");
+		DBTablePrinter.printTable("Podcasts");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

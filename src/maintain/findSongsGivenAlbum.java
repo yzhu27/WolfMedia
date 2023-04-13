@@ -1,11 +1,20 @@
 package maintain;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class findSongsGivenAlbum {
-    public static Result run(Scanner reader) {
+
+
+    public static String run(Scanner reader) throws SQLException{
+        System.out.println("+------------------------------------+");
+		System.out.println("|            Album Details           |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Albums");
+
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -20,7 +29,7 @@ public class findSongsGivenAlbum {
         return execute(AlID, attribute);
     }
 
-    public static Result execute(int ID, String attribute) {
+    public static String execute(int ID, String attribute) {
 
         String sql =
             "SELECT * " +
@@ -30,6 +39,6 @@ public class findSongsGivenAlbum {
         ;
 
         sql = String.format(sql, attribute, ID);
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 }

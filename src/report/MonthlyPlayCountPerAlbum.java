@@ -1,16 +1,13 @@
 package report;
 import java.util.Scanner;
+import java.sql.*;
+import util.DBTablePrinter;
+import util.*;
 
-import config.Connect;
-import config.Result;
 
 public class MonthlyPlayCountPerAlbum {
-	public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-		Connect.executeQuery(sql);
-    }
 
-	public static Result execute(int AlbumID) {
+	public static String execute(int AlbumID) {
 		String sql = 
 		"SELECT * FROM " +
 		"(SELECT SUM(SRPlaycount) AS sum, Title, AlbumID, SRDate FROM  " +
@@ -20,16 +17,16 @@ public class MonthlyPlayCountPerAlbum {
 		"WHERE AlbumID=%d; ";
 
 		sql = String.format(sql, AlbumID);
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
-	public static Result run(Scanner reader) {
+	public static String run(Scanner reader) throws SQLException{
 		System.out.println("+------------------------------------+");
 		System.out.println("|            Artist Details          |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		showDetails("Albums");
+		DBTablePrinter.printTable("Albums");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

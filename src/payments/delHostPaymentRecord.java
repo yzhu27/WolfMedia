@@ -1,23 +1,23 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
 public class delHostPaymentRecord {
 
-    public static Result execute(String PayDate, int PHID) {
+    public static String execute(String PayDate, int PHID) {
 
         String sql =
                 "DELETE FROM HostPaymentRecords WHERE PayDate = '%s' AND HostID = %d;";
 
         sql = String.format(sql, PayDate, PHID);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
