@@ -5,6 +5,10 @@ import java.sql.*;
 
 import util.*;
 
+/**
+ *  This Class used for executing the updateAlbumInfo API operation by updating the Albums Table.
+ */
+
 
 public class updateAlbumInfo {
     private static final String user = "mwang39";												// username
