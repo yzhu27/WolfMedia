@@ -11,6 +11,8 @@ public class enterMonthlyListeners {
         System.out.println("+------------------------------------------------------+");
         System.out.println("");
 
+        DBTablePrinter.printTable("Artists");
+
         System.out.println("ArtistID: ");
         int AID = reader.nextInt();
         reader.nextLine();
@@ -27,9 +29,6 @@ public class enterMonthlyListeners {
         } else {
             return "Error: Invalid Input";
         }
-
-        // System.out.println("New Value: ");
-        // int newValue = reader.nextInt();
 
         return execute(AID, attribute, 0);
     }

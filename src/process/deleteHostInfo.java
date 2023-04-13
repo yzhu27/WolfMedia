@@ -5,6 +5,10 @@ import java.util.Scanner;
 import util.*;
 import java.sql.*;
 
+/**
+ *  This Class used for executing the deleteHostInfo API operation by updating the PodcastHosts Table.
+ */
+
 public class deleteHostInfo {
 
 

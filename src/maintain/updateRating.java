@@ -45,7 +45,7 @@ public class updateRating {
 
         String sql =
             "UPDATE Podcasts " +
-            "SET %s = %.2f "  +
+            "SET %s = %.1f "  +
             "WHERE PID = %d " +
             ";"
         ;

@@ -5,6 +5,10 @@ import java.util.Scanner;
 import util.*;
 import java.sql.*;
 
+/**
+ *  This Class used for executing the enterAlbumInfo API operation by updating the Albums Table.
+ */
+
 public class enterAlbumInfo {
 
     public static String run(Scanner reader) throws SQLException{

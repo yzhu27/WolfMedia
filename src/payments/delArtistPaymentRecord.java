@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used to delete a payment record in ArtistPaymentRecords table.
+ */
+
 public class delArtistPaymentRecord {
 
     public static String execute(String PayDate, int ArtistID) {

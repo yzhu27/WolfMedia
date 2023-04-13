@@ -6,6 +6,10 @@ import java.sql.*;
 import util.*;
 import java.sql.*;
 
+/**
+ *  This Class used for executing the updateEpisodeInfo API operation by updating the PodcastEpisodes Table.
+ */
+
 public class updateEpisodeInfo {
 
         public static String execute(String sql) {

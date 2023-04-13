@@ -16,6 +16,8 @@ public class enterPlayCount {
         System.out.println("+-------------------------------------+");
         System.out.println("");
 
+        DBTablePrinter.printTable("Songs");
+
         System.out.println("SongID: ");
         int SongID = reader.nextInt();
         reader.nextLine();

@@ -4,7 +4,7 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
-public class findSongsGivenArtist {
+public class findSongsGivenArtistAndAlbum {
 
 
     public static String run(Scanner reader) throws SQLException{
@@ -24,21 +24,25 @@ public class findSongsGivenArtist {
         int AID = reader.nextInt();
         reader.nextLine();
 
+        System.out.println("Album ID: ");
+        int AlbumID = reader.nextInt();
+        reader.nextLine();
+
         String attribute = "ArtistID";
 
-        return execute(AID, attribute);
+        return execute(AID, AlbumID);
     }
 
-    public static String execute(int ID, String attribute) {
+    public static String execute(int AID, int AlbumID) {
 
         String sql =
             "SELECT * " +
             "FROM Songs "  +
-            "WHERE %s = %d " +
+            "WHERE ArtistID = %d AND AlbumID = %d" +
             ";"
         ;
 
-        sql = String.format(sql, attribute, ID);
+        sql = String.format(sql, AID, AlbumID);
         return queryExecuter.execute(sql);
     }
 }

@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 import util.*;
 
+/**
+ *  This Class used for executing the enterSongInfo API operation by updating the Songs Table.
+ */
 
 public class enterSongInfo {
 

@@ -5,6 +5,9 @@ import java.sql.*;
 
 import util.*;
 
+/**
+ * Class used for executing the assignSongToAlbum API operation by updating the Songs Table.
+ */
 
 public class assignSongToAlbum {
 

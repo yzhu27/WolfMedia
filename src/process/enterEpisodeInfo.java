@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 import util.*;
 
+/**
+ *  This Class used for executing the enterEpisodeInfo API operation by updating the PodcastEpisodes Table.
+ */
+
 
 public class enterEpisodeInfo {
     

@@ -4,7 +4,9 @@ import java.util.Scanner;
 import java.sql.*;
 
 import util.*;
-
+/**
+ * Class used for executing the assignHostToPodcast API operation by updating the Podcasts Table.
+ */
 
 public class assignHostToPodcast {
 

@@ -5,6 +5,11 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to add a revenue record in RevenueRecords table.
+ */
+
 public class addRevenueRecords {
 
     public static String execute(String RevDate, float RevAmount) {

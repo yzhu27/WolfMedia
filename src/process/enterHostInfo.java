@@ -5,6 +5,10 @@ import java.util.Scanner;
 import util.*;
 import java.sql.*;
 
+/**
+ *  This Class used for executing the enterHostInfo API operation by updating the PodcastHosts Table.
+ */
+
 public class enterHostInfo {
     
     public static String run(Scanner reader) throws SQLException{

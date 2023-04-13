@@ -4,6 +4,9 @@ import java.util.Scanner;
 import java.sql.*;
 import util.*;
 
+/**
+ * Class used for executing the deleteAlbumInfo API operation by updating the Albums Table.
+ */
 
 public class deleteAlbumInfo {
 

@@ -41,7 +41,7 @@ public class reportSongsGivenAlbum {
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		System.out.println("Artist ID: ");
+		System.out.println("Album ID: ");
 		int AlbumID = reader.nextInt();
 		reader.nextLine();
 
