@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used to display revenue records table.
+ */
+
 public class getRevenueRecords {
     public static String execute() {
 
