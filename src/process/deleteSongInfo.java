@@ -5,6 +5,10 @@ import java.util.Scanner;
 import util.*;
 import java.sql.*;
 
+/**
+ *  This Class used for executing the deleteSongInfo API operation by updating the Songs Table.
+ */
+
 public class deleteSongInfo {
 
 
