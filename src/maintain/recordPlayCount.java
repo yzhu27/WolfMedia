@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class is used to add a new song playcount record to the SongRecords table.
+ */
+
+
 public class recordPlayCount {
 
 
