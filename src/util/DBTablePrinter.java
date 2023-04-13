@@ -4,16 +4,16 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
+/**
+ * A utility class to print the contents of a SQL ResultSet or table.
+ */
 public class DBTablePrinter {
     
     /**
-     * Function used to neatly print the data in a ResultSet returned from the
-     * database. This is used in the "executeQuery" method above.
+     * Prints the contents of a given SQL ResultSet.
      *
-     * To accomplish this, the function scans through the columns and records
-     * of the ResultSet to determine the maximum length required for each field.
-     * It then uses these values to neatly print the field names and each record
-     * neatly in a table like fashion that is output directly to the console.
+     * @param rs the SQL ResultSet to print.
+     * @throws SQLException if an error occurs while accessing the ResultSet.
      */
     public static void printResultSet(ResultSet rs) throws  SQLException {
         String output = "\n";
@@ -64,6 +64,14 @@ public class DBTablePrinter {
         System.out.print(output);
     }
 
+    
+
+    /**
+     * Prints the contents of a given SQL table.
+     *
+     * @param tableName the name of the SQL table to print.
+     * @throws SQLException if an error occurs while accessing the table.
+     */
     public static void printTable(String tableName) throws  SQLException {
         String sql = String.format("SELECT * FROM " + tableName + ";");
 		queryExecuter.execute(sql);
