@@ -4,6 +4,11 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class is used to add new podcast record to the PpodcastRecords table.
+ */
+
 public class recordPodcast {
 
 
