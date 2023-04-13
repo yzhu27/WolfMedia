@@ -212,15 +212,7 @@ public class paymentForSong {
 
 
 
-    public static String execute(int SongID, float MonthlyRoyalties, int RLID, int ArtistID, int CollaboratorID, String PayDate) {
-        float paymentToRL = (float) (MonthlyRoyalties * 0.3);
-        float paymentToArtists = 0;
-        if (CollaboratorID == 0) {
-            paymentToArtists = (float) (MonthlyRoyalties * 0.7);
-        }
-        else {
-            paymentToArtists = (float) (MonthlyRoyalties * 0.7 / 2);
-        }
+    public static String execute(int SongID, int RLID, int ArtistID, int CollaboratorID, String PayDate, float paymentToRL, float paymentToArtists) {
 
         /* Execute Transaction via Connect and return result */
         try (Connection connection = connect()) {
@@ -298,7 +290,7 @@ public class paymentForSong {
                 }
                 /* ------------------------------------------------------------------ */
 
-                /* Statement 3 in Transaction (renew royalty_paid of the given song) */
+                /* Statement 4 in Transaction (renew royalty_paid of the given song) */
                 /* ------------------------------------------------------------------ */
                 String sql =
                         "UPDATE Songs SET RoyaltyPaid = 'yes' WHERE SongID = %d;"
@@ -378,6 +370,15 @@ public class paymentForSong {
 
         int CollaboratorID = findCollaboratorGivenSong(SongID);
 
-        return execute(SongID, MonthlyRoyalties, RLID, ArtistID, CollaboratorID, PayDate);
+        float paymentToRL = (float) (MonthlyRoyalties * 0.3);
+        float paymentToArtists = 0;
+        if (CollaboratorID == 0) {
+            paymentToArtists = (float) (MonthlyRoyalties * 0.7);
+        }
+        else {
+            paymentToArtists = (float) (MonthlyRoyalties * 0.7 / 2);
+        }
+
+        return execute(SongID, RLID, ArtistID, CollaboratorID, PayDate, paymentToRL, paymentToArtists);
     }
 }

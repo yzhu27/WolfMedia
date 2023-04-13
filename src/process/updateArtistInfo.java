@@ -36,7 +36,8 @@ public class updateArtistInfo {
                 "2. Artist status" + "\n" +
                 "3. Artist type (band/musician/composer)" + "\n" +
                 "4. Artist country" + "\n" +
-                "5. Artist primary genre"
+                "5. Artist primary genre" + "\n" +
+                "6. MonthlyListeners"
         );
         int choice = reader.nextInt();
         reader.nextLine();
@@ -52,7 +53,10 @@ public class updateArtistInfo {
             attribute = "ArtCountry";
         }else if(choice == 5){
             attribute = "PrimaryGenre";
-        }else {
+        }else if(choice == 6) {
+            attribute = "MonthlyListeners";
+        }
+        else {
             return "Error: Invalid Input";
         }
 
@@ -74,40 +78,30 @@ public class updateArtistInfo {
             }else {
                 return "Error: Invalid Input";
             }
-        }else {
+        } else {
             System.out.println("New Value: ");
             newValue = reader.nextLine();
-//            reader.next();
+
         }
 
         return execute(artistID, attribute, newValue);
 
-//        System.out.println("Attribute you want to update: ");
-//        String attributeName = reader.nextLine();
-//
-//        System.out.println("New attribute value: ");
-//
-//        String sql = "";
-//
-//        if(attributeName.equals("Name") || attributeName.equals("Status") || attributeName.equals("Type") || attributeName.equals("ArtCountry") || attributeName.equals("PrimaryGenre")){
-//            String updatedAttributeValue = reader.nextLine();
-//
-//            sql = "UPDATE Artists SET %s='%s' WHERE ArtistID = (%d);" + "\n" + "\n";
-//            sql = String.format(sql, attributeName, updatedAttributeValue, artistID);
-//
-//        } else if(attributeName.equals("MonthlyListeners") || attributeName.equals("RLID")){
-//            int updatedAttributeValue = reader.nextInt();
-//            reader.nextLine();
-//
-//            sql = "UPDATE Artists SET %s=%d WHERE ArtistID = (%d);" + "\n" + "\n";
-//            sql = String.format(sql, attributeName, updatedAttributeValue, artistID);
-//        }
-//
-//        return execute(sql);
     }
 
     public static String execute(int ID, String attribute, String newValue) {
 
+        if (attribute.equals("MonthlyListeners")){
+            int tmp = Integer.parseInt(newValue);
+            String sql =
+                    "UPDATE Artists " +
+                            "SET %s = %d "  +
+                            "WHERE ArtistID = %d " +
+                            ";"
+                    ;
+
+            sql = String.format(sql, attribute, tmp, ID);
+            return queryExecuter.execute(sql);
+        }
         String sql =
                 "UPDATE Artists " +
                         "SET %s = '%s' "  +
