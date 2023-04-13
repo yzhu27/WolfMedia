@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used for updating a revenue record in RevenueRecords table.
+ */
+
 public class updateRevenueRecords {
 
     public static String run(Scanner reader) throws SQLException{
