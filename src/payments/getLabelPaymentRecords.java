@@ -5,6 +5,12 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to display label payment records table.
+ */
+
+
 public class getLabelPaymentRecords {
     public static String execute() {
 
