@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used for updating a payment record in HostPaymentRecords table.
+ */
+
 public class updateHostPaymentRecords {
 
     public static String run(Scanner reader) throws SQLException{
