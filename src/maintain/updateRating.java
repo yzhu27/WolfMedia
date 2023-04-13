@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to update the Podcast rating in Podcasts table.
+ */
+
+
 public class updateRating {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
