@@ -1,18 +1,28 @@
 package config;
 
 /**
- * Initialize our DB by dropping the existing tables and creating them again.
+ * Initializing by dropping the existing tables and creating them again.
  *
  * The database is constructed using the following 3 steps in order:
- *	1) Drop all existing tables
- *	2) Create tables using schema definitions (with types, constrains, keys, etc.)
- *	3) Insert example data into tables (including DEMO data)
+ *  1) Drop all existing tables
+ *  2) Create tables using schema definitions (with types, constrains, keys, etc.)
+ *  3) Insert demo data into tables
  */
 import util.*;
 
 public class Init {
 
-    /* All the table/schema names included in our WolfPubDB implementation */
+    /**
+     * Main - entry point that drops the existing tables, defines the new ones,
+     * and populates them with the demo data.
+     */
+    public static void main(String[] args) {
+            dropTables();
+            createTables();
+            populateTables();
+    }
+
+    /* All the table/schema names included in WolfMedia */
     public static String[] tables = {
             "Users",
             "RecordLabels",
@@ -39,52 +49,36 @@ public class Init {
             "AppearIn",
     };
 
-
-    /**
-     * Main - entry point that drops the existing tables, defines the new ones,
-     * and populates them with the demo data.
-     */
-    public static void main(String[] args) {
-        dropTables();
-        createTables();
-        populateTables();
-    }
-
-
-
-    /* ################################################################################################################################################################# */
+    /* ###################################################################### */
     /* ********************************************************************** */
     /* *********************** Connect & Drop Tables ************************ */
     /* ********************************************************************** */
-    /* ################################################################################################################################################################# */
+    /* ###################################################################### */
 
 
     /**
-     * Function used to drop all the tables associated with the databse listed above.
+     * Function used to drop all the tables.
      */
     private static void dropTables() {
         for (String table : tables)
         {
             String sql = "DROP TABLE IF EXISTS " + table + ";";
-            // System.out.println(sql);
             queryExecuter.execute(sql);
         }
     }
 
 
 
-    /* ################################################################################################################################################################# */
+    /* ###################################################################### */
     /* ********************************************************************** */
     /* *************************** Table Creation *************************** */
     /* ********************************************************************** */
-    /* ################################################################################################################################################################# */
+    /* ###################################################################### */
 
 
     /**
      * Function that runs the sequence of SQL statements that define the shemas
-     * for all the tables in our WolfPubDB implementation. This includes all
-     * the key assignments and constraint checks associated with these tables
-     * and their fields.
+     * for all the tables in our WolfMedia implementation.
      */
     private static void createTables() {
 
@@ -400,17 +394,16 @@ public class Init {
     }
 
 
-    /* ################################################################################################################################################################# */
+    /* ###################################################################### */
     /* ********************************************************************** */
     /* ************************** Table Population ************************** */
     /* ********************************************************************** */
-    /* ################################################################################################################################################################# */
+    /* ###################################################################### */
 
 
     /**
      * Function that runs a sequence of SQL statements which populate our newly
-     * created databse schemas with demo data. Note that it is set up to leave
-     * the database in a consistent state (else it would fail).
+     * created databse schemas with demo data.
      */
     private static void populateTables() {
 

@@ -10,10 +10,20 @@ import payments.*;
 import process.*;
 import report.*;
 
+/**
+ * The Interface class represents a command-line interface for the WolfMedia
+ * database management system.
+ * It provides functionality to select a user and execute operations based on
+ * the user's role.
+ */
 public class Interface {
+    public static void main(String[] args) throws ParseException, SQLException {
+        Interface Interface = new Interface();
+        Interface.select_user();
+    }
 
     private Scanner sc = new Scanner(System.in);
-    // Information Processing + Maintaining metadata and records
+    // Maintaining metadata and records
     private static final String[] DataAdminOps = {
             "0. Logout",
             "1. Reset the number of listen count for a Podcast Episode to 0",
@@ -56,7 +66,7 @@ public class Interface {
             "38. assign an episode to podcast",
             "39. assign a host to podcast",
             "40. Display tables",
-        
+
     };
     // Maintaining payments
     private static final String[] AccountantOps = {
@@ -106,19 +116,24 @@ public class Interface {
     private int operation;
     private String[] validOperations;
 
-    public Interface(){
+    /**
+     * Creates an instance of the Interface class with default values for user,
+     * operation, and validOperations.
+     */
+    public Interface() {
         this.user = -1;
         this.operation = -1;
         this.validOperations = null;
     }
 
-    public static void main(String[] args) throws ParseException, SQLException {
-        Interface Interface = new Interface();
-        Interface.select_user();
-    }
-
+    /**
+     * Displays a menu to select a user and executes the corresponding operation.
+     * 
+     * @throws ParseException if an error occurs while parsing the user input
+     * @throws SQLException   if a database access error occurs
+     */
     public void select_user() throws ParseException, SQLException {
-        while (true){
+        while (true) {
 
             System.out.println("+--------------------------------------+");
             System.out.println("|       Welcome to WolfMedia DBMS      |");
@@ -142,14 +157,13 @@ public class Interface {
                         this.sc.close();
                         System.out.flush();
                         System.exit(1);
-                    }
-                    else if (1 <= this.user && this.user <= userOps.length) {
-                        this.validOperations = userOps[this.user-1];
+                    } else if (1 <= this.user && this.user <= userOps.length) {
+                        this.validOperations = userOps[this.user - 1];
                         positionInvalid = false;
                     } else {
                         System.out.print("Invalid Option; Please try again: ");
                     }
-                } catch(Exception e){
+                } catch (Exception e) {
                     System.out.print("Invalid Option; Please try again: ");
                 }
             }
@@ -158,6 +172,13 @@ public class Interface {
         }
     }
 
+    /**
+     * Allows the user to select an operation from a list of valid operations and
+     * execute it.
+     * 
+     * @throws ParseException if there is an error parsing the input.
+     * @throws SQLException   if there is an error executing the selected operation.
+     */
     public void select_operation() throws ParseException, SQLException {
         while (true) {
             System.out.print("\033\143");
@@ -168,7 +189,7 @@ public class Interface {
             System.out.println("");
             System.out.println("Available Operations");
             System.out.println("====================");
-            for (String s: this.validOperations){
+            for (String s : this.validOperations) {
                 System.out.println(s);
             }
             System.out.println("");
@@ -181,13 +202,12 @@ public class Interface {
                     this.operation = Integer.parseInt(this.sc.nextLine());
                     if (this.operation == 0) {
                         return;
-                    }
-                    else if (1 <= this.operation && this.operation <= this.validOperations.length-1) {
+                    } else if (1 <= this.operation && this.operation <= this.validOperations.length - 1) {
                         operationInvalid = false;
                     } else {
                         System.out.print("Invalid Option; Please try again: ");
                     }
-                } catch(Exception e){
+                } catch (Exception e) {
                     System.out.print("Invalid Option; Please try again: ");
                 }
             }
@@ -196,13 +216,21 @@ public class Interface {
         }
     }
 
+    /**
+     * 
+     * This method executes the selected operation based on the user type and the
+     * operation selected.
+     * 
+     * @throws ParseException if there is an error parsing the input
+     * @throws SQLException   if there is an error with the SQL database
+     */
     public void execute_operation() throws ParseException, SQLException {
         System.out.print("\033\143");
-        
+
         String result = "null";
 
-        if(this.user == 1){
-            switch(this.operation){
+        if (this.user == 1) {
+            switch (this.operation) {
                 case 1:
                     result = enterListeningCount.run(this.sc);
                     break;
@@ -326,8 +354,7 @@ public class Interface {
                 default:
                     return;
             }
-        }
-        else if (this.user == 2) {
+        } else if (this.user == 2) {
             switch (this.operation) {
                 case 1:
                     result = paymentForSong.run(this.sc);
@@ -389,8 +416,7 @@ public class Interface {
                 default:
                     return;
             }
-        }
-        else if (this.user == 3) {
+        } else if (this.user == 3) {
             switch (this.operation) {
                 case 1:
                     result = calTotalPaymentsToArtistPerGivenTimePeriod.run(this.sc);
@@ -429,7 +455,6 @@ public class Interface {
                     return;
             }
         }
-
 
         if (result.substring(0, 7).equalsIgnoreCase("success")) {
             System.out.println("API Status: Success");

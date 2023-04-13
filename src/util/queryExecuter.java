@@ -43,6 +43,7 @@ public class queryExecuter {
             } finally {
                 if (connection != null) {
                     try {
+                        // if connection exist and execution finished, close the connection.
                         connection.close();
                     } catch (SQLException error) {
                         return "Close JDBC connection failed.\n" + error;
