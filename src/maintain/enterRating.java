@@ -4,6 +4,11 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to reset podcast rating to zero.
+ */
+
 public class enterRating {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
