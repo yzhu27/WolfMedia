@@ -4,11 +4,11 @@ import java.util.Scanner;
 import java.sql.*;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class assignSongToAlbum {
 
-    public static Result execute(String sql) {
+    public static String execute(String sql) {
         return queryExecuter.execute(sql);
     }
 
@@ -17,7 +17,7 @@ public class assignSongToAlbum {
         queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|           Song Details            |");
         System.out.println("+------------------------------------+");

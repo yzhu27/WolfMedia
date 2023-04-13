@@ -1,11 +1,11 @@
 package maintain;
 
 import util.queryExecuter;
-import config.Result;
+
 import java.util.Scanner;
 
 public class recordPlayCount {
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -25,7 +25,7 @@ public class recordPlayCount {
 
         return execute(SRDate, SID, SRPlaycount);
     }
-    public static Result execute(String PayDate, int SID, int Playcount) {
+    public static String execute(String PayDate, int SID, int Playcount) {
 
         String sql =
             "INSERT INTO SongRecords VALUES " +

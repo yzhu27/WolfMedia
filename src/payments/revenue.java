@@ -1,7 +1,7 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 import java.sql.*;
@@ -49,7 +49,7 @@ public class revenue {
         return MonthlyRevenue;
     }
 
-    public static Result execute(float MonthlyRevenue, String RevDate) {
+    public static String execute(float MonthlyRevenue, String RevDate) {
 
         String sql =
                 "INSERT INTO RevenueRecords VALUES " +
@@ -66,7 +66,7 @@ public class revenue {
         queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|        RevenueRecords Details      |");
         System.out.println("+------------------------------------+");

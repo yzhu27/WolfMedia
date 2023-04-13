@@ -1,12 +1,12 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 public class delRevenueRecord {
 
-    public static Result execute(String RevDate) {
+    public static String execute(String RevDate) {
 
         String sql =
                 "DELETE FROM RevenueRecords WHERE RevDate = '%s';";
@@ -15,7 +15,7 @@ public class delRevenueRecord {
         return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");

@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class deletePodcastInfo {
 
@@ -13,9 +13,9 @@ public class deletePodcastInfo {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int podcastID) {
+    public static String execute(int podcastID) {
 
-        Result result = null;
+        String result = null;
 
         String sql = 
 			"DELETE FROM Podcasts WHERE PID = %d"  + "\n" + "\t" +
@@ -34,7 +34,7 @@ public class deletePodcastInfo {
 
 
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Podcast Details               |");

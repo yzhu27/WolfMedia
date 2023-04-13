@@ -1,12 +1,12 @@
 package maintain;
 
 import util.queryExecuter;
-import config.Result;
+
 import java.util.Scanner;
 
 
 public class getTables {
-    public static Result execute(String name) {
+    public static String execute(String name) {
 
         String sql =
                 "SELECT * FROM " + name + ";";
@@ -14,7 +14,7 @@ public class getTables {
         return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("Select tables to display:" + "\n" +
                 "1. PodcastEpisodes" + "\n" +
                 "2. Artists" + "\n" +
@@ -60,7 +60,7 @@ public class getTables {
         }else if(choice == 11){
             name = "Collaborate";}
         else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         return execute(name);

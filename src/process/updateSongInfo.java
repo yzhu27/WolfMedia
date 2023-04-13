@@ -4,12 +4,12 @@ import java.util.Scanner;
 import java.sql.*;
 
 import util.queryExecuter;
-import config.Result;
+
 import maintain.getTables;
 
 public class updateSongInfo {
 
-    public static Result execute(String sql) {
+    public static String execute(String sql) {
         return queryExecuter.execute(sql);
     }
 
@@ -18,7 +18,7 @@ public class updateSongInfo {
         queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|           Song Details            |");
         System.out.println("+------------------------------------+");
@@ -75,7 +75,7 @@ public class updateSongInfo {
         }else if(choice == 11) {
             attribute = "TrackNumber";
         }else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         System.out.println("New Value: ");
@@ -113,7 +113,7 @@ public class updateSongInfo {
 //
 //        return execute(sql);
     }
-    public static Result execute(int ID, String attribute, String newValue) {
+    public static String execute(int ID, String attribute, String newValue) {
 
         String sql;
 

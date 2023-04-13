@@ -2,7 +2,7 @@ package report;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class MonthlyPlayCountPerSong {
     public static void showDetails(String tableName){
@@ -10,7 +10,7 @@ public class MonthlyPlayCountPerSong {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int SongID) {
+    public static String execute(int SongID) {
 
 		String sql = 
 			"SELECT Playcount FROM Songs WHERE SongID=%d;"
@@ -21,7 +21,7 @@ public class MonthlyPlayCountPerSong {
 		return queryExecuter.execute(sql);
 	}
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
 		System.out.println("|             Song Details           |");
 		System.out.println("+------------------------------------+");

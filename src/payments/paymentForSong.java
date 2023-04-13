@@ -1,7 +1,7 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 import config.Transaction;
 
 
@@ -173,7 +173,7 @@ public class paymentForSong {
         queryExecuter.execute(sql);
     }
 
-    public static Result execute(int SongID, float MonthlyRoyalties, int RLID, int ArtistID, int CollaboratorID, String PayDate) {
+    public static String execute(int SongID, float MonthlyRoyalties, int RLID, int ArtistID, int CollaboratorID, String PayDate) {
         float paymentToRL = (float) (MonthlyRoyalties * 0.3);
         float paymentToArtists = 0;
         if (CollaboratorID == 0) {
@@ -231,7 +231,7 @@ public class paymentForSong {
         return Connect.executeTransaction(transaction);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|            Songs Details           |");
         System.out.println("+------------------------------------+");

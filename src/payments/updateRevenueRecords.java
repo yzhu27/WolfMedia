@@ -1,13 +1,13 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 
 public class updateRevenueRecords {
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -24,7 +24,7 @@ public class updateRevenueRecords {
         return execute(RevDate, RevAmount);
     }
 
-    public static Result execute(String RevDate, float RevAmount) {
+    public static String execute(String RevDate, float RevAmount) {
 
         String sql =
                 "UPDATE RevenueRecords " +

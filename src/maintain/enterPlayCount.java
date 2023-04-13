@@ -1,7 +1,7 @@
 package maintain;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 
 public class enterPlayCount {    
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+-------------------------------------+");
         System.out.println("| Reset the play count of a song to 0 |");
         System.out.println("+-------------------------------------+");
@@ -30,7 +30,7 @@ public class enterPlayCount {
         if (choice == 1){
             attribute = "Playcount";
         } else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         // System.out.println("New Value: ");
@@ -39,7 +39,7 @@ public class enterPlayCount {
         return execute(SongID, attribute, 0);
     }
 
-    public static Result execute(int SongID, String attribute, int newValue) {
+    public static String execute(int SongID, String attribute, int newValue) {
 
         String sql =
             "UPDATE Songs " +

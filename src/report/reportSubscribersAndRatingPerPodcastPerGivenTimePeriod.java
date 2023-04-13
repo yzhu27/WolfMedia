@@ -2,7 +2,7 @@ package report;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class reportSubscribersAndRatingPerPodcastPerGivenTimePeriod {
     public static void showDetails(String tableName){
@@ -10,7 +10,7 @@ public class reportSubscribersAndRatingPerPodcastPerGivenTimePeriod {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int PID, String startDate, String endDate) {
+    public static String execute(int PID, String startDate, String endDate) {
 
 		String sql = 
             "SELECT PRSubscribers,PRRating FROM PodcastRecords " + "\n" +
@@ -23,7 +23,7 @@ public class reportSubscribersAndRatingPerPodcastPerGivenTimePeriod {
 		return queryExecuter.execute(sql);
 	}
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
 		System.out.println("|           Podcasts Details         |");
 		System.out.println("+------------------------------------+");

@@ -2,15 +2,13 @@ package util;
 
 import java.sql.*;
 
-import config.Result;
 
 public class queryExecuter {
-    public static Result execute(String sql) {
+    public static String execute(String sql) {
         boolean isQuery = false;
         if (sql.substring(0, 6).equalsIgnoreCase("select")) {
             isQuery = true;
         }
-
         try (Connection connection = DBConnector.connect()) {
 
             try (Statement statement = connection.createStatement()) {
@@ -25,17 +23,23 @@ public class queryExecuter {
                     statement.executeUpdate(sql);
                 }
             } catch (SQLException error) {
-                return new Result(false, "Problem Executing SQL Query");
+                return "Error: Problem Executing SQL Query";
+            } finally {
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException error) {
+                        return "Close JDBC connection failed.\n"+error;
+                    }
+                }
             }
 
-        } catch (ClassNotFoundException | SQLException e) {
-
-            String errorMsg = "Unable to Connect Database";
-            return new Result(false, errorMsg);
+        } catch (ClassNotFoundException | SQLException error) {
+            return "Unable to Connect Database\n"+error;
 
         }
 
-        return new Result(true, "");
+        return "success";
     }
 
     

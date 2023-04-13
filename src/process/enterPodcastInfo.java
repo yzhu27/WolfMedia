@@ -3,11 +3,11 @@ package process;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class enterPodcastInfo {
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -45,7 +45,7 @@ public class enterPodcastInfo {
         return execute(podcastID, name, language, country, rating, subscribers, episodeCount, phID);   
     }
 
-    public static Result execute(int podcastID, String name, String language, String country, float rating, int subscribers, int episodeCount, int phID) {
+    public static String execute(int podcastID, String name, String language, String country, float rating, int subscribers, int episodeCount, int phID) {
         
         String sql = 
             "INSERT INTO Podcasts VALUES "  + "\n" + "\t" +

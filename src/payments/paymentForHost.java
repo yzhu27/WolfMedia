@@ -1,7 +1,7 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -118,7 +118,7 @@ public class paymentForHost {
     }
 
 
-    public static Result execute(int PHID, float PayAmount, String PayDate) {
+    public static String execute(int PHID, float PayAmount, String PayDate) {
 
         String sql =
                 "INSERT INTO HostPaymentRecords VALUES " +
@@ -130,7 +130,7 @@ public class paymentForHost {
         return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) throws ParseException {
+    public static String run(Scanner reader) throws ParseException {
         System.out.println("+------------------------------------+");
         System.out.println("|     HostPaymentRecords Details     |");
         System.out.println("+------------------------------------+");

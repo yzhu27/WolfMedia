@@ -2,7 +2,7 @@ package report;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 import util.queryExecuter;
 
 public class reportEpisodesGivenPodcast {
@@ -11,7 +11,7 @@ public class reportEpisodesGivenPodcast {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int PID) {
+    public static String execute(int PID) {
 
 		String sql = 
 			"SELECT * FROM PodcastEpisodes WHERE PID=%d;"
@@ -22,7 +22,7 @@ public class reportEpisodesGivenPodcast {
 		return queryExecuter.execute(sql);
 	}
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
 		System.out.println("|           Podcasts Details         |");
 		System.out.println("+------------------------------------+");

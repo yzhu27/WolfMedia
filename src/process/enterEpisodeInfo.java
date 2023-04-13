@@ -4,11 +4,11 @@ import java.sql.*;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class enterEpisodeInfo {
     
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -42,7 +42,7 @@ public class enterEpisodeInfo {
         return execute(peID, pID, peTitle, peDuration, peReleaseDate, listenerCount, adCount);
     }
 
-    public static Result execute(int peID, int pID, String peTitle, String peDuration, String peReleaseDate, int listenerCount, int adCount) {
+    public static String execute(int peID, int pID, String peTitle, String peDuration, String peReleaseDate, int listenerCount, int adCount) {
         String sql = "INSERT INTO PodcastEpisodes (PEID, PID, PETitle, PEDuration, PEReleaseDate, ListenerCount, AdCount) VALUES (%d, %d, '%s', '%s', '%s', %d, %d);";
 
         sql = String.format(sql, peID, pID, peTitle, peDuration, peReleaseDate, listenerCount, adCount);

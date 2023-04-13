@@ -1,13 +1,13 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 
 public class addArtistPaymentRecord {
 
-    public static Result execute(String PayDate, int ArtistID, float paymentToArtists) {
+    public static String execute(String PayDate, int ArtistID, float paymentToArtists) {
 
         String sql =
                 "INSERT INTO ArtistPaymentRecords VALUES " +
@@ -19,7 +19,7 @@ public class addArtistPaymentRecord {
         return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");

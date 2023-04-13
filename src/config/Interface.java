@@ -195,7 +195,7 @@ public class Interface {
     public void execute_operation() throws ParseException {
         System.out.print("\033\143");
 
-        Result result = null;
+        String result = "null";
 
         if(this.position == 1){
             switch(this.operation){
@@ -412,11 +412,11 @@ public class Interface {
         }
 
 
-        if (result.success) {
+        if (result.substring(0, 7).equalsIgnoreCase("success")) {
             System.out.println("API Status: Success");
         } else {
             System.out.println("API Status: Failure");
-            System.out.println("\tError: " + result.errorMessage);
+            System.out.println(result);
         }
         System.out.println("");
 

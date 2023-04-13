@@ -1,13 +1,13 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 
 public class getHostPaymentRecords {
 
-    public static Result execute() {
+    public static String execute() {
 
         String sql =
                 "SELECT * FROM HostPaymentRecords;";
@@ -15,7 +15,7 @@ public class getHostPaymentRecords {
         return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|      HostPaymentRecords Details    |");
         System.out.println("+------------------------------------+");

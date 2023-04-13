@@ -3,11 +3,11 @@ package process;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class enterArtistInfo {
 
-	public static Result run(Scanner reader) {
+	public static String run(Scanner reader) {
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
@@ -43,7 +43,7 @@ public class enterArtistInfo {
 		return execute(artistID, name, status, type, artCountry, monthlyListeners, primaryGenre, rlID);	
 	}
 
-	public static Result execute(int artistID, String name, String status, String type, String artCountry, int monthlyListeners, String primaryGenre, int rlID) {
+	public static String execute(int artistID, String name, String status, String type, String artCountry, int monthlyListeners, String primaryGenre, int rlID) {
 		
 		String sql = 
 			"INSERT INTO Artists VALUES "  + "\n" + "\t" +

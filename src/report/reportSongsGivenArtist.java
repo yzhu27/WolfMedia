@@ -2,7 +2,7 @@ package report;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class reportSongsGivenArtist {
     public static void showDetails(String tableName){
@@ -10,7 +10,7 @@ public class reportSongsGivenArtist {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int ArtistID) {
+    public static String execute(int ArtistID) {
 
 		String sql = 
 			"SELECT * FROM Songs WHERE ArtistID=%d;"
@@ -21,7 +21,7 @@ public class reportSongsGivenArtist {
 		return queryExecuter.execute(sql);
 	}
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
 		System.out.println("|           Artist Details           |");
 		System.out.println("+------------------------------------+");

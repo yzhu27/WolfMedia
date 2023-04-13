@@ -1,13 +1,13 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 
 public class updateHostPaymentRecords {
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -34,7 +34,7 @@ public class updateHostPaymentRecords {
         } else if (choice == 2){
             attribute = "PayAmount";
         } else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         System.out.println("New Value: ");
@@ -43,7 +43,7 @@ public class updateHostPaymentRecords {
         return execute(PHID, attribute, PayDate, newValue);
     }
 
-    public static Result execute(int PHID, String attribute, String PayDate, String newValue) {
+    public static String execute(int PHID, String attribute, String PayDate, String newValue) {
 
         if (attribute == "PayDate"){
             String sql =

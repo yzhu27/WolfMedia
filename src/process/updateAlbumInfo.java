@@ -4,11 +4,11 @@ import java.util.Scanner;
 import java.sql.*;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class updateAlbumInfo {
 
-//    public static Result execute(String sql) {
+//    public static String execute(String sql) {
 //        return queryExecuter.execute(sql);
 //    }
 //
@@ -18,7 +18,7 @@ public class updateAlbumInfo {
         queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|          Album Details            |");
         System.out.println("+------------------------------------+");
@@ -48,7 +48,7 @@ public class updateAlbumInfo {
         }else if(choice == 2){
             attribute = "Edition";
         }else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         System.out.println("New Value: ");
@@ -80,7 +80,7 @@ public class updateAlbumInfo {
 //
 //        return execute(sql);
     }
-    public static Result execute(int ID, String attribute, String newValue) {
+    public static String execute(int ID, String attribute, String newValue) {
 
         String sql =
                 "UPDATE Albums " +

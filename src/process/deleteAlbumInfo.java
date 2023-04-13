@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class deleteAlbumInfo {
 
@@ -13,9 +13,9 @@ public class deleteAlbumInfo {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int albumID) {
+    public static String execute(int albumID) {
 
-        Result result = null;
+        String result = null;
 
         String sql = "DELETE FROM Albums WHERE AlbumID = %d;";
         
@@ -30,7 +30,7 @@ public class deleteAlbumInfo {
 
 
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Album Details               |");

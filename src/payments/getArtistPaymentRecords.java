@@ -1,13 +1,13 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 
 public class getArtistPaymentRecords {
 
-    public static Result execute() {
+    public static String execute() {
 
         String sql =
                 "SELECT * FROM ArtistPaymentRecords;";
@@ -15,7 +15,7 @@ public class getArtistPaymentRecords {
         return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("|     ArtistPaymentRecords Details   |");
         System.out.println("+------------------------------------+");

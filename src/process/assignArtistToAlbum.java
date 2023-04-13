@@ -4,14 +4,14 @@ import java.util.Scanner;
 import java.sql.*;
 
 import util.queryExecuter;
-import config.Result;
+
 
 /**
  * Class used for executing the assignArtistToAlbum API operation.
  */
 public class assignArtistToAlbum {
 
-	public static Result run(Scanner reader) {
+	public static String run(Scanner reader) {
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
 		System.out.println("+------------------------------------+");
@@ -28,7 +28,7 @@ public class assignArtistToAlbum {
 		return execute(artistID, albumID);	
 	}
 
-	public static Result execute(int artistID, int albumID) {
+	public static String execute(int artistID, int albumID) {
 		
 		String sql = 
 			"INSERT INTO Make VALUES "  + "\n" + "\t" +

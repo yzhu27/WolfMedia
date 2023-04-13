@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class deleteSongInfo {
 
@@ -13,9 +13,9 @@ public class deleteSongInfo {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int songID) {
+    public static String execute(int songID) {
 
-        Result result = null;
+        String result = null;
 
         String sql = 
 			"DELETE FROM Songs WHERE SongID = %d"  + "\n" + "\t" +
@@ -34,7 +34,7 @@ public class deleteSongInfo {
 
 
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Song Details               |");

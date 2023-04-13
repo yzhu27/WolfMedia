@@ -1,13 +1,13 @@
 package payments;
 
 import util.queryExecuter;
-import config.Result;
+
 
 import java.util.Scanner;
 
 public class delLabelPaymentRecord {
 
-    public static Result execute(String PayDate, int LabelID) {
+    public static String execute(String PayDate, int LabelID) {
 
         String sql =
                 "DELETE FROM LabelPaymentRecords WHERE PayDate = '%s' AND LabelID = %d;";
@@ -17,7 +17,7 @@ public class delLabelPaymentRecord {
         return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");

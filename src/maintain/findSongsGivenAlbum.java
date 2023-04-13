@@ -1,11 +1,11 @@
 package maintain;
 
 import util.queryExecuter;
-import config.Result;
+
 import java.util.Scanner;
 
 public class findSongsGivenAlbum {
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -20,7 +20,7 @@ public class findSongsGivenAlbum {
         return execute(AlID, attribute);
     }
 
-    public static Result execute(int ID, String attribute) {
+    public static String execute(int ID, String attribute) {
 
         String sql =
             "SELECT * " +

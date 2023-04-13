@@ -1,11 +1,11 @@
 package maintain;
 
 import util.queryExecuter;
-import config.Result;
+
 import java.util.Scanner;
 
 public class updateListeningCount {
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -29,7 +29,7 @@ public class updateListeningCount {
         if (choice == 1){
             attribute = "ListenerCount";
         } else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         System.out.println("New Value: ");
@@ -39,7 +39,7 @@ public class updateListeningCount {
         return execute(PID, PEID, attribute, newValue);
     }
 
-    public static Result execute(int ID, int ID2, String attribute, int newValue) {
+    public static String execute(int ID, int ID2, String attribute, int newValue) {
 
         String sql =
             "UPDATE PodcastEpisodes " +

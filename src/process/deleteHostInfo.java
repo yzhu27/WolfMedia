@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 
 public class deleteHostInfo {
 
@@ -13,9 +13,9 @@ public class deleteHostInfo {
 		queryExecuter.execute(sql);
     }
 
-    public static Result execute(int hostID) {
+    public static String execute(int hostID) {
 
-        Result result = null;
+        String result = null;
 
         String sql = 
 			"DELETE FROM PodcastHosts WHERE PHID = %d;";
@@ -26,7 +26,7 @@ public class deleteHostInfo {
 		return queryExecuter.execute(sql);
 	}
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Podcast Host Details       |");

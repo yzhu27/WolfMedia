@@ -2,9 +2,9 @@ package report;
 import java.util.Scanner;
 
 import util.queryExecuter;
-import config.Result;
+
 public class calTotalRevenue {
-    public static Result execute(String startDate, String endDate) {
+    public static String execute(String startDate, String endDate) {
 
 
 		String sql = 
@@ -19,7 +19,7 @@ public class calTotalRevenue {
 
 
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
