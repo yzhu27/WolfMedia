@@ -42,6 +42,13 @@ public class updateAlbumInfo {
         String newEdition = reader.nextLine();
 
         return execute(albumID, newName, newEdition);
+        
+        System.out.println("+------------------------------------+");
+        System.out.println("|          Album Details            |");
+        System.out.println("+------------------------------------+");
+        System.out.println("");
+
+        DBTablePrinter.printTable("Albums");
 
     }
     public static String execute(int ID, String newName, String newEdition) {
