@@ -6,7 +6,11 @@ import java.sql.*;
 import java.util.Scanner;
 
 /**
- * Class used for executing the enterPlayCount API operation.
+
+/**
+ *  This Class used to reset Playcount to zero.
+ */
+
  */
 
 public class enterPlayCount {    
