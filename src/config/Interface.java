@@ -62,7 +62,7 @@ public class Interface {
             "0. Logout",
             "1. Payment For Song",
             "2. Payment For Host",
-            "3. Receive Payment From Subscribers",
+            "3. Receive Revenue",
             "4. Get Artist Payment Records",
             "5. Get Host Payment Records",
             "6. Get Record Label Payment Records",
@@ -87,16 +87,16 @@ public class Interface {
             "2. Calculate Total Payment To Host",
             "3. Calculate Total Payment To Label",
             "4. Calculate Total Revenue",
-            "5. Report Monthly Play Count By Album",
-            "6. Report Monthly Play Count By Artist",
-            "7. Report Monthly Play Count By Song",
-            "8. Report Episodes By Given Podcast",
-            "9. Report Songs By Given Album",
-            "10. Report Songs By Given Artist",
-            "11. Report Subscribers And Ratings",
-            "12. Calculate Total Revenue During Given Year",
-            "13. Calculate Total Revenue During Given Month",
-
+            "5. Report Current Monthly Play Count By Album",
+            "6. Report Current Monthly Play Count By Artist",
+            "7. Report Current Monthly Play Count By Song",
+            "8. Report Previous Monthly Play Count By Album",
+            "9. Report Previous Monthly Play Count By Artist",
+            "10. Report Previous Monthly Play Count By Song",
+            "11. Report Episodes By Given Podcast",
+            "12. Report Songs By Given Album",
+            "13. Report Songs By Given Artist",
+            "14. Report Subscribers And Ratings",
     };
     private static final String[][] userOps = {
             DataAdminOps,
@@ -404,31 +404,34 @@ public class Interface {
                     result = calTotalRevenue.run(this.sc);
                     break;
                 case 5:
-                    result = MonthlyPlayCountPerAlbum.run(this.sc);
+                    result = currMonthlyPlayCountPerAlbum.run(this.sc);
                     break;
                 case 6:
-                    result = MonthlyPlayCountPerArtist.run(this.sc);
+                    result = currMonthlyPlayCountPerArtist.run(this.sc);
                     break;
                 case 7:
-                    result = MonthlyPlayCountPerSong.run(this.sc);
+                    result = currMonthlyPlayCountPerSong.run(this.sc);
                     break;
                 case 8:
-                    result = reportEpisodesGivenPodcast.run(this.sc);
+                    result = prevMonthlyPlayCountPerAlbum.run(this.sc);
                     break;
                 case 9:
-                    result = reportSongsGivenAlbum.run(this.sc);
+                    result = prevMonthlyPlayCountPerArtist.run(this.sc);
                     break;
                 case 10:
-                    result = reportSongsGivenArtist.run(this.sc);
+                    result = prevMonthlyPlayCountPerSong.run(this.sc);
                     break;
                 case 11:
-                    result = reportSubscribersAndRatingPerPodcastPerGivenTimePeriod.run(this.sc);
+                    result = reportEpisodesGivenPodcast.run(this.sc);
                     break;
                 case 12:
-                    result = calTotalRevenuePerYear.run(this.sc);
+                    result = reportSongsGivenAlbum.run(this.sc);
                     break;
                 case 13:
-                    result = calTotalRevenuePerMonth.run(this.sc);
+                    result = reportSongsGivenArtist.run(this.sc);
+                    break;
+                case 14:
+                    result = reportSubscribersAndRatingPerPodcastPerGivenTimePeriod.run(this.sc);
                     break;
                 default:
                     return;
