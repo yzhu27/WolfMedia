@@ -85,6 +85,13 @@ public class updateArtistInfo {
         }
 
         return execute(artistID, attribute, newValue);
+        
+        System.out.println("+------------------------------------+");
+        System.out.println("|         Artist Details             |");
+        System.out.println("+------------------------------------+");
+        System.out.println("");
+
+        DBTablePrinter.printTable("Artists");
 
     }
 
