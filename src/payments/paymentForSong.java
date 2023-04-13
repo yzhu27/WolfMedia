@@ -57,6 +57,49 @@ public class paymentForSong {
         return MonthlyRoyalties;
     }
 
+    public static boolean checkNoDuplicate(String table, int ID, String Paydate){
+
+        int flag = 0;
+        String id = "LabelID";
+
+        ResultSet resultSet = null;
+        if (table.equals("ArtistPaymentRecords")){
+            id = "ArtistID";
+        }
+        String sql = "SELECT COUNT(*) AS COUNT " +
+                "FROM %s " +
+                "WHERE %s = %d AND PayDate = '%s';";
+
+        sql = String.format(sql, table, id, ID, Paydate);
+
+        try (Connection connection = connect()) {
+
+            try (Statement statement = connection.createStatement()) {
+
+                resultSet = statement.executeQuery(sql);
+
+                while(resultSet.next()){
+                    flag = resultSet.getInt("COUNT");
+                }
+
+            } catch (SQLException error) {
+                return false;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+
+            String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
+            System.err.println(errorMsg);
+            return false;
+
+        }
+        if (flag == 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     public static int findRecordLabelGivenSong(int SongID){
 
         ResultSet resultSet = null;
@@ -180,52 +223,117 @@ public class paymentForSong {
             paymentToArtists = (float) (MonthlyRoyalties * 0.7 / 2);
         }
 
-        Transaction transaction = new Transaction();
-
-        /* Statement 1 in Transaction (add payment record to LabelPaymentRecords Table) */
-        /* ------------------------------------------------------------------ */
-        String sql =
-                "INSERT INTO LabelPaymentRecords VALUES " +
-                        "('%s', %d, %.2f)" +
-                        ";"
-                ;
-        sql = String.format(sql, PayDate, RLID, paymentToRL);
-        transaction.addStatement(sql, Transaction.StatementType.UPDATE);
-        /* ------------------------------------------------------------------ */
-
-        /* Statement 2 in Transaction (add payment record to ArtistPaymentRecords Table) */
-        /* ------------------------------------------------------------------ */
-        if (CollaboratorID == 0) {
-            sql =
-                    "INSERT INTO ArtistPaymentRecords VALUES " +
-                            "('%s', %d, %.2f);"
-            ;
-            sql = String.format(sql, PayDate, ArtistID, paymentToArtists, PayDate, CollaboratorID, paymentToArtists);
-        }
-        else {
-            sql =
-                    "INSERT INTO ArtistPaymentRecords VALUES " +
-                            "('%s', %d, %.2f), " +
-                            "('%s', %d, %.2f)" +
-                            ";"
-            ;
-            sql = String.format(sql, PayDate, ArtistID, paymentToArtists, PayDate, CollaboratorID, paymentToArtists);
-        }
-
-        transaction.addStatement(sql, Transaction.StatementType.UPDATE);
-        /* ------------------------------------------------------------------ */
-
-        /* Statement 3 in Transaction (renew royalty_paid of the given song) */
-        /* ------------------------------------------------------------------ */
-        sql =
-                "UPDATE Songs SET RoyaltyPaid = 'yes' WHERE SongID = %d;"
-                ;
-        sql = String.format(sql, SongID);
-        transaction.addStatement(sql, Transaction.StatementType.UPDATE);
-        /* ------------------------------------------------------------------ */
-
         /* Execute Transaction via Connect and return result */
-        return Connect.executeTransaction(transaction);
+        try (Connection connection = connect()) {
+
+            /* set auto commit to false - i.e. run statements as single transaction */
+            connection.setAutoCommit(false);
+
+            try (Statement statement = connection.createStatement()) {
+                /* execute each query and update statement in the transaction */
+
+                /* Statement 1 in Transaction (add payment record to LabelPaymentRecords Table) */
+                /* ------------------------------------------------------------------ */
+                if (checkNoDuplicate("LabelPaymentRecords", RLID, PayDate)){
+                    String sql =
+                            "INSERT INTO LabelPaymentRecords VALUES " +
+                                    "('%s', %d, %.2f)" +
+                                    ";"
+                            ;
+                    sql = String.format(sql, PayDate, RLID, paymentToRL);
+                    statement.executeUpdate(sql);
+                } else {
+                    String sql =
+                            "UPDATE LabelPaymentRecords " +
+                                    "SET PayAmount = PayAmount + %.2f "  +
+                                    "WHERE PayDate = '%s' AND LabelID = %d;";
+
+                    sql = String.format(sql, paymentToRL, PayDate, RLID);
+                    statement.executeUpdate(sql);
+                }
+
+                /* ------------------------------------------------------------------ */
+
+                /* Statement 2 in Transaction (add payment record of Artist to ArtistPaymentRecords Table) */
+                /* ------------------------------------------------------------------ */
+
+                if (checkNoDuplicate("ArtistPaymentRecords", ArtistID, PayDate)){
+                    String sql =
+                            "INSERT INTO ArtistPaymentRecords VALUES " +
+                                    "('%s', %d, %.2f)" +
+                                    ";"
+                            ;
+                    sql = String.format(sql, PayDate, ArtistID, paymentToArtists);
+                    statement.executeUpdate(sql);
+                } else {
+                    String sql =
+                            "UPDATE ArtistPaymentRecords " +
+                                    "SET PayAmount = PayAmount + %.2f "  +
+                                    "WHERE PayDate = '%s' AND ArtistID = %d;";
+
+                    sql = String.format(sql, paymentToArtists, PayDate, ArtistID);
+                    statement.executeUpdate(sql);
+                }
+                /* ------------------------------------------------------------------ */
+
+                /* Statement 3 in Transaction (add payment record of Collaborator to ArtistPaymentRecords Table) */
+                /* ------------------------------------------------------------------ */
+                if (CollaboratorID != 0) {
+                    if (checkNoDuplicate("ArtistPaymentRecords", CollaboratorID, PayDate)){
+                        String sql =
+                                "INSERT INTO ArtistPaymentRecords VALUES " +
+                                        "('%s', %d, %.2f)" +
+                                        ";"
+                                ;
+                        sql = String.format(sql, PayDate, CollaboratorID, paymentToArtists);
+                        statement.executeUpdate(sql);
+                    } else {
+                        String sql =
+                                "UPDATE ArtistPaymentRecords " +
+                                        "SET PayAmount = PayAmount + %.2f "  +
+                                        "WHERE PayDate = '%s' AND ArtistID = %d;";
+
+                        sql = String.format(sql, paymentToArtists, PayDate, CollaboratorID);
+                        statement.executeUpdate(sql);
+                    }
+                }
+                /* ------------------------------------------------------------------ */
+
+                /* Statement 3 in Transaction (renew royalty_paid of the given song) */
+                /* ------------------------------------------------------------------ */
+                String sql =
+                        "UPDATE Songs SET RoyaltyPaid = 'yes' WHERE SongID = %d;"
+                ;
+                sql = String.format(sql, SongID);
+                statement.executeUpdate(sql);
+                /* ------------------------------------------------------------------ */
+
+                /* commit the executed statements */
+                connection.commit();
+
+            } catch (SQLException error) {
+
+                /* rollback the transaction if anything should fail to commit */
+                connection.rollback();
+
+                return new Result(false, "Problem Executing Transaction");
+
+            } finally {
+
+                /* set auto commit back to true (just in case, even though connection closes automatically) */
+                connection.setAutoCommit(true);
+
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+
+            String errorMsg = "Unable to Connect Using jdbcURL: " + jdbcURL;
+            return new Result(false, errorMsg);
+
+        }
+
+        return new Result(true, "");
+
     }
 
     public static String run(Scanner reader) throws SQLException{
