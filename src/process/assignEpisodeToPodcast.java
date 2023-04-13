@@ -6,6 +6,10 @@ import java.sql.*;
 import util.*;
 
 
+/**
+ * Class used for executing the assignEpisodeToPodcast API operation by updating the PodcastEpisodes Table.
+ */
+
 public class assignEpisodeToPodcast {
 
     public static String execute(String sql) {
