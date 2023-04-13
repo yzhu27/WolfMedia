@@ -5,6 +5,11 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to delete a payment record in HostPaymentRecords table.
+ */
+
 public class delHostPaymentRecord {
 
     public static String execute(String PayDate, int PHID) {
