@@ -5,6 +5,11 @@ import java.sql.*;
 import java.util.Scanner;
 
 
+/**
+ *  This Class used to print all tables in database.
+ */
+
+
 public class getTables {
     public static String execute(String name) {
 
