@@ -1,13 +1,19 @@
 package report;
+import java.sql.SQLException;
 import java.util.Scanner;
-import java.sql.*;
+
 import util.DBTablePrinter;
-import util.*;
+import util.queryExecuter;
 
 
 public class currMonthlyPlayCountPerSong {
 
-
+	/**
+	 * Executes the query to get current monthly play count of the song with the given SongID.
+	 *
+	 * @param SongID The ID of the song to get monthly play count for.
+	 * @return A string containing the monthly play count of the song.
+	 */
     public static String execute(int SongID) {
 
 		String sql = 
@@ -19,6 +25,13 @@ public class currMonthlyPlayCountPerSong {
 		return queryExecuter.execute(sql);
 	}
 
+	/**
+	 * Prompts the user to input a song ID and returns the monthly play count for that song.
+	 *
+	 * @param reader The Scanner object to read user input.
+	 * @return A string containing the monthly play count of the song.
+	 * @throws SQLException If there's an error executing the SQL query.
+	 */
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
 		System.out.println("|             Song Details           |");
