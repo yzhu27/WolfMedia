@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to reset total subscribers of a podcast to zero.
+ */
+
+
 public class enterTotalSubscribers {
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+---------------------------------------------------------+");
