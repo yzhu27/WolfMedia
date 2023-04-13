@@ -202,124 +202,124 @@ public class Interface {
         if(this.user == 1){
             switch(this.operation){
                 case 1:
-                    result = enterListeningCount.run(this.sc);
+                    result = enterListeningCount(this.sc).run();
                     break;
                 case 2:
-                    result = enterMonthlyListeners.run(this.sc);
+                    result = enterMonthlyListeners(this.sc).run();
                     break;
                 case 3:
-                    result = enterPlayCount.run(this.sc);
+                    result = enterPlayCount(this.sc).run();
                     break;
                 case 4:
-                    result = enterRating.run(this.sc);
+                    result = enterRating(this.sc).run();
                     break;
                 case 5:
-                    result = enterTotalSubscribers.run(this.sc);
+                    result = enterTotalSubscribers(this.sc).run();
                     break;
                 case 6:
-                    result = findEpisodesGivenPodcast.run(this.sc);
+                    result = findEpisodesGivenPodcast(this.sc).run();
                     break;
                 case 7:
-                    result = findSongsGivenAlbum.run(this.sc);
+                    result = findSongsGivenAlbum(this.sc).run();
                     break;
                 case 8:
-                    result = findSongsGivenArtist.run(this.sc);
+                    result = findSongsGivenArtist(this.sc).run();
                     break;
                 case 9:
-                    result = recordPlayCount.run(this.sc);
+                    result = recordPlayCount(this.sc).run();
                     break;
                 case 10:
-                    result = recordPodcast.run(this.sc);
+                    result = recordPodcast(this.sc).run();
                     break;
                 case 11:
-                    result = updateListeningCount.run(this.sc);
+                    result = updateListeningCount(this.sc).run();
                     break;
                 case 12:
-                    result = updateMonthlyListeners.run(this.sc);
+                    result = updateMonthlyListeners(this.sc).run();
                     break;
                 case 13:
-                    result = updatePlayCount.run(this.sc);
+                    result = updatePlayCount(this.sc).run();
                     break;
                 case 14:
-                    result = updateRating.run(this.sc);
+                    result = updateRating(this.sc).run();
                     break;
                 case 15:
-                    result = updateTotalSubscribers.run(this.sc);
+                    result = updateTotalSubscribers(this.sc).run();
                     break;
                 case 16:
-                    result = enterSongInfo.run(this.sc);
+                    result = enterSongInfo(this.sc).run();
                     break;
                 case 17:
-                    result = enterArtistInfo.run(this.sc);
+                    result = enterArtistInfo(this.sc).run();
                     break;
                 case 18:
-                    result = enterAlbumInfo.run(this.sc);
+                    result = enterAlbumInfo(this.sc).run();
                     break;
                 case 19:
-                    result = enterPodcastInfo.run(this.sc);
+                    result = enterPodcastInfo(this.sc).run();
                     break;
                 case 20:
-                    result = enterHostInfo.run(this.sc);
+                    result = enterHostInfo(this.sc).run();
                     break;
                 case 21:
-                    result = enterEpisodeInfo.run(this.sc);
+                    result = enterEpisodeInfo(this.sc).run();
                     break;
                 case 22:
-                    result = updateSongInfo.run(this.sc);
+                    result = updateSongInfo(this.sc).run();
                     break;
                 case 23:
-                    result = updateArtistInfo.run(this.sc);
+                    result = updateArtistInfo(this.sc).run();
                     break;
                 case 24:
-                    result = updateAlbumInfo.run(this.sc);
+                    result = updateAlbumInfo(this.sc).run();
                     break;
                 case 25:
-                    result = updatePodcastInfo.run(this.sc);
+                    result = updatePodcastInfo(this.sc).run();
                     break;
                 case 26:
-                    result = updateHostInfo.run(this.sc);
+                    result = updateHostInfo(this.sc).run();
                     break;
                 case 27:
-                    result = updateEpisodeInfo.run(this.sc);
+                    result = updateEpisodeInfo(this.sc).run();
                     break;
                 case 28:
-                    result = deleteSongInfo.run(this.sc);
+                    result = deleteSongInfo(this.sc).run();
                     break;
                 case 29:
-                    result = deleteArtistInfo.run(this.sc);
+                    result = deleteArtistInfo(this.sc).run();
                     break;
                 case 30:
-                    result = deleteAlbumInfo.run(this.sc);
+                    result = deleteAlbumInfo(this.sc).run();
                     break;
                 case 31:
-                    result = deletePodcastInfo.run(this.sc);
+                    result = deletePodcastInfo(this.sc).run();
                     break;
                 case 32:
-                    result = deleteHostInfo.run(this.sc);
+                    result = deleteHostInfo(this.sc).run();
                     break;
                 case 33:
-                    result = deleteEpisodeInfo.run(this.sc);
+                    result = deleteEpisodeInfo(this.sc).run();
                     break;
                 case 34:
-                    result = assignSongToArtist.run(this.sc);
+                    result = assignSongToArtist(this.sc).run();
                     break;
                 case 35:
-                    result = assignSongToAlbum.run(this.sc);
+                    result = assignSongToAlbum(this.sc).run();
                     break;
                 case 36:
-                    result = assignArtistToAlbum.run(this.sc);
+                    result = assignArtistToAlbum(this.sc).run();
                     break;
                 case 37:
-                    result = assignArtistToLabel.run(this.sc);
+                    result = assignArtistToLabel(this.sc).run();
                     break;
                 case 38:
-                    result = assignEpisodeToPodcast.run(this.sc);
+                    result = assignEpisodeToPodcast(this.sc).run();
                     break;
                 case 39:
-                    result = assignHostToPodcast.run(this.sc);
+                    result = assignHostToPodcast(this.sc).run();
                     break;
                 case 40:
-                    result = getTables.run(this.sc);
+                    result = getTables(this.sc).run();
                     break;
                 default:
                     return;
@@ -328,61 +328,61 @@ public class Interface {
         else if (this.user == 2) {
             switch (this.operation) {
                 case 1:
-                    result = paymentForSong.run(this.sc);
+                    result = paymentForSong(this.sc).run();
                     break;
                 case 2:
-                    result = paymentForHost.run(this.sc);
+                    result = paymentForHost(this.sc).run();
                     break;
                 case 3:
-                    result = revenue.run(this.sc);
+                    result = revenue(this.sc).run();
                     break;
                 case 4:
-                    result = getArtistPaymentRecords.run(this.sc);
+                    result = getArtistPaymentRecords(this.sc).run();
                     break;
                 case 5:
-                    result = getHostPaymentRecords.run(this.sc);
+                    result = getHostPaymentRecords(this.sc).run();
                     break;
                 case 6:
-                    result = getLabelPaymentRecords.run(this.sc);
+                    result = getLabelPaymentRecords(this.sc).run();
                     break;
                 case 7:
-                    result = getRevenueRecords.run(this.sc);
+                    result = getRevenueRecords(this.sc).run();
                     break;
                 case 8:
-                    result = addArtistPaymentRecord.run(this.sc);
+                    result = addArtistPaymentRecord(this.sc).run();
                     break;
                 case 9:
-                    result = addHostPaymentRecord.run(this.sc);
+                    result = addHostPaymentRecord(this.sc).run();
                     break;
                 case 10:
-                    result = addLabelPaymentRecord.run(this.sc);
+                    result = addLabelPaymentRecord(this.sc).run();
                     break;
                 case 11:
-                    result = addRevenueRecords.run(this.sc);
+                    result = addRevenueRecords(this.sc).run();
                     break;
                 case 12:
-                    result = updateArtistPaymentRecords.run(this.sc);
+                    result = updateArtistPaymentRecords(this.sc).run();
                     break;
                 case 13:
-                    result = updateHostPaymentRecords.run(this.sc);
+                    result = updateHostPaymentRecords(this.sc).run();
                     break;
                 case 14:
-                    result = updateLabelPaymentRecords.run(this.sc);
+                    result = updateLabelPaymentRecords(this.sc).run();
                     break;
                 case 15:
-                    result = updateRevenueRecords.run(this.sc);
+                    result = updateRevenueRecords(this.sc).run();
                     break;
                 case 16:
-                    result = delArtistPaymentRecord.run(this.sc);
+                    result = delArtistPaymentRecord(this.sc).run();
                     break;
                 case 17:
-                    result = delHostPaymentRecord.run(this.sc);
+                    result = delHostPaymentRecord(this.sc).run();
                     break;
                 case 18:
-                    result = delLabelPaymentRecord.run(this.sc);
+                    result = delLabelPaymentRecord(this.sc).run();
                     break;
                 case 19:
-                    result = delRevenueRecord.run(this.sc);
+                    result = delRevenueRecord(this.sc).run();
                     break;
                 default:
                     return;
@@ -391,37 +391,37 @@ public class Interface {
         else if (this.user == 3) {
             switch (this.operation) {
                 case 1:
-                    result = calTotalPaymentsToArtistPerGivenTimePeriod.run(this.sc);
+                    result = calTotalPaymentsToArtistPerGivenTimePeriod(this.sc).run();
                     break;
                 case 2:
-                    result = calTotalPaymentsToHostPerGivenTimePeriod.run(this.sc);
+                    result = calTotalPaymentsToHostPerGivenTimePeriod(this.sc).run();
                     break;
                 case 3:
-                    result = calTotalPaymentsToLabelPerGivenTimePeriod.run(this.sc);
+                    result = calTotalPaymentsToLabelPerGivenTimePeriod(this.sc).run();
                     break;
                 case 4:
-                    result = calTotalRevenue.run(this.sc);
+                    result = calTotalRevenue(this.sc).run();
                     break;
                 case 5:
-                    result = MonthlyPlayCountPerAlbum.run(this.sc);
+                    result = MonthlyPlayCountPerAlbum(this.sc).run();
                     break;
                 case 6:
-                    result = MonthlyPlayCountPerArtist.run(this.sc);
+                    result = MonthlyPlayCountPerArtist(this.sc).run();
                     break;
                 case 7:
-                    result = MonthlyPlayCountPerSong.run(this.sc);
+                    result = MonthlyPlayCountPerSong(this.sc).run();
                     break;
                 case 8:
-                    result = reportEpisodesGivenPodcast.run(this.sc);
+                    result = reportEpisodesGivenPodcast(this.sc).run();
                     break;
                 case 9:
-                    result = reportSongsGivenAlbum.run(this.sc);
+                    result = reportSongsGivenAlbum(this.sc).run();
                     break;
                 case 10:
-                    result = reportSongsGivenArtist.run(this.sc);
+                    result = reportSongsGivenArtist(this.sc).run();
                     break;
                 case 11:
-                    result = reportSubscribersAndRatingPerPodcastPerGivenTimePeriod.run(this.sc);
+                    result = reportSubscribersAndRatingPerPodcastPerGivenTimePeriod(this.sc).run();
                     break;
                 default:
                     return;
