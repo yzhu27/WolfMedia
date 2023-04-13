@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used for adding a new payment record in HostPaymentRecords table.
+ */
+
 public class addHostPaymentRecord {
 
     public static String execute(String PayDate, int PHID, float payAmount) {
