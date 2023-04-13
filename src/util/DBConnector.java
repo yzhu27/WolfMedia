@@ -1,5 +1,8 @@
 package util;
-import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * A utility class for connecting to a MariaDB database.
@@ -14,8 +17,10 @@ public class DBConnector {
      * Establishes a connection with a MariaDB database.
      *
      * @return a Connection object representing the connection to the database.
-     * @throws ClassNotFoundException if the MariaDB JDBC driver class cannot be found.
-     * @throws SQLException if an error occurs while connecting to the database.
+     * @throws ClassNotFoundException if the MariaDB JDBC driver class cannot be
+     *                                found.
+     * @throws SQLException           if an error occurs while connecting to the
+     *                                database.
      */
     static Connection connect() throws ClassNotFoundException, SQLException {
         Class.forName("org.mariadb.jdbc.Driver");

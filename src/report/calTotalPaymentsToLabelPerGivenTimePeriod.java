@@ -1,26 +1,37 @@
 package report;
-import java.util.Scanner;
-import java.sql.*;
-import util.DBTablePrinter;
-import util.*;
 
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import util.queryExecuter;
 
 public class calTotalPaymentsToLabelPerGivenTimePeriod {
-    public static String execute(String startDate, String endDate) {
 
-		String sql = 
-            "SELECT SUM(PayAmount) FROM LabelPaymentRecords " + "\n" +
-            "WHERE PayDate between '%s' and '%s';"
-		;
-        
+	/**
+	 * Executes the SQL query to calculate the total payments to a label within a given time period.
+	 *
+	 * @param startDate the start date of the time period.
+	 * @param endDate the end date of the time period.
+	 * @return a string containing the result of the SQL query.
+	 */
+	public static String execute(String startDate, String endDate) {
+
+		String sql = "SELECT SUM(PayAmount) FROM LabelPaymentRecords " + "\n" +
+				"WHERE PayDate between '%s' and '%s';";
+
 		sql = String.format(sql, startDate, endDate);
-        
+
 		return queryExecuter.execute(sql);
 	}
 
-
-
-    public static String run(Scanner reader) throws SQLException{
+	/**
+	 * Runs the process of calculating the total payments to a label within a given time period.
+	 *
+	 * @param reader the scanner object to read user inputs.
+	 * @return a string containing the result of the SQL query.
+	 * @throws SQLException if there's an error executing the SQL query.
+	 */
+	public static String run(Scanner reader) throws SQLException {
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");
@@ -31,10 +42,10 @@ public class calTotalPaymentsToLabelPerGivenTimePeriod {
 		String startDate = reader.nextLine();
 		reader.nextLine();
 
-        System.out.println("End Date (YYYY-MM-DD): ");
+		System.out.println("End Date (YYYY-MM-DD): ");
 		String endDate = reader.nextLine();
-        reader.nextLine();
+		reader.nextLine();
 
-		return execute(startDate, endDate);	
+		return execute(startDate, endDate);
 	}
 }
