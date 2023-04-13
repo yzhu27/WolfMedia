@@ -5,6 +5,10 @@ import java.sql.*;
 
 import java.util.Scanner;
 
+/**
+ *  This Class used to calculate and update the value of payment from subscribers and update it in RevenueRecords table.
+ */
+
 
 public class paymentFromSubscribers {
 
