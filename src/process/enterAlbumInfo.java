@@ -2,12 +2,12 @@ package process;
 
 import java.util.Scanner;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 public class enterAlbumInfo {
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -32,7 +32,7 @@ public class enterAlbumInfo {
         return execute(albumID, albumName, releaseYear, edition);	
     }
 
-    public static Result execute(int albumID, String albumName, int releaseYear, String edition) {
+    public static String execute(int albumID, String albumName, int releaseYear, String edition) {
 
         String sql = 
             "INSERT INTO Albums VALUES "  + "\n" + "\t" +
@@ -42,7 +42,7 @@ public class enterAlbumInfo {
         
         sql = String.format(sql, albumID, albumName, releaseYear, edition);
         
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
 

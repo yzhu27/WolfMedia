@@ -3,8 +3,8 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import config.Connect;
-import config.Result;
+import util.*;
+
 
 public class updateAlbumInfo {
     private static final String user = "mwang39";												// username
@@ -16,18 +16,15 @@ public class updateAlbumInfo {
         return DriverManager.getConnection(jdbcURL, user, password);
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        Connect.executeQuery(sql);
-    }
 
-    public static Result run(Scanner reader) {
+
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("|          Album Details            |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("Albums");
+        DBTablePrinter.printTable("Albums");
 
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");

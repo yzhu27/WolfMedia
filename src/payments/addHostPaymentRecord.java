@@ -1,13 +1,13 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
 public class addHostPaymentRecord {
 
-    public static Result execute(String PayDate, int PHID, float payAmount) {
+    public static String execute(String PayDate, int PHID, float payAmount) {
 
         String sql =
                 "INSERT INTO HostPaymentRecords VALUES " +
@@ -16,10 +16,10 @@ public class addHostPaymentRecord {
                 ;
         sql = String.format(sql, PayDate, PHID, payAmount);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");

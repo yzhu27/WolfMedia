@@ -1,20 +1,20 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
 public class getRevenueRecords {
-    public static Result execute() {
+    public static String execute() {
 
         String sql =
                 "SELECT * FROM RevenueRecords;";
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("|        RevenueRecords Details      |");
         System.out.println("+------------------------------------+");

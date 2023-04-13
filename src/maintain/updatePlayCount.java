@@ -1,11 +1,18 @@
 package maintain;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class updatePlayCount {
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
+        System.out.println("+------------------------------------+");
+		System.out.println("|             Song Details           |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Songs");
+
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -25,7 +32,7 @@ public class updatePlayCount {
         if (choice == 1){
             attribute = "Playcount";
         } else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         System.out.println("New Value: ");
@@ -34,7 +41,7 @@ public class updatePlayCount {
         return execute(SongID, attribute, newValue);
     }
 
-    public static Result execute(int SongID, String attribute, int newValue) {
+    public static String execute(int SongID, String attribute, int newValue) {
 
         String sql =
             "UPDATE Songs " +
@@ -44,6 +51,6 @@ public class updatePlayCount {
         ;
 
         sql = String.format(sql, attribute, newValue, SongID);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

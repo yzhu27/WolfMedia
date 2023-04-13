@@ -3,27 +3,24 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import config.Connect;
-import config.Result;
+import util.*;
+
 
 public class updateHostInfo {
 
-    public static Result execute(String sql) {
-        return Connect.executeUpdate(sql);
+    public static String execute(String sql) {
+        return queryExecuter.execute(sql);
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        Connect.executeQuery(sql);
-    }
 
-    public static Result run(Scanner reader) {
+
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+----------------------------------------+");
         System.out.println("|           Podcast Host Details         |");
         System.out.println("+----------------------------------------+");
         System.out.println("");
 
-        showDetails("PodcastHosts");
+        DBTablePrinter.printTable("PodcastHosts");
 
         System.out.println("+----------------------------------------+");
         System.out.println("| Please Submit the Following Inputs     |");
@@ -56,7 +53,7 @@ public class updateHostInfo {
         }else if(choice == 4){
             attribute = "PHCity";
         }else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         System.out.println("New Value: ");
@@ -78,7 +75,7 @@ public class updateHostInfo {
 //        return execute(sql);
     }
 
-    public static Result execute(int ID, String attribute, String newValue) {
+    public static String execute(int ID, String attribute, String newValue) {
 
         String sql =
                 "UPDATE PodcastHosts " +
@@ -88,6 +85,6 @@ public class updateHostInfo {
                 ;
 
         sql = String.format(sql, attribute, newValue, ID);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }

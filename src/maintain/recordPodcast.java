@@ -1,11 +1,20 @@
 package maintain;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class recordPodcast {
-    public static Result run(Scanner reader) {
+
+
+    public static String run(Scanner reader) throws SQLException{
+        System.out.println("+------------------------------------+");
+		System.out.println("|           Podcasts Details         |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Podcasts");
+
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -29,7 +38,7 @@ public class recordPodcast {
 
         return execute(PRDate, PID, PRSubscribers, PRating);
     }
-    public static Result execute(String Date, int ID, int subs, float rating) {
+    public static String execute(String Date, int ID, int subs, float rating) {
 
         String sql =
             "INSERT INTO PodcastRecords VALUES " +
@@ -38,6 +47,6 @@ public class recordPodcast {
         ;
         sql = String.format(sql, Date, ID, subs, rating);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 }

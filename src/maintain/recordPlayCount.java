@@ -1,11 +1,20 @@
 package maintain;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class recordPlayCount {
-    public static Result run(Scanner reader) {
+
+
+    public static String run(Scanner reader) throws SQLException{
+        System.out.println("+------------------------------------+");
+		System.out.println("|             Song Details           |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Songs");
+
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -25,7 +34,7 @@ public class recordPlayCount {
 
         return execute(SRDate, SID, SRPlaycount);
     }
-    public static Result execute(String PayDate, int SID, int Playcount) {
+    public static String execute(String PayDate, int SID, int Playcount) {
 
         String sql =
             "INSERT INTO SongRecords VALUES " +
@@ -34,6 +43,6 @@ public class recordPlayCount {
         ;
         sql = String.format(sql, PayDate, SID, Playcount);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 }

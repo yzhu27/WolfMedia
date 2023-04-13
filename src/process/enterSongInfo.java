@@ -3,12 +3,12 @@ package process;
 import java.sql.*;
 import java.util.Scanner;
 
-import config.Connect;
-import config.Result;
+import util.*;
+
 
 public class enterSongInfo {
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -65,7 +65,7 @@ public class enterSongInfo {
         return execute(songID, title, duration, playcount, releaseDate, releaseCountry, slanguage, royaltyRate, royaltyPaid, artistID, albumID, trackNumber);
     }
 
-    public static Result execute(int songID, String title, float duration, int playcount, String releaseDate, String releaseCountry, String slanguage, float royaltyRate, String royaltyPaid, int artistID, int albumID, int trackNumber) {
+    public static String execute(int songID, String title, float duration, int playcount, String releaseDate, String releaseCountry, String slanguage, float royaltyRate, String royaltyPaid, int artistID, int albumID, int trackNumber) {
         String sql =
                 "INSERT INTO Songs VALUES "  + "\n" + "\t" +
                         "(%d, '%s', %.2f, %d, '%s', '%s', '%s', %.2f, '%s', %d, %d, %d)"  + "\n" +
@@ -74,7 +74,7 @@ public class enterSongInfo {
 
         sql = String.format(sql, songID, title, duration, playcount, releaseDate, releaseCountry, slanguage, royaltyRate, royaltyPaid, artistID, albumID, trackNumber);
 
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 
     public static void main(String[] args) {

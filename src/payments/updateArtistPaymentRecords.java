@@ -1,13 +1,20 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
 public class updateArtistPaymentRecords {
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
+        System.out.println("+------------------------------------+");
+		System.out.println("|           Artist Details           |");
+		System.out.println("+------------------------------------+");
+		System.out.println("");
+
+		DBTablePrinter.printTable("Artists");
+
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");
@@ -34,7 +41,7 @@ public class updateArtistPaymentRecords {
         } else if (choice == 2){
             attribute = "PayAmount";
         } else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         System.out.println("New Value: ");
@@ -43,7 +50,7 @@ public class updateArtistPaymentRecords {
         return execute(ArtistID, attribute, PayDate, newValue);
     }
 
-    public static Result execute(int publicationID, String attribute, String PayDate, String newValue) {
+    public static String execute(int publicationID, String attribute, String PayDate, String newValue) {
 
         if (attribute == "PayDate"){
 
@@ -55,7 +62,7 @@ public class updateArtistPaymentRecords {
                     ;
 
             sql = String.format(sql, attribute, newValue, PayDate, publicationID);
-            return Connect.executeUpdate(sql);
+            return queryExecuter.execute(sql);
         }
         else {
             float tmp = Float.parseFloat(newValue);
@@ -67,7 +74,7 @@ public class updateArtistPaymentRecords {
                     ;
 
             sql = String.format(sql, attribute, tmp, PayDate, publicationID);
-            return Connect.executeUpdate(sql);
+            return queryExecuter.execute(sql);
         }
     }
 }

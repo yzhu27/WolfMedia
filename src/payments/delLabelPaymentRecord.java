@@ -1,23 +1,23 @@
 package payments;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
 public class delLabelPaymentRecord {
 
-    public static Result execute(String PayDate, int LabelID) {
+    public static String execute(String PayDate, int LabelID) {
 
         String sql =
                 "DELETE FROM LabelPaymentRecords WHERE PayDate = '%s' AND LabelID = %d;";
 
         sql = String.format(sql, PayDate, LabelID);
 
-        return Connect.executeQuery(sql);
+        return queryExecuter.execute(sql);
     }
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");
         System.out.println("+------------------------------------+");

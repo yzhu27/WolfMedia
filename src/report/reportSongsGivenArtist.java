@@ -1,16 +1,15 @@
 package report;
+import java.sql.SQLException;
 import java.util.Scanner;
 
-import config.Connect;
-import config.Result;
+import util.DBTablePrinter;
+import util.*;
+
 
 public class reportSongsGivenArtist {
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-		Connect.executeQuery(sql);
-    }
 
-    public static Result execute(int ArtistID) {
+
+    public static String execute(int ArtistID) {
 
 		String sql = 
 			"SELECT * FROM Songs WHERE ArtistID=%d;"
@@ -18,16 +17,16 @@ public class reportSongsGivenArtist {
         
 		sql = String.format(sql, ArtistID);
         
-		return Connect.executeQuery(sql);
+		return queryExecuter.execute(sql);
 	}
 
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException {
         System.out.println("+------------------------------------+");
 		System.out.println("|           Artist Details           |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		showDetails("Artists");
+		DBTablePrinter.printTable("Artists");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

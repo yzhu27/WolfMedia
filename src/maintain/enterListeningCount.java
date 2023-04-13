@@ -1,11 +1,11 @@
 package maintain;
 
-import config.Connect;
-import config.Result;
+import util.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class enterListeningCount {
-    public static Result run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+--------------------------------------------------+");
         System.out.println("| Reset the listen count of a Podcast Episode to 0 |");
         System.out.println("+--------------------------------------------------+");
@@ -29,7 +29,7 @@ public class enterListeningCount {
         if (choice == 1){
             attribute = "ListenerCount";
         } else {
-            return new Result(false, "Invalid input");
+            return "Error: Invalid Input";
         }
 
         // System.out.println("New Value: ");
@@ -38,7 +38,7 @@ public class enterListeningCount {
         return execute(PID, PEID, attribute, 0);
     }
 
-    public static Result execute(int ID, int ID2, String attribute, int newValue) {
+    public static String execute(int ID, int ID2, String attribute, int newValue) {
 
         String sql =
             "UPDATE PodcastEpisodes " +
@@ -49,6 +49,6 @@ public class enterListeningCount {
         ;
 
         sql = String.format(sql, attribute, newValue, ID2, ID);
-        return Connect.executeUpdate(sql);
+        return queryExecuter.execute(sql);
     }
 }
