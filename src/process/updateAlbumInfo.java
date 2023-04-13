@@ -38,12 +38,17 @@ public class updateAlbumInfo {
         System.out.println("New AlName: ");
         String newName = reader.nextLine();
 
+        System.out.println("New ReleaseYear: ");
+        int newYear = reader.nextInt();
+        reader.nextLine();
+
         System.out.println("New Edition: ");
         String newEdition = reader.nextLine();
 
-        return execute(albumID, newName, newEdition);
+        return execute(albumID, newName, newYear, newEdition);
+
     }
-    public static String execute(int ID, String newName, String newEdition) {
+    public static String execute(int ID, String newName, int newYear, String newEdition) {
 
         /* Execute Transaction via Connect and return result */
         try (Connection connection = connect()) {
@@ -63,7 +68,16 @@ public class updateAlbumInfo {
                 statement.executeUpdate(sql);
                 /* ------------------------------------------------------------------ */
 
-                /* Statement 2 in Transaction (Update Edition attribute) */
+                /* Statement 2 in Transaction (Update ReleaseYear attribute) */
+                /* ------------------------------------------------------------------ */
+                sql =
+                        "UPDATE Albums SET ReleaseYear = %d WHERE AlbumID = %d;";
+
+                sql = String.format(sql, newYear, ID);
+                statement.executeUpdate(sql);
+                /* ------------------------------------------------------------------ */
+
+                /* Statement 3 in Transaction (Update Edition attribute) */
                 /* ------------------------------------------------------------------ */
                 sql =
                         "UPDATE Albums SET Edition = '%s' WHERE AlbumID = %d;";

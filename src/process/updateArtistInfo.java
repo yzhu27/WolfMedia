@@ -85,6 +85,7 @@ public class updateArtistInfo {
         }
 
         return execute(artistID, attribute, newValue);
+
     }
 
     public static String execute(int ID, String attribute, String newValue) {
