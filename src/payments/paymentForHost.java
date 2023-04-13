@@ -125,7 +125,7 @@ public class paymentForHost {
         return queryExecuter.execute(sql);
     }
 
-    public static String run(Scanner reader) throws ParseException {
+    public static String run(Scanner reader) throws ParseException, SQLException {
         System.out.println("+------------------------------------+");
         System.out.println("|     HostPaymentRecords Details     |");
         System.out.println("+------------------------------------+");

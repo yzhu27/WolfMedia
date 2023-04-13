@@ -2,7 +2,6 @@ package payments;
 
 import util.*;
 import java.sql.*;
-import config.Transaction;
 
 
 import java.util.Scanner;
@@ -316,7 +315,7 @@ public class paymentForSong {
                 /* rollback the transaction if anything should fail to commit */
                 connection.rollback();
 
-                return new Result(false, "Problem Executing Transaction");
+                return "Error: Problem Executing Transaction";
 
             } finally {
 
@@ -328,11 +327,11 @@ public class paymentForSong {
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + jdbcURL;
-            return new Result(false, errorMsg);
+            return "error:"+errorMsg;
 
         }
 
-        return new Result(true, "");
+        return "success";
 
     }
 

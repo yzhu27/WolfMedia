@@ -117,7 +117,7 @@ public class Interface {
         Interface.select_user();
     }
 
-    public void select_user() throws ParseException {
+    public void select_user() throws ParseException, SQLException {
         while (true){
 
             System.out.println("+--------------------------------------+");
@@ -195,7 +195,7 @@ public class Interface {
         }
     }
 
-    public void execute_operation() throws ParseException {
+    public void execute_operation() throws ParseException, SQLException {
 
         String result = "null";
 

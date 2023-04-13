@@ -44,7 +44,7 @@ public class updateAlbumInfo {
         return execute(albumID, newName, newEdition);
 
     }
-    public static Result execute(int ID, String newName, String newEdition) {
+    public static String execute(int ID, String newName, String newEdition) {
 
         /* Execute Transaction via Connect and return result */
         try (Connection connection = connect()) {
@@ -81,7 +81,7 @@ public class updateAlbumInfo {
                 /* rollback the transaction if anything should fail to commit */
                 connection.rollback();
 
-                return new Result(false, "Problem Executing Transaction");
+                return "error: Problem Executing Transaction";
 
             } finally {
 
@@ -93,10 +93,10 @@ public class updateAlbumInfo {
         } catch (ClassNotFoundException | SQLException e) {
 
             String errorMsg = "Unable to Connect Using jdbcURL: " + jdbcURL;
-            return new Result(false, errorMsg);
+            return "error"+errorMsg;
 
         }
 
-        return new Result(true, "");
+        return "success";
     }
 }
