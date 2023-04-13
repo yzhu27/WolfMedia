@@ -4,6 +4,12 @@ import util.*;
 import java.sql.*;
 
 import java.util.Scanner;
+
+
+/**
+ *  This Class used to delete a revenue record in RevenueRecords table.
+ */
+
 public class delRevenueRecord {
 
     public static String execute(String RevDate) {
