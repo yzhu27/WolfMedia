@@ -53,7 +53,7 @@ public class revenue {
 
         String sql =
                 "INSERT INTO RevenueRecords VALUES " +
-                        "(%s, '%.2f')" +
+                        "('%s', '%.2f')" +
                         ";"
                 ;
         sql = String.format(sql, RevDate, MonthlyRevenue);

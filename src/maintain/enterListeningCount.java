@@ -11,6 +11,8 @@ public class enterListeningCount {
         System.out.println("+--------------------------------------------------+");
         System.out.println("");
 
+        DBTablePrinter.printTable("PodcastEpisodes");
+
         System.out.println("Podcast Episode ID: ");
         int PEID = reader.nextInt();
         reader.nextLine();
@@ -31,9 +33,6 @@ public class enterListeningCount {
         } else {
             return "Error: Invalid Input";
         }
-
-        // System.out.println("New Value: ");
-        // int newValue = reader.nextInt();
 
         return execute(PID, PEID, attribute, 0);
     }

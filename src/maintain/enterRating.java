@@ -11,6 +11,8 @@ public class enterRating {
         System.out.println("+------------------------------------+");
         System.out.println("");
 
+        DBTablePrinter.printTable("Podcasts");
+
         System.out.println("PodcastID: ");
         int PID = reader.nextInt();
         reader.nextLine();
