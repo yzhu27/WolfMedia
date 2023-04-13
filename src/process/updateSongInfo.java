@@ -5,6 +5,10 @@ import java.sql.*;
 
 import util.*;
 
+/**
+ *  This Class used for executing the updateSongInfo API operation by updating the Songs Table.
+ */
+
 import maintain.getTables;
 
 public class updateSongInfo {
@@ -80,35 +84,7 @@ public class updateSongInfo {
 
         return execute(songID, attribute, newValue);
 
-//        System.out.println("Attribute you want to update: ");
-//        String attributeName = reader.nextLine();
-//
-//        System.out.println("New attribute value: ");
-//
-//        String sql = "";
-//
-//        if(attributeName.equals("Title") || attributeName.equals("ReleaseCountry") || attributeName.equals("Slanguage") || attributeName.equals("ReleaseDate")){
-//            String updatedAttributeValue = reader.nextLine();
-//
-//            sql = "UPDATE Songs SET %s='%s' WHERE SongID = (%d);" + "\n" + "\n";
-//            sql = String.format(sql, attributeName, updatedAttributeValue, songID);
-//
-//        } else if(attributeName.equals("Duration") || attributeName.equals("RoyaltyRate") || attributeName.equals("RoyaltyPaid")){
-//            float updatedAttributeValue = reader.nextFloat();
-//            reader.nextLine();
-//
-//            sql = "UPDATE Songs SET %s=%f WHERE SongID = (%d);" + "\n" + "\n";
-//            sql = String.format(sql, attributeName, updatedAttributeValue, songID);
-//
-//        } else if(attributeName.equals("Playcount") || attributeName.equals("ArtistID") || attributeName.equals("AlbumID") || attributeName.equals("TrackNumber")){
-//            int updatedAttributeValue = reader.nextInt();
-//            reader.nextLine();
-//
-//            sql = "UPDATE Songs SET %s=%d WHERE SongID = (%d);" + "\n" + "\n";
-//            sql = String.format(sql, attributeName, updatedAttributeValue, songID);
-//        }
-//
-//        return execute(sql);
+
     }
     public static String execute(int ID, String attribute, String newValue) {
 
@@ -136,12 +112,7 @@ public class updateSongInfo {
                     ";";
             sql = String.format(sql, attribute, newValue, ID);
         }
-//        String sql =
-//                "UPDATE Podcasts " +
-//                        "SET %s = '%s' "  +
-//                        "WHERE PID = %d " +
-//                        ";"
-//                ;
+
 
         return queryExecuter.execute(sql);
     }
