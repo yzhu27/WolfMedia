@@ -4,6 +4,10 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ *  This Class used to find all songs given album name from songs table.
+ */
+
 public class findSongsGivenAlbum {
 
 
