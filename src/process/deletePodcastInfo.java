@@ -5,8 +5,12 @@ import java.util.Scanner;
 import util.*;
 import java.sql.*;
 
-public class deletePodcastInfo {
+/**
+ *  This Class used for executing the deletePodcastInfo API operation by updating the Podcasts Table.
+ */
 
+
+public class deletePodcastInfo {
 
 
     public static String execute(int podcastID) {
