@@ -1,12 +1,12 @@
 package payments;
 
-import util.queryExecuter;
-
+import util.*;
+import java.sql.*;
 import config.Transaction;
 
 
 import java.util.Scanner;
-import java.sql.*;
+
 
 
 
@@ -168,10 +168,7 @@ public class paymentForSong {
         //return Collaborators;
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        queryExecuter.execute(sql);
-    }
+
 
     public static String execute(int SongID, float MonthlyRoyalties, int RLID, int ArtistID, int CollaboratorID, String PayDate) {
         float paymentToRL = (float) (MonthlyRoyalties * 0.3);
@@ -231,27 +228,27 @@ public class paymentForSong {
         return Connect.executeTransaction(transaction);
     }
 
-    public static String run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("|            Songs Details           |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("Songs");
+        DBTablePrinter.printTable("Songs");
 
         System.out.println("+------------------------------------+");
         System.out.println("|     ArtistPaymentRecords Details    |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("ArtistPaymentRecords");
+        DBTablePrinter.printTable("ArtistPaymentRecords");
 
         System.out.println("+------------------------------------+");
         System.out.println("|     LabelPaymentRecords Details    |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("LabelPaymentRecords");
+        DBTablePrinter.printTable("LabelPaymentRecords");
 
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");

@@ -1,14 +1,11 @@
 package report;
 import java.util.Scanner;
-
-import util.queryExecuter;
+import java.sql.*;
+import util.DBTablePrinter;
+import util.*;
 
 
 public class MonthlyPlayCountPerAlbum {
-	public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-		queryExecuter.execute(sql);
-    }
 
 	public static String execute(int AlbumID) {
 		String sql = 
@@ -23,13 +20,13 @@ public class MonthlyPlayCountPerAlbum {
 		return queryExecuter.execute(sql);
 	}
 
-	public static String run(Scanner reader) {
+	public static String run(Scanner reader) throws SQLException{
 		System.out.println("+------------------------------------+");
 		System.out.println("|            Artist Details          |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		showDetails("Albums");
+		DBTablePrinter.printTable("Albums");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

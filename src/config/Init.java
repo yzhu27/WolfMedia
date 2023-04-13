@@ -8,7 +8,7 @@ package config;
  *	2) Create tables using schema definitions (with types, constrains, keys, etc.)
  *	3) Insert example data into tables (including DEMO data)
  */
-import util.queryExecuter;
+import util.*;
 
 public class Init {
 

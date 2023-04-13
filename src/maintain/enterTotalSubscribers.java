@@ -1,11 +1,11 @@
 package maintain;
 
-import util.queryExecuter;
-
+import util.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class enterTotalSubscribers {
-    public static String run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+---------------------------------------------------------+");
         System.out.println("| Reset the number of total subscribers of a Podcast to 0 |");
         System.out.println("+---------------------------------------------------------+");

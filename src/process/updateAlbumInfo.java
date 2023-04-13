@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import util.queryExecuter;
+import util.*;
 
 
 public class updateAlbumInfo {
@@ -13,18 +13,15 @@ public class updateAlbumInfo {
 //    }
 //
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        queryExecuter.execute(sql);
-    }
 
-    public static String run(Scanner reader) {
+
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+------------------------------------+");
         System.out.println("|          Album Details            |");
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("Albums");
+        DBTablePrinter.printTable("Albums");
 
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");

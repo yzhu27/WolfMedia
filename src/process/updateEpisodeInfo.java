@@ -3,8 +3,8 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import util.queryExecuter;
-
+import util.*;
+import java.sql.*;
 
 public class updateEpisodeInfo {
 
@@ -12,18 +12,14 @@ public class updateEpisodeInfo {
             return queryExecuter.execute(sql);
         }
 
-        public static void showDetails(String tableName){
-            String sql = String.format("SELECT * FROM " + tableName + ";");
-            queryExecuter.execute(sql);
-        }
 
-        public static String run(Scanner reader) {
+        public static String run(Scanner reader) throws SQLException{
             System.out.println("+------------------------------------+");
             System.out.println("|      Podcast Episode Details       |");
             System.out.println("+------------------------------------+");
             System.out.println("");
 
-            showDetails("PodcastEpisodes");
+            DBTablePrinter.printTable("PodcastEpisodes");
 
             System.out.println("+------------------------------------+");
             System.out.println("| Please Submit the Following Inputs |");

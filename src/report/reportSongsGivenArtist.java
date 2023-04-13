@@ -1,14 +1,13 @@
 package report;
+import java.sql.SQLException;
 import java.util.Scanner;
 
-import util.queryExecuter;
+import util.DBTablePrinter;
+import util.*;
 
 
 public class reportSongsGivenArtist {
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-		queryExecuter.execute(sql);
-    }
+
 
     public static String execute(int ArtistID) {
 
@@ -21,13 +20,13 @@ public class reportSongsGivenArtist {
 		return queryExecuter.execute(sql);
 	}
 
-    public static String run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException {
         System.out.println("+------------------------------------+");
 		System.out.println("|           Artist Details           |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-		showDetails("Artists");
+		DBTablePrinter.printTable("Artists");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

@@ -3,7 +3,7 @@ package process;
 import java.util.Scanner;
 import java.sql.*;
 
-import util.queryExecuter;
+import util.*;
 
 
 public class assignEpisodeToPodcast {
@@ -12,18 +12,15 @@ public class assignEpisodeToPodcast {
         return queryExecuter.execute(sql);
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        queryExecuter.execute(sql);
-    }
 
-    public static String run(Scanner reader) {
+
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+-------------------------------+");
         System.out.println("|      PodcastEpisode Details   |");
         System.out.println("+-------------------------------+");
         System.out.println("");
 
-        showDetails("PodcastEpisodes");
+        DBTablePrinter.printTable("PodcastEpisodes");
 
         System.out.println("+------------------------------------+");
         System.out.println("| Please Submit the Following Inputs |");

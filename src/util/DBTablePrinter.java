@@ -63,4 +63,11 @@ public class DBTablePrinter {
 
         System.out.print(output);
     }
+
+    public static void printTable(String tableName) throws  SQLException {
+        String sql = String.format("SELECT * FROM " + tableName + ";");
+		queryExecuter.execute(sql);
+    }
+
+    
 }

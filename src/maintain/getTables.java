@@ -1,7 +1,7 @@
 package maintain;
 
-import util.queryExecuter;
-
+import util.*;
+import java.sql.*;
 import java.util.Scanner;
 
 
@@ -14,7 +14,7 @@ public class getTables {
         return queryExecuter.execute(sql);
     }
 
-    public static String run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("Select tables to display:" + "\n" +
                 "1. PodcastEpisodes" + "\n" +
                 "2. Artists" + "\n" +

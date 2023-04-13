@@ -1,7 +1,7 @@
 package maintain;
 
-import util.queryExecuter;
-
+import util.*;
+import java.sql.*;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 
 public class enterPlayCount {    
-    public static String run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
         System.out.println("+-------------------------------------+");
         System.out.println("| Reset the play count of a song to 0 |");
         System.out.println("+-------------------------------------+");

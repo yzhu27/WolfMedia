@@ -2,16 +2,12 @@ package process;
 
 import java.util.Scanner;
 
-import util.queryExecuter;
-
+import util.*;
+import java.sql.*;
 
 public class deleteEpisodeInfo {
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql::" + sql);
-		queryExecuter.execute(sql);
-    }
+
 
     public static String execute(int episodeID,int podcastID) {
 
@@ -31,14 +27,14 @@ public class deleteEpisodeInfo {
 
 
 
-    public static String run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
 
 		System.out.println("+------------------------------------+");
 		System.out.println("|         Episode Details            |");
 		System.out.println("+------------------------------------+");
 		System.out.println("");
 
-        showDetails("PodcastEpisodes");
+        DBTablePrinter.printTable("PodcastEpisodes");
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

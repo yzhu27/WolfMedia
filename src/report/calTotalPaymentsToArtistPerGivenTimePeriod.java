@@ -1,9 +1,9 @@
 package report;
 import java.util.Scanner;
-
-import util.queryExecuter;
-
+import java.sql.*;
+import util.DBTablePrinter;
 import util.*;
+
 public class calTotalPaymentsToArtistPerGivenTimePeriod {
     public static String execute(String startDate, String endDate) {
 
@@ -19,7 +19,7 @@ public class calTotalPaymentsToArtistPerGivenTimePeriod {
 
 
 
-    public static String run(Scanner reader) {
+    public static String run(Scanner reader) throws SQLException{
 
 		System.out.println("+------------------------------------+");
 		System.out.println("| Please Submit the Following Inputs |");

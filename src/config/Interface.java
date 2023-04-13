@@ -1,5 +1,6 @@
 package config;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -90,7 +91,7 @@ public class Interface {
             "10. Report Songs By Given Artist",
             "11. Report Subscribers And Ratings",
     };
-    private static final String[][] WolfCityOpsMapping = {
+    private static final String[][] WolfMediaOpsMapping = {
             DataAdminOps,
             AccountantOps,
             ManagerOps,
@@ -106,12 +107,12 @@ public class Interface {
         this.validOperations = null;
     }
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, SQLException {
         Interface Interface = new Interface();
         Interface.select_position();
     }
 
-    public void select_position() throws ParseException {
+    public void select_position() throws ParseException, SQLException {
         while (true){
             System.out.print("\033\143");
 
@@ -139,8 +140,8 @@ public class Interface {
                         System.out.flush();
                         System.exit(1);
                     }
-                    else if (1 <= this.position && this.position <= WolfCityOpsMapping.length) {
-                        this.validOperations = WolfCityOpsMapping[this.position-1];
+                    else if (1 <= this.position && this.position <= WolfMediaOpsMapping.length) {
+                        this.validOperations = WolfMediaOpsMapping[this.position-1];
                         positionInvalid = false;
                     } else {
                         System.out.print("Invalid Option; Please try again: ");
@@ -154,7 +155,7 @@ public class Interface {
         }
     }
 
-    public void select_operation() throws ParseException {
+    public void select_operation() throws ParseException, SQLException {
         while (true) {
             System.out.print("\033\143");
 
@@ -192,7 +193,7 @@ public class Interface {
         }
     }
 
-    public void execute_operation() throws ParseException {
+    public void execute_operation() throws ParseException, SQLException {
         System.out.print("\033\143");
 
         String result = "null";

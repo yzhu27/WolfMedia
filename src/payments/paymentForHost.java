@@ -1,14 +1,14 @@
 package payments;
 
-import util.queryExecuter;
-
+import util.*;
+import java.sql.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Date;
-import java.sql.*;
+
 
 
 
@@ -100,11 +100,6 @@ public class paymentForHost {
         return adCount;
     }
 
-    public static void showDetails(String tableName){
-        String sql = String.format("SELECT * FROM " + tableName + ";");
-        System.out.println("sql::" + sql);
-        queryExecuter.execute(sql);
-    }
 
     public static void showPEhosted(int PHID){
         String sql = "SELECT p.PName, p.PHID, pe.PETitle, pe.PEReleaseDate " +
@@ -136,7 +131,7 @@ public class paymentForHost {
         System.out.println("+------------------------------------+");
         System.out.println("");
 
-        showDetails("HostPaymentRecords");
+        DBTablePrinter.printTable("HostPaymentRecords");
 
 
         System.out.println("+------------------------------------+");
