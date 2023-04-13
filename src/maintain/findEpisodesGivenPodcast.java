@@ -4,6 +4,11 @@ import util.*;
 import java.sql.*;
 import java.util.Scanner;
 
+
+/**
+ *  This Class used to find all episodes given podcast name from PodcastEpisodes table.
+ */
+
 public class findEpisodesGivenPodcast {
 
 
