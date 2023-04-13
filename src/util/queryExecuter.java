@@ -2,6 +2,8 @@ package util;
 
 import java.sql.*;
 
+import config.Init;
+
 
 public class queryExecuter {
     public static String execute(String sql) {
@@ -21,6 +23,12 @@ public class queryExecuter {
                     }
                 } else {
                     statement.executeUpdate(sql);
+
+                    for (int i=0; i<Init.tables.length; i++) {
+                        if (sql.contains(Init.tables[i])) {
+                            DBTablePrinter.printTable(Init.tables[i]);
+                        }
+                    }
                 }
             } catch (SQLException error) {
                 return "Error: Problem Executing SQL Query";

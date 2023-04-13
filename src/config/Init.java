@@ -13,7 +13,7 @@ import util.*;
 public class Init {
 
     /* All the table/schema names included in our WolfPubDB implementation */
-    private static String[] tables = {
+    public static String[] tables = {
             "Users",
             "RecordLabels",
             "Artists",
