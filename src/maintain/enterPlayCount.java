@@ -11,8 +11,6 @@ import java.util.Scanner;
  *  This Class used to reset Playcount to zero.
  */
 
-
-
 public class enterPlayCount {    
     public static String run(Scanner reader) throws SQLException{
         System.out.println("+-------------------------------------+");
