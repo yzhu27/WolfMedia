@@ -63,6 +63,42 @@ public class paymentForHost {
         return releasedEpisodeCount;
     }
 
+    public static int getPEsCount(int PHID){
+
+        ResultSet resultSet = null;
+        int releasedEpisodeCount = 0;
+
+        String sql = "SELECT SUM(EpisodeCount) AS COUNT" +
+                "FROM Podcasts " +
+                "WHERE PHID=%d;";
+
+        sql = String.format(sql,PHID);
+
+        try (Connection connection = connect()) {
+
+            try (Statement statement = connection.createStatement()) {
+
+                resultSet = statement.executeQuery(sql);
+
+                while(resultSet.next()){
+                    releasedEpisodeCount = resultSet.getInt("COUNT");
+                }
+
+            } catch (SQLException error) {
+                return 0;
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+
+            String errorMsg = "Unable to Connect Using jdbcURL: " + "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/";
+            System.err.println(errorMsg);
+            return 0;
+
+        }
+
+        return releasedEpisodeCount;
+    }
+
     public static int adCountCurMonth(int PHID, String startDate, String endDate){
 
         ResultSet resultSet = null;
@@ -174,7 +210,8 @@ public class paymentForHost {
 
 
         float flatFee = 10;
-        int releasedEpisodeCount = PEsHostedCurMonthCount(PHID, startDate, endDate);
+        //int releasedEpisodeCount = PEsHostedCurMonthCount(PHID, startDate, endDate);
+        int releasedEpisodeCount = getPEsCount(PHID);
         int adCount = adCountCurMonth(PHID, startDate, endDate);
         float PayAmount = releasedEpisodeCount * flatFee + adCount;
 
