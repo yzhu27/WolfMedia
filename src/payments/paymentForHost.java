@@ -15,9 +15,13 @@ import java.util.Date;
 
 
 public class paymentForHost {
-    private static final String user = "mwang39";												// username
-    private static final String password = "200476023";											// password
-    private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/"+user;
+    // private static final String user = "mwang39";												// username
+    // private static final String password = "200476023";											// password
+    // private static final String jdbcURL = "jdbc:mariadb://classdb2.csc.ncsu.edu:3306/"+user;
+
+    private static final String user = "codespace"; // username
+    private static final String password = "1107"; // password
+    private static final String jdbcURL = "jdbc:mariadb://localhost:3306/wolfmedia"; // url
 
     private static Connection connect() throws ClassNotFoundException, SQLException {
         Class.forName("org.mariadb.jdbc.Driver");
@@ -68,7 +72,7 @@ public class paymentForHost {
         ResultSet resultSet = null;
         int releasedEpisodeCount = 0;
 
-        String sql = "SELECT SUM(EpisodeCount) AS COUNT" +
+        String sql = "SELECT SUM(EpisodeCount) AS COUNT " +
                 "FROM Podcasts " +
                 "WHERE PHID=%d;";
 
