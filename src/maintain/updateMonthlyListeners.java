@@ -51,12 +51,12 @@ public class updateMonthlyListeners {
 
         String sql =
             "UPDATE Artists " +
-            "SET %s = %d "  +
+            "SET %s = %s + %d "  +
             "WHERE ArtistID = %d " +
             ";"
         ;
 
-        sql = String.format(sql, attribute, newValue, ID);
+        sql = String.format(sql, attribute, attribute, newValue, ID);
         return queryExecuter.execute(sql);
     }
 }

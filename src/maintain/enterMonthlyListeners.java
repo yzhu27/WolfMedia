@@ -36,7 +36,10 @@ public class enterMonthlyListeners {
             return "Error: Invalid Input";
         }
 
-        return execute(AID, attribute, 0);
+        System.out.println("New Value: ");
+        int newValue = reader.nextInt();
+
+        return execute(AID, attribute, newValue);
     }
 
     public static String execute(int ID, String attribute, int newValue) {

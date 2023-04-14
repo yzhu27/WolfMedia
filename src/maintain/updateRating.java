@@ -51,12 +51,12 @@ public class updateRating {
 
         String sql =
             "UPDATE Podcasts " +
-            "SET %s = %.1f "  +
+            "SET %s = %s + %.1f "  +
             "WHERE PID = %d " +
             ";"
         ;
 
-        sql = String.format(sql, attribute, newValue, ID);
+        sql = String.format(sql, attribute, attribute, newValue, ID);
         return queryExecuter.execute(sql);
     }
 }

@@ -38,7 +38,11 @@ public class enterListeningCount {
             return "Error: Invalid Input";
         }
 
-        return execute(PID, PEID, attribute, 0);
+        System.out.println("New Value: ");
+        int newValue = reader.nextInt();
+        reader.nextLine();
+
+        return execute(PID, PEID, attribute, newValue);
     }
 
     public static String execute(int ID, int ID2, String attribute, int newValue) {

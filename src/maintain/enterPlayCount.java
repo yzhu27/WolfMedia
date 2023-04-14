@@ -37,10 +37,10 @@ public class enterPlayCount {
             return "Error: Invalid Input";
         }
 
-        // System.out.println("New Value: ");
-        // int newValue = reader.nextInt();
+         System.out.println("New Value: ");
+         int newValue = reader.nextInt();
 
-        return execute(SongID, attribute, 0);
+        return execute(SongID, attribute, newValue);
     }
 
     public static String execute(int SongID, String attribute, int newValue) {

@@ -35,17 +35,17 @@ public class enterRating {
             return "Error: Invalid Input";
         }
 
-        // System.out.println("New Value: ");
-        // int newValue = reader.nextInt();
+         System.out.println("New Value: ");
+         float newValue = reader.nextFloat();
 
-        return execute(PID, attribute, 0);
+        return execute(PID, attribute, newValue);
     }
 
-    public static String execute(int ID, String attribute, int newValue) {
+    public static String execute(int ID, String attribute, float newValue) {
 
         String sql =
             "UPDATE Podcasts " +
-            "SET %s = %d "  +
+            "SET %s = %.1f "  +
             "WHERE PID = %d " +
             ";"
         ;

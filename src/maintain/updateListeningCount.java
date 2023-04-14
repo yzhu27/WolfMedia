@@ -63,13 +63,13 @@ public class updateListeningCount {
 
         String sql =
             "UPDATE PodcastEpisodes " +
-            "SET %s = %d "  +
+            "SET %s = %s + %d "  +
             "WHERE PEID = %d " +
             "AND PID = %d " +
             ";"
         ;
 
-        sql = String.format(sql, attribute, newValue, ID2, ID);
+        sql = String.format(sql, attribute, attribute, newValue, ID2, ID);
         return queryExecuter.execute(sql);
     }
 }

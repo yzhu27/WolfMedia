@@ -51,12 +51,12 @@ public class updatePlayCount {
 
         String sql =
             "UPDATE Songs " +
-            "SET %s = %d "  +
+            "SET %s = %s + %d "  +
             "WHERE SongID = %d " +
             ";"
         ;
 
-        sql = String.format(sql, attribute, newValue, SongID);
+        sql = String.format(sql, attribute, attribute, newValue, SongID);
         return queryExecuter.execute(sql);
     }
 }

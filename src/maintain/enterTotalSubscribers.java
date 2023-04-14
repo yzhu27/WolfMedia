@@ -34,10 +34,10 @@ public class enterTotalSubscribers {
             return "Error: Invalid Input";
         }
 
-        // System.out.println("New Value: ");
-        // int newValue = reader.nextInt();
+         System.out.println("New Value: ");
+         int newValue = reader.nextInt();
 
-        return execute(PID, attribute, 0);
+        return execute(PID, attribute, newValue);
     }
 
     public static String execute(int ID, String attribute, int newValue) {
